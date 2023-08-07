@@ -1,7 +1,5 @@
 package SharpAndClean.service;
 
-
-
 import SharpAndClean.module.*;
 import SharpAndClean.service.exception.ServiceException;
 
@@ -45,12 +43,12 @@ public class UserService {
 
 	}
 
-//	public static void main(String[] args) throws ServiceException {
-//		UserService reg = new UserService();
-//
-//		User user2 = new User("navee@gmail.com", "passWord@786");
-//
-//		reg.loginUser(user2);
-//	}
+	public static void main(String[] args) throws ServiceException {
+		UserService reg = new UserService();
+
+		User user2 = new User("aravindth@gmail.com", "Akkam4321@");
+
+		reg.loginUser(user2);
+	}
 
 }

@@ -1,5 +1,4 @@
 package SharpAndClean.validation;
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import SharpAndClean.module.User;

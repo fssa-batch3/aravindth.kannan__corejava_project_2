@@ -10,7 +10,6 @@ public class HairService {
 	
 	public HairService(String haircutName, String haircutEmail, String haircutType, String haircutAbout,
 			String haircutUrl) {
-		super();
 		this.haircutName = haircutName;
 		this.haircutEmail = haircutEmail;
 		this.haircutType = haircutType;
@@ -48,16 +47,14 @@ public class HairService {
 	public void setHaircutUrl(String haircutUrl) {
 		this.haircutUrl = haircutUrl;
 	}
-	
-	
+
 	@Override
 	public String toString() {
 		return "HairService [haircutName=" + haircutName + ", haircutEmail=" + haircutEmail + ", haircutType="
-				+ haircutType + ", haircutAbout=" + haircutAbout + ", haircutUrl=" + haircutUrl + ", getHaircutName()="
-				+ getHaircutName() + ", getHaircutEmail()=" + getHaircutEmail() + ", getHaircutType()="
-				+ getHaircutType() + ", getHaircutAbout()=" + getHaircutAbout() + ", getHaircutUrl()=" + getHaircutUrl()
-				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
-				+ "]";
+				+ haircutType + ", haircutAbout=" + haircutAbout + ", haircutUrl=" + haircutUrl + "]";
 	}
+	
+	
+	
 	
 }

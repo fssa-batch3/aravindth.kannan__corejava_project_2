@@ -15,7 +15,7 @@ public class TestLoginFeature {
 
 	public void loginSuccess() {
 		UserService userService = new UserService();
-		User user1 = new User("navee@gmail.com", "Navee@123");
+		User user1 = new User("aravindth@gmail.com", "Akkam4321@");
 		try {
 			assertTrue(userService.loginUser(user1));
 		} catch (ServiceException e) {
@@ -28,7 +28,7 @@ public class TestLoginFeature {
 
 	public void loginFailed() {
 		UserService userService = new UserService();
-		User user2 = new User("alsa@gmail.com", "Password@796");
+		User user2 = new User("kavi@gmail.com", "akk432@");
 		try {
 			assertFalse(userService.loginUser(user2));
 		} catch (ServiceException e) {
