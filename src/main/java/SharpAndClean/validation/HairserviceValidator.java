@@ -2,7 +2,7 @@ package SharpAndClean.validation;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.net.URL;
+//import java.net.URL;
 import SharpAndClean.module.HairService;
 import SharpAndClean.validation.exception.InvalidHairServiceException;
 public class HairserviceValidator {
@@ -27,9 +27,9 @@ public class HairserviceValidator {
 	        Matcher m = p.matcher(haircutName);
 	        match = m.matches();
 	        if (match) {
-	            System.out.println("The user name is valid.");
+	            System.out.println("The hair service name is valid.");
 	        } else {
-	            System.out.println("The user name is not valid");
+	            System.out.println("The hair service name is not valid");
 	        }
 	        return match;
 	    }
@@ -49,15 +49,11 @@ public class HairserviceValidator {
 	    }
 	 
 	 public static boolean validateHairServiceURL(String haircutUrl) {
-		 try {
-			 new URL(haircutUrl).toURI();
-		 }
-		 catch(Exception e) {
-			 System.out.println(e);
+		 if(haircutUrl == null) {
 			 return false;
-		 }
-		 
-		 return true;
+		 }else {
+			 return true; 
+		 } 
 		 
 	 }
 	 
