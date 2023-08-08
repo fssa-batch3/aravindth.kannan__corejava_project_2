@@ -1,6 +1,6 @@
 package SharpAndClean.module;
 
-public class HairService {
+public class Style {
 
 	private String haircutName;
 	private String haircutEmail;
@@ -8,7 +8,7 @@ public class HairService {
 	private String haircutAbout;
 	private String haircutUrl;
 	
-	public HairService(String haircutName, String haircutEmail, String haircutType, String haircutAbout,
+	public Style(String haircutName, String haircutEmail, String haircutType, String haircutAbout,
 			String haircutUrl) {
 		this.haircutName = haircutName;
 		this.haircutEmail = haircutEmail;
