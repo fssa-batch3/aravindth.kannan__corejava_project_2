@@ -1,8 +1,9 @@
-package SharpAndClean.service;
+package SharpAndClean.TestUser;
 
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 import SharpAndClean.module.*;
+import SharpAndClean.service.StyleService;
 import SharpAndClean.service.exception.StyleException;
 
 public class TestAddStyleFeature {

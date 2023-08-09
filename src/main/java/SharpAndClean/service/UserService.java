@@ -9,46 +9,87 @@ import SharpAndClean.dao.*;
 import SharpAndClean.validation.*;
 import SharpAndClean.validation.exception.InvalidUserException;
 
+
+
 public class UserService {
 
 	public boolean registerUser(User user) throws ServiceException {
 		UserDAO userDAO = new UserDAO();
 
 		try {
-			UserValidator.validateUser(user);
+			if (user == null) {
+				throw new InvalidUserException("User is null");
+			}
 
+			if (userDAO.isEmailExists(user.getEmail())) {
+				throw new ServiceException("User with this email already exists");
+			}
+
+			UserValidator.validateUser(user);
 			return userDAO.register(user);
 		} catch (InvalidUserException | SQLException e) {
 			throw new ServiceException(e);
 		}
-
 	}
 
-	public boolean loginUser(User user) throws ServiceException {
-
+	public boolean loginUser(User user, String email) throws ServiceException {
 		try {
-			UserValidator.validateEmail(user.getEmail());
+			UserValidator.validateEmail(email);
 			UserValidator.validatePassword(user.getPassword());
 
 			UserDAO userDAO = new UserDAO();
-			if (userDAO.login(user)) {
-				System.out.println(user.getEmail() + " Successfully logged in");
+
+			if (!userDAO.isEmailExists(email)) {
+				throw new ServiceException("Before logging in, you have to register");
+			}
+
+			if (userDAO.login(user, email)) {
+				System.out.println(email + " Successfully logged in");
 				return true;
 			} else {
 				return false;
 			}
+		} catch (ServiceException e) {
+			throw e;
 		} catch (Exception e) {
 			throw new ServiceException(e.getLocalizedMessage());
 		}
-
 	}
 
-	public static void main(String[] args) throws ServiceException {
-		UserService reg = new UserService();
+	public boolean updateUser(User user, String email) throws ServiceException {
+		UserDAO userDAO = new UserDAO();
 
-		User user2 = new User("aravindth@gmail.com", "Akkam4321@");
+		try {
+			if (user == null) {
+				throw new InvalidUserException("User is null");
+			}
 
-		reg.loginUser(user2);
+			if (!userDAO.isEmailExists(email)) {
+				throw new ServiceException("User with this email does not exist");
+			}
+
+			UserValidator.validateUser(user);
+			return userDAO.updateUser(user);
+		} catch (InvalidUserException | SQLException e) {
+			throw new ServiceException(e);
+		}
 	}
 
+	 public boolean deleteUser(User user) throws ServiceException {
+	        UserDAO userDAO = new UserDAO();
+	        try {
+	            if (user == null) {
+	                throw new InvalidUserException("User is null");
+	            }
+
+	            if (!userDAO.isEmailExists(user.getEmail())) {
+	                throw new ServiceException("User with this email does not exist");
+	            }
+
+	            UserValidator.validateDeleteUser(user);
+	            return userDAO.deleteUser(user);
+	        } catch (InvalidUserException | SQLException e) {
+	            throw new ServiceException(e);
+	        }
+	    }
 }
