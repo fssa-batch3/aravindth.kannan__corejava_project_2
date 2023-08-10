@@ -51,7 +51,7 @@ public class TestRegisterFeature {
     @Test
     public void testRegistrationEmptyPassword() {
         UserService userService = new UserService();
-        User user = new User(4, "muneesh", "", "muneesh@example.com", "8565473543", "user");
+        User user = new User(4, "muneesh@example.com", "muneesh", "", "8565473543", "user");
         try {
             userService.registerUser(user);
             fail("Expected ServiceException for empty password, but none was thrown.");

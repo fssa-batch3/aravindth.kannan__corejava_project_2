@@ -1,7 +1,5 @@
 package SharpAndClean.module;
 
-
-
 public class User {
 	
 	private int userId;
@@ -117,7 +115,7 @@ public class User {
 		return isDeleted;
 	}
 
-
+	
 	public void setDeleted(boolean isDeleted) {
 		this.isDeleted = isDeleted;
 	}
