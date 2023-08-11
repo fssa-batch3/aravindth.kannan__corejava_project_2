@@ -1,4 +1,4 @@
-package SharpAndClean.module;
+package com.fssa.SharpAndClean.module;
 
 public class Style {
 

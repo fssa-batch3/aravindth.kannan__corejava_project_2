@@ -1,12 +1,12 @@
-package SharpAndClean.service;
+package com.fssa.SharpAndClean.service;
 
 import java.sql.SQLException;
 
-import SharpAndClean.dao.*;
-import SharpAndClean.module.*;
-import SharpAndClean.service.exception.StyleException;
-import SharpAndClean.validation.StyleValidator;
-import SharpAndClean.validation.exception.InvalidStyleException;
+import com.fssa.SharpAndClean.dao.*;
+import com.fssa.SharpAndClean.module.*;
+import com.fssa.SharpAndClean.service.exception.StyleException;
+import com.fssa.SharpAndClean.validation.StyleValidator;
+import com.fssa.SharpAndClean.validation.exception.InvalidStyleException;
 public class StyleService {
 
 	public boolean addedStyle(Style style) throws StyleException {

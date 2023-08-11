@@ -4,11 +4,11 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
 import org.junit.Test;
-import SharpAndClean.module.*;
-import SharpAndClean.service.StyleService;
-import SharpAndClean.service.UserService;
-import SharpAndClean.service.exception.ServiceException;
-import SharpAndClean.service.exception.StyleException;
+
+import com.fssa.SharpAndClean.module.*;
+import com.fssa.SharpAndClean.service.StyleService;
+
+import com.fssa.SharpAndClean.service.exception.StyleException;
 
 public class TestAddStyleFeature {
 

@@ -1,10 +1,11 @@
-package SharpAndClean.validation;
+package com.fssa.SharpAndClean.validation;
 
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import SharpAndClean.module.User;
-import SharpAndClean.validation.exception.InvalidUserException;
+
+import com.fssa.SharpAndClean.module.User;
+import com.fssa.SharpAndClean.validation.exception.InvalidUserException;
 
 public class UserValidator {
 

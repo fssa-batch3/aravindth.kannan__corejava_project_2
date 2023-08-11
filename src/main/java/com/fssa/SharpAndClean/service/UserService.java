@@ -1,13 +1,12 @@
-package SharpAndClean.service;
-
-import SharpAndClean.module.*;
-import SharpAndClean.service.exception.ServiceException;
+package com.fssa.SharpAndClean.service;
 
 import java.sql.SQLException;
 
-import SharpAndClean.dao.*;
-import SharpAndClean.validation.*;
-import SharpAndClean.validation.exception.InvalidUserException;
+import com.fssa.SharpAndClean.dao.*;
+import com.fssa.SharpAndClean.module.*;
+import com.fssa.SharpAndClean.service.exception.ServiceException;
+import com.fssa.SharpAndClean.validation.*;
+import com.fssa.SharpAndClean.validation.exception.InvalidUserException;
 
 
 

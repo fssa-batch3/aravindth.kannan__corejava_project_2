@@ -6,9 +6,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import SharpAndClean.module.User;
-import SharpAndClean.service.UserService;
-import SharpAndClean.service.exception.ServiceException;
+import com.fssa.SharpAndClean.module.User;
+import com.fssa.SharpAndClean.service.UserService;
+import com.fssa.SharpAndClean.service.exception.ServiceException;
 
 public class TestDeleteFeature {
 

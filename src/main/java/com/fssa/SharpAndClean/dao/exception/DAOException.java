@@ -1,4 +1,4 @@
-package SharpAndClean.dao.exception;
+package com.fssa.SharpAndClean.dao.exception;
 
 public class DAOException extends Exception {
 

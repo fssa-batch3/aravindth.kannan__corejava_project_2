@@ -1,10 +1,10 @@
-package SharpAndClean.validation;
+package com.fssa.SharpAndClean.validation;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-//import java.net.URL;
-import SharpAndClean.module.Style;
-import SharpAndClean.validation.exception.InvalidStyleException;
+
+import com.fssa.SharpAndClean.module.Style;
+import com.fssa.SharpAndClean.validation.exception.InvalidStyleException;
 public class StyleValidator {
 
 	public static boolean validateHairService(Style hairservice) throws InvalidStyleException {

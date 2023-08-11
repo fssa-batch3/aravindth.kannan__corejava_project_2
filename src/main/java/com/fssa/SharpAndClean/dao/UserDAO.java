@@ -1,4 +1,4 @@
-package SharpAndClean.dao;
+package com.fssa.SharpAndClean.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -6,8 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-// import SharpAndClean.dao.exception.DAOException;
-import SharpAndClean.module.User;
+import com.fssa.SharpAndClean.module.User;
+
 import io.github.cdimascio.dotenv.Dotenv;
 
 public class UserDAO {

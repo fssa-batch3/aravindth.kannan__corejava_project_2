@@ -6,9 +6,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import SharpAndClean.module.User;
-import SharpAndClean.service.UserService;
-import SharpAndClean.service.exception.ServiceException;
+import com.fssa.SharpAndClean.module.User;
+import com.fssa.SharpAndClean.service.UserService;
+import com.fssa.SharpAndClean.service.exception.ServiceException;
 
 public class TestUpdateFeature {
 
@@ -53,9 +53,9 @@ public class TestUpdateFeature {
 	public void testUpdateMissingRequiredField() {
 		UserService userService = new UserService();
 		// Leaving the name field empty
-		User user1 = new User(1, "maha12@gmail.com", "", "Navee@123", "8072444056", "user");
+		User user1 = new User(1, "aravindth12@gmail.com", "", "Aravindth@123", "8072444056", "user");
 		try {
-			userService.updateUser(user1, "maha12@gmail.com");
+			userService.updateUser(user1, "aravindth12@gmail.com");
 			fail("Expected ServiceException for missing required field, but none was thrown.");
 		} catch (ServiceException e) {
 			e.printStackTrace();

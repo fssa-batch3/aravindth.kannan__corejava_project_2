@@ -1,4 +1,4 @@
-package SharpAndClean.service.exception;
+package com.fssa.SharpAndClean.service.exception;
 
 public class StyleException extends Exception{
 	private static final long serialVersionUID = -8508529215117096666L;

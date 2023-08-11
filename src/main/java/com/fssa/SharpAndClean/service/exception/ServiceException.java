@@ -1,4 +1,4 @@
-package SharpAndClean.service.exception;
+package com.fssa.SharpAndClean.service.exception;
 
 public class ServiceException extends Exception {
 

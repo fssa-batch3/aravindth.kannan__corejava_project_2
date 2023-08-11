@@ -1,4 +1,4 @@
-package SharpAndClean.validation.exception;
+package com.fssa.SharpAndClean.validation.exception;
 
 public class InvalidUserException extends Exception {
 
