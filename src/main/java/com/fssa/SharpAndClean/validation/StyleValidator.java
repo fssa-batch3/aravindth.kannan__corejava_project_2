@@ -7,15 +7,13 @@ import com.fssa.SharpAndClean.module.Style;
 import com.fssa.SharpAndClean.validation.exception.InvalidStyleException;
 public class StyleValidator {
 
-	public static boolean validateHairService(Style hairservice) throws InvalidStyleException {
-		if(hairservice != null && validateStyleName(hairservice.getHaircutName()) && validateStyleEmail(hairservice.getHaircutEmail()) 
-				  && validateStyleImageURL(hairservice.getHaircutUrl()) && validateStyleDetail(hairservice.getHaircutAbout()) && validateStyleType(hairservice.getHaircutType())) {
+	public static boolean validateStyle(Style style) throws InvalidStyleException {
+		if(style != null && validateStyleName(style.getHaircutName()) && validateStyleEmail(style.getHaircutEmail()) 
+				  && validateStyleImageURL(style.getHaircutUrl()) && validateStyleDetail(style.getHaircutAbout()) && validateStyleType(style.getHaircutType())) {
 			return true;
 		}else {
 			throw new InvalidStyleException("Hair Style details not valid");
-		}
-		
-		
+		}	
 	}
 	
 	 public static boolean validateStyleName(String haircutName) throws InvalidStyleException {
@@ -49,7 +47,6 @@ public class StyleValidator {
 	        return isMatch;
 	    }
 	 
-
 
       public static boolean validateStyleImageURL(String haircutimageUrl) throws InvalidStyleException {
 		boolean match = false;
@@ -98,4 +95,13 @@ public class StyleValidator {
 		 }
 		return match;
 	 }
+
+	public static boolean isValidStyleId(int styleId) {
+		boolean match = false;
+		String styleID = Integer.toString(styleId);
+		String regex = "\\d+";
+		match = Pattern.matches(regex, styleID);
+		return match;
+	}
+
 }
