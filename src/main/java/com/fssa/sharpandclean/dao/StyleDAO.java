@@ -4,13 +4,13 @@ import java.sql.*;
 import java.util.List;
 
 import com.fssa.sharpandclean.dao.exception.StyleDAOException;
-import com.fssa.sharpandclean.module.Style;
+import com.fssa.sharpandclean.model.Style;
 
 import java.util.ArrayList;
 
 import io.github.cdimascio.dotenv.Dotenv;
 
-public class StyleDAO {
+public class StyleDAO { 
 	// connect to database
 		public Connection getConnection() throws SQLException {
 			String DB_URL;
@@ -32,24 +32,31 @@ public class StyleDAO {
 
 	
 	// Add new Hair service in barber or shop profile page
-	public boolean addStyle(Style style) throws SQLException {
+	public boolean addStyle(Style style) throws  StyleDAOException {
 		// get the connection with variable passing method.
-		Connection con = getConnection();
-		String query = "INSERT INTO hairstyle (haircut_email,haircut_name,haircut_type,haircut_about,haircut_url) VALUES (?,?,?,?,?)";
-		PreparedStatement pmt = con.prepareStatement(query);
-		pmt.setString(1, style.getHaircutEmail());
-		pmt.setString(2, style.getHaircutName());
-		pmt.setString(3, style.getHaircutType());
-		pmt.setString(4, style.getHaircutAbout());
-		pmt.setString(5, style.getHaircutUrl());
 		
-		int rows = pmt.executeUpdate();
+		try {
+			Connection con = getConnection();
+			String query = "INSERT INTO hairstyle (haircut_email,haircut_name,haircut_type,haircut_about,haircut_url) VALUES (?,?,?,?,?)";
+			PreparedStatement pmt = con.prepareStatement(query);
+			pmt.setString(1, style.getHaircutEmail());
+			pmt.setString(2, style.getHaircutName());
+			pmt.setString(3, style.getHaircutType());
+			pmt.setString(4, style.getHaircutAbout());
+			pmt.setString(5, style.getHaircutUrl());
+			
+			int rows = pmt.executeUpdate();
+			
+			// Return successful or not
+			pmt.close();
+			con.close();
+			
+			return rows == 1;	
+		}
+		catch(SQLException e) {
+			throw new StyleDAOException("Error in add Style");
+		}
 		
-		// Return successful or not
-		pmt.close();
-		con.close();
-		
-		return rows == 1;	
 	}
 	
    // List All hair style for user from all barber and barberShop uploaded by them.	
@@ -75,22 +82,60 @@ public class StyleDAO {
 			return style1;
 
 		} catch (SQLException e) {
-			throw new StyleDAOException("Error in getAllHairStyle");
+			throw new StyleDAOException("Error in getAllStyle");
 		}
 
 	}
 
 
-	// Delete design based on design ID
-		public boolean deleteStyle( int haircutId) throws SQLException {
+	// Delete style based on style ID
+		public boolean deleteStyle( int haircutId) throws  StyleDAOException {
 
 			String query = "UPDATE hairstyle SET isDeleted = ? WHERE haircut_id = ?";
 
-			try (Connection connection = getConnection(); PreparedStatement pmt = connection.prepareStatement(query)) {
+			try (Connection connection = getConnection(); 
+				PreparedStatement pmt = connection.prepareStatement(query)) {
 				pmt.setBoolean(1, true); // Set isDeleted to true to mark the design as deleted
 				pmt.setInt(2, haircutId);
 				int rows = pmt.executeUpdate();
 				return rows == 1;
+			}catch(SQLException e) {
+				throw new StyleDAOException("Error in Delete Style");
 			}
 		}
-}
+		
+     //	Update style based on style email by barber
+		public boolean updateStyle(Style style) throws   StyleDAOException {
+			String query = "UPDATE hairstyle SET haircut_name = ?, haircut_type = ?, haircut_about = ?, haircut_url = ?, haircut_email = ?  WHERE haircut_id = ?";
+			try(Connection connection = getConnection();
+				PreparedStatement pmt = connection.prepareStatement(query)){
+				pmt.setString(1, style.getHaircutName());
+				pmt.setString(2, style.getHaircutType());
+				pmt.setString(3, style.getHaircutAbout());
+				pmt.setString(4, style.getHaircutUrl());
+				pmt.setString(5, style.getHaircutEmail());
+				pmt.setInt(6, style.getHaircutId());
+				int rows = pmt.executeUpdate();
+				
+				pmt.close();
+				return rows == 1;
+			}catch(SQLException e) {
+				throw new StyleDAOException("Error in Update Style");
+			}
+		}
+
+		 // Method to check if a user with the given style id exists in the database
+		public boolean isStyleExists(int styleId) throws SQLException {
+			// TODO Auto-generated method stub
+			
+		        String query = "SELECT * FROM hairstyle WHERE haircut_id = ?";
+		        try (Connection connection = getConnection();
+		             PreparedStatement pmt = connection.prepareStatement(query)) {
+		            pmt.setInt(1, styleId);
+		            ResultSet rs = pmt.executeQuery();
+		            return rs.next(); // If a row is found, the styleId exists
+		        }
+		    }
+			
+		}
+

@@ -1,4 +1,4 @@
-package com.fssa.sharpandclean.module;
+package com.fssa.sharpandclean.model;
 
 public class Style {
 	
@@ -61,13 +61,7 @@ public class Style {
 	public void setHaircutUrl(String haircutUrl) {
 		this.haircutUrl = haircutUrl;
 	}
-
-	@Override
-	public String toString() {
-		return "HairService [haircutName=" + haircutName + ", haircutEmail=" + haircutEmail + ", haircutType="
-				+ haircutType + ", haircutAbout=" + haircutAbout + ", haircutUrl=" + haircutUrl + "]";
-	}
-
+	
 	public int getHaircutId() {
 		return haircutId;
 	}
@@ -83,6 +77,14 @@ public class Style {
 	public void setDeleted(boolean isDeleted) {
 		this.isDeleted = isDeleted;
 	}
+
+	@Override
+	public String toString() {
+		return "HairService [haircutName=" + haircutName + ", haircutEmail=" + haircutEmail + ", haircutType="
+				+ haircutType + ", haircutAbout=" + haircutAbout + ", haircutUrl=" + haircutUrl + "]";
+	}
+
+	
 	
 	
 	

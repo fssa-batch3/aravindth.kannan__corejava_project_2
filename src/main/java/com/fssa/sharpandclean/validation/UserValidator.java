@@ -5,7 +5,7 @@ import java.util.regex.Matcher;
 
 import java.util.regex.Pattern;
 
-import com.fssa.sharpandclean.module.User;
+import com.fssa.sharpandclean.model.User;
 import com.fssa.sharpandclean.validation.exception.InvalidUserException;
 
 public class UserValidator {

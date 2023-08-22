@@ -2,7 +2,6 @@ package com.fssa.sharpandclean.service;
 
 import org.junit.Test;
 
-import com.fssa.sharpandclean.service.StyleService;
 import com.fssa.sharpandclean.service.exception.StyleException;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -15,39 +14,39 @@ public class TestDeleteStyle {
 		public void testDeleteDesignSuccess() throws StyleException {
 			StyleService styleService = new StyleService();
 			// Assume you have a valid styleId for an existing design
-			int designIdToDelete = 199;
+			int styleId = 199;
 
-			assertTrue(styleService.deleteStyle(designIdToDelete));
-			System.out.println("Design deleted successfully");
+			assertTrue(styleService.deleteStyle(styleId));
+			System.out.println("Style deleted successfully");
 		}
 
 		@Test
 		public void testDeleteNonExistingStyle() throws StyleException {
 			StyleService styleService = new StyleService();
 			// Assume you have a styleId that does not exist in the database
-			int nonExistingDesignId = 1000;
+			int nonExistingStyleId = 1000;
 
-			assertFalse(styleService.deleteStyle(nonExistingDesignId));
-			System.out.println("Design not found, delete failed");
+			assertFalse(styleService.deleteStyle(nonExistingStyleId));
+			System.out.println("Style not found, delete failed");
 		}
 
 		@Test
 		public void testDeleteStyleWithInvalidId() throws StyleException {
-			StyleService designService = new StyleService();
+			StyleService styleService = new StyleService();
 			// Assume you have an invalid designId, e.g. negative value
-			int invalidDesignId = -1;
+			int invalidStyleId = -1;
 
-			assertFalse(designService.deleteStyle(invalidDesignId));
-			System.out.println("Invalid design ID, delete failed");
+			assertFalse(styleService.deleteStyle(invalidStyleId));
+			System.out.println("Invalid Style ID, delete failed");
 		}
 
 		@Test
 		public void testDeleteStyleWithNullId() throws StyleException {
-			StyleService designService = new StyleService();
-			int nullDesignId = 0; // Assuming 0 is considered a null design ID
+			StyleService styleService = new StyleService();
+			int nullStyleId = 0; // Assuming 0 is considered a null design ID
 
-			assertFalse(designService.deleteStyle(nullDesignId));
-			System.out.println("Null design ID, delete failed");
+			assertFalse(styleService.deleteStyle(nullStyleId));
+			System.out.println("Null Style ID, delete failed");
 		}
 
 	}

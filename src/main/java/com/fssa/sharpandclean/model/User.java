@@ -1,4 +1,4 @@
-package com.fssa.sharpandclean.module;
+package com.fssa.sharpandclean.model;
 
 public class User {
 	
@@ -22,8 +22,6 @@ public class User {
 		this.type = type;
 		this.isDeleted = isDeleted;
 	}
-
-
 	
 	public User(int userId, String email, String username, String password, String phonenumber, String type) {
 		super();
@@ -34,9 +32,7 @@ public class User {
 		this.phonenumber = phonenumber;
 		this.type = type;
 	}
-
-
-
+	
 	public User(String email, String password) {
 		super();
 		this.email = email;

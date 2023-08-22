@@ -3,7 +3,7 @@ package com.fssa.sharpandclean.service;
 import java.sql.SQLException;
 
 import com.fssa.sharpandclean.dao.UserDAO;
-import com.fssa.sharpandclean.module.User;
+import com.fssa.sharpandclean.model.User;
 import com.fssa.sharpandclean.service.exception.ServiceException;
 import com.fssa.sharpandclean.validation.UserValidator;
 import com.fssa.sharpandclean.validation.exception.InvalidUserException;

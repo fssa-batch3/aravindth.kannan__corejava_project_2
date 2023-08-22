@@ -4,10 +4,15 @@ import java.util.regex.Matcher;
 
 import java.util.regex.Pattern;
 
-import com.fssa.sharpandclean.module.Style;
+import com.fssa.sharpandclean.model.Style;
 import com.fssa.sharpandclean.validation.exception.InvalidStyleException;
 public class StyleValidator {
-
+/**
+ * 
+ * @param style
+ * @return
+ * @throws InvalidStyleException
+ */
 	public static boolean validateStyle(Style style) throws InvalidStyleException {
 		if(style != null && validateStyleName(style.getHaircutName()) && validateStyleEmail(style.getHaircutEmail()) 
 				  && validateStyleImageURL(style.getHaircutUrl()) && validateStyleDetail(style.getHaircutAbout()) && validateStyleType(style.getHaircutType())) {

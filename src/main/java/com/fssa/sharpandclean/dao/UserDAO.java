@@ -7,7 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.fssa.sharpandclean.module.User;
+import com.fssa.sharpandclean.model.User;
 
 import io.github.cdimascio.dotenv.Dotenv;
 
