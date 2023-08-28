@@ -1,34 +1,16 @@
 package com.fssa.sharpandclean.dao;
 
 import java.sql.*;
+
 import java.util.List;
 
 import com.fssa.sharpandclean.dao.exception.StyleDAOException;
 import com.fssa.sharpandclean.model.Style;
+import com.fssa.sharpandclean.utils.ConnectionUtil;
 
 import java.util.ArrayList;
 
-import io.github.cdimascio.dotenv.Dotenv;
-
 public class StyleDAO { 
-	// connect to database
-		public Connection getConnection() throws SQLException {
-			String DB_URL;
-			String DB_USER;
-			String DB_PASSWORD;
-
-				if (System.getenv("CI") != null) {
-					DB_URL = System.getenv("DB_URL");
-					DB_USER = System.getenv("DB_USER");
-					DB_PASSWORD = System.getenv("DB_PASSWORD");
-				} else {
-					Dotenv env = Dotenv.load();
-					DB_URL = env.get("DB_URL");
-					DB_USER = env.get("DB_USER");
-					DB_PASSWORD = env.get("DB_PASSWORD");
-				}
-			return DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
-		}
 
 	
 	// Add new Hair service in barber or shop profile page
@@ -36,7 +18,7 @@ public class StyleDAO {
 		// get the connection with variable passing method.
 		
 		try {
-			Connection con = getConnection();
+			Connection con = ConnectionUtil.getConnection();
 			String query = "INSERT INTO hairstyle (haircut_email,haircut_name,haircut_type,haircut_about,haircut_url) VALUES (?,?,?,?,?)";
 			PreparedStatement pmt = con.prepareStatement(query);
 			pmt.setString(1, style.getHaircutEmail());
@@ -64,7 +46,7 @@ public class StyleDAO {
 	public List<Style> getAllStyle() throws StyleDAOException {
 		List<Style> style1 = new ArrayList<>();
 
-		try (PreparedStatement stmt = getConnection().prepareStatement(
+		try (PreparedStatement stmt = 	ConnectionUtil.getConnection().prepareStatement(
 				"SELECT haircut_id, haircut_email,haircut_name, haircut_type,haircut_about,haircut_url FROM hairstyle");
 				ResultSet rs = stmt.executeQuery()) {
 
@@ -93,7 +75,7 @@ public class StyleDAO {
 
 			String query = "UPDATE hairstyle SET isDeleted = ? WHERE haircut_id = ?";
 
-			try (Connection connection = getConnection(); 
+			try (Connection connection =  ConnectionUtil.getConnection();
 				PreparedStatement pmt = connection.prepareStatement(query)) {
 				pmt.setBoolean(1, true); // Set isDeleted to true to mark the design as deleted
 				pmt.setInt(2, haircutId);
@@ -107,7 +89,7 @@ public class StyleDAO {
      //	Update style based on style email by barber
 		public boolean updateStyle(Style style) throws   StyleDAOException {
 			String query = "UPDATE hairstyle SET haircut_name = ?, haircut_type = ?, haircut_about = ?, haircut_url = ?, haircut_email = ?  WHERE haircut_id = ?";
-			try(Connection connection = getConnection();
+			try(Connection connection =  ConnectionUtil.getConnection();
 				PreparedStatement pmt = connection.prepareStatement(query)){
 				pmt.setString(1, style.getHaircutName());
 				pmt.setString(2, style.getHaircutType());
@@ -129,7 +111,7 @@ public class StyleDAO {
 			// TODO Auto-generated method stub
 			
 		        String query = "SELECT * FROM hairstyle WHERE haircut_id = ?";
-		        try (Connection connection = getConnection();
+		        try (Connection connection =  ConnectionUtil.getConnection();
 		             PreparedStatement pmt = connection.prepareStatement(query)) {
 		            pmt.setInt(1, styleId);
 		            ResultSet rs = pmt.executeQuery();

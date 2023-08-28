@@ -16,7 +16,7 @@ public class TestUpdateFeature {
 	@Test
 	public void testUpdateSuccess() {
 		UserService userService = new UserService();
-		User user1 = new User(3, "kavi@gmail.com", "Aravindth", "Aravindth@123", "9888844056", "user");
+		User user1 = new User( "kavi@gmail.com", "Aravindth", "Aravindth@123", "9888844056", "user");
 		try {
 			assertTrue(userService.updateUser(user1, "kavi@gmail.com"));
 		} catch (ServiceException e) {
@@ -27,7 +27,7 @@ public class TestUpdateFeature {
 	@Test
 	public void testUpdateEmailNotFound() {
 		UserService userService = new UserService();
-		User user1 = new User(1, "aravindth12@gmail.com", "AravindthKavi", "Aravindth@123", "8072444056", "user");
+		User user1 = new User( "aravindth12@gmail.com", "AravindthKavi", "Aravindth@123", "8072444056", "user");
 		try {
 			// Assuming the user with email "aravindth12@gmail.com" does not exist in the system
 			userService.updateUser(user1, "noemail@gmail.com");
@@ -40,7 +40,7 @@ public class TestUpdateFeature {
 	@Test
 	public void testUpdateInvalidEmailFormat() {
 		UserService userService = new UserService();
-		User user1 = new User(1, "aravindth12@gmail.com", "AravindthKavi", "Aravindth@123", "8072444056", "user");
+		User user1 = new User( "aravindth12@gmail.com", "AravindthKavi", "Aravindth@123", "8072444056", "user");
 		try {
 			// Assuming "invalid_email_format" is not a valid email format
 			userService.updateUser(user1, "invalidemailformat");
@@ -54,7 +54,7 @@ public class TestUpdateFeature {
 	public void testUpdateMissingRequiredField() {
 		UserService userService = new UserService();
 		// Leaving the name field empty
-		User user1 = new User(1, "aravindth12@gmail.com", "", "Aravindth@123", "8072444056", "user");
+		User user1 = new User( "aravindth12@gmail.com", "", "Aravindth@123", "8072444056", "user");
 		try {
 			userService.updateUser(user1, "aravindth12@gmail.com");
 			fail("Expected ServiceException for missing required field, but none was thrown.");

@@ -85,7 +85,7 @@ public class UserValidator {
 	}
 
 	public static boolean validateDeleteUser(User user) throws InvalidUserException {
-		if (user != null && user.getUserId() > 0 && validateEmail(user.getEmail())) {
+		if (user != null  && validateEmail(user.getEmail())) {
 			System.out.println("User deletion details are valid.");
 			return true;
 		} else {
