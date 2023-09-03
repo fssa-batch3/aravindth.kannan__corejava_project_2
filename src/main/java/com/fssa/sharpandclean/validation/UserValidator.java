@@ -84,7 +84,7 @@ public class UserValidator {
 		Matcher matcher = pattern.matcher(phoneNumber);
 		boolean isMatch = matcher.matches();
 
-		if (phoneNumber.length() == 10) {
+		if (isMatch) {
 			System.out.println("The phone number is: Valid");
 		} else {
 			System.out.println("The phone number is: Invalid");
