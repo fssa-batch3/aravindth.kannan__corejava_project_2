@@ -63,10 +63,6 @@ public class UserService {
 				throw new InvalidUserException("User is null");
 			}
 
-			if (!userDAO.isEmailExists(email)) {
-				throw new ServiceException("User with this email does not exist");
-			}
-
 			UserValidator.validateUser(user);
 			return userDAO.updateUser(user);
 		} catch (InvalidUserException | SQLException e) {

@@ -12,12 +12,21 @@ public class UserValidator {
 
 	public static boolean validateUser(User user) throws InvalidUserException {
 		if (user != null && validateName(user.getUsername()) && validatePassword(user.getPassword())
-				&& validateEmail(user.getEmail())) {
+				&& validateEmail(user.getEmail()) && validatePhoneNumber(user.getPhonenumber())) {
 			return true;
 		} else {
 			throw new InvalidUserException("User details not valid");
 		}
 	}
+	
+//	public static boolean validateUpdateUser(User user) throws InvalidUserException {
+//		if (user != null && validateName(user.getUsername()) && validatePassword(user.getPassword())
+//				 && validatePhoneNumber(user.getPhonenumber())) {
+//			return true;
+//		} else {
+//			throw new InvalidUserException("User details not valid");
+//		}
+//	}
 
 	public static boolean validateName(String name) {
 		if (name == null)
@@ -70,12 +79,12 @@ public class UserValidator {
 		if (phoneNumber == null)
 			return false;
 
-		String regex = "^(\\+?91|91)?[6-9]\\d{9}$";
+		String regex = "^\\+?\\d{1,4}-?\\d{5,14}$";
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(phoneNumber);
 		boolean isMatch = matcher.matches();
 
-		if (isMatch) {
+		if (phoneNumber.length() == 10) {
 			System.out.println("The phone number is: Valid");
 		} else {
 			System.out.println("The phone number is: Invalid");

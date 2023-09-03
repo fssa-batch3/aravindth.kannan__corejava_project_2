@@ -8,11 +8,11 @@ public class User {
 	private String password;
 	private String phonenumber;
 	private String type;
-	private boolean isDeleted;
+	private int isDeleted;
 	
 	
 	public User( String email, String username, String password, String phonenumber, String type,
-			boolean isDeleted) {
+			int isDeleted) {
 		super();
 		
 		this.email = email;
@@ -40,7 +40,7 @@ public class User {
 	}
 
 
-	public User(String email, boolean isDeleted) {
+	public User(String email, int isDeleted) {
 		super();
 		this.email = email;
 		this.isDeleted = isDeleted;
@@ -48,6 +48,13 @@ public class User {
 
 
 
+
+	public User(String newUserName, String newPassword, String newMobileNumber, String string) {
+		this.username = newUserName;
+		this.password = newPassword;
+		this.phonenumber = newMobileNumber;
+		this.type = string;
+	}
 
 	public String getEmail() {
 		return email;
@@ -99,13 +106,22 @@ public class User {
 	}
 
 
-	public boolean isDeleted() {
+	public int isDeleted() {
 		return isDeleted;
 	}
 
 	
-	public void setDeleted(boolean isDeleted) {
+	public void setDeleted(int isDeleted) {
 		this.isDeleted = isDeleted;
+	}
+
+	@Override
+	public String toString() {
+		return "User [email=" + email + ", username=" + username + ", password=" + password + ", phonenumber="
+				+ phonenumber + ", type=" + type + ", isDeleted=" + isDeleted + ", getEmail()=" + getEmail()
+				+ ", getUsername()=" + getUsername() + ", getPassword()=" + getPassword() + ", getPhonenumber()="
+				+ getPhonenumber() + ", getType()=" + getType() + ", isDeleted()=" + isDeleted() + ", getClass()="
+				+ getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
 	}
 
 	

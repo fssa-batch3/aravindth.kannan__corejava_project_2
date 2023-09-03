@@ -71,7 +71,9 @@ public class UserDAO {
     
     
 
- // Delete user based on email
+ 
+
+	// Delete user based on email
     public boolean deleteUser(User user) throws SQLException {
         Connection connection =  ConnectionUtil.getConnection();
         

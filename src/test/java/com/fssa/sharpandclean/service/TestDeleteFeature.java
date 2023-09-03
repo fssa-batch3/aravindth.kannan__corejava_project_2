@@ -18,7 +18,7 @@ public class TestDeleteFeature {
 		UserService userService = new UserService();
 		// Assuming a user with the email "kavi@gmail.com" exists in the database
 		try {
-			User user = new User("aravindth122@gmail.com", "Aravindthkannan", "Aravindth@123", "9888844056", "user", false);
+			User user = new User("kavi@gmail.com.com", "Aravindthkannan", "Aravindth@123", "9888844056", "user", 0);
 			boolean isDeleted = userService.deleteUser(user);
 			assertTrue(isDeleted, "User deletion failed.");
 		} catch (ServiceException e) {
@@ -34,7 +34,7 @@ public class TestDeleteFeature {
 		// the database
 		try {
 			User user = new User( "nonexisting@example.com", "NonExistingUser", "Navee@123", "9876543123", "user",
-					false);
+					0);
 			userService.deleteUser(user);
 			fail("User with non-existing email should not be deleted, but method succeeded.");
 		} catch (ServiceException e) {
@@ -45,7 +45,7 @@ public class TestDeleteFeature {
 	@Test
 	public void testDeleteUserWithInvalidUserId() {
 		UserService userService = new UserService();
-		User user = new User( "kavi@gmail.com", "Kavi", "Aravindth@123", "9876543123", "user", false);
+		User user = new User( "kavi@gmail.com", "Kavi", "Aravindth@123", "9876543123", "user", 0);
 		try {
 			boolean isDeleted = userService.deleteUser(user);
 			assertFalse(isDeleted, "User should not be deleted.");
