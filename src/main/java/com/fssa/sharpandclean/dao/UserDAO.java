@@ -74,14 +74,14 @@ public class UserDAO {
  
 
 	// Delete user based on email
-    public boolean deleteUser(User user) throws SQLException {
+    public boolean deleteUser(String email) throws SQLException {
         Connection connection =  ConnectionUtil.getConnection();
         
-        String query = "UPDATE User SET isDeleted = ? WHERE email = ?";
+        String query = "UPDATE User SET is_deleted = ? WHERE email = ?";
         
         try (PreparedStatement pmt = connection.prepareStatement(query)) {
-            pmt.setBoolean(1, true); // Set isDeleted to true to mark the user as deleted
-            pmt.setString(2, user.getEmail());
+            pmt.setInt(1, 1); // Set isDeleted to true to mark the user as deleted
+            pmt.setString(2, email);
             int rows = pmt.executeUpdate();
             return rows == 1;
         }

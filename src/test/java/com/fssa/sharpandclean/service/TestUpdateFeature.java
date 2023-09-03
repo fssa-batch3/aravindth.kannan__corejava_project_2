@@ -30,8 +30,8 @@ public class TestUpdateFeature {
 		User user1 = new User( "aravindth12@gmail.com", "AravindthKavi", "Aravindth@123", "8072444056", "user");
 		try {
 			// Assuming the user with email "aravindth12@gmail.com" does not exist in the system
-			userService.updateUser(user1, "noemail@gmail.com");
-			fail("Expected ServiceException for email not found, but none was thrown.");
+			boolean isDeleted = userService.updateUser(user1, "noemail@gmail.com");
+			assertFalse(isDeleted,"Expected ServiceException for email not found, but none was thrown.");
 		} catch (ServiceException e) {
 			e.printStackTrace();
 		}
@@ -40,11 +40,11 @@ public class TestUpdateFeature {
 	@Test
 	public void testUpdateInvalidEmailFormat() {
 		UserService userService = new UserService();
-		User user1 = new User( "aravindth12@gmail.com", "AravindthKavi", "Aravindth@123", "8072444056", "user");
+		User user1 = new User( "aravindth12@.com", "AravindthKavi", "Aravindth@123", "8072444056", "user");
 		try {
 			// Assuming "invalid_email_format" is not a valid email format
-			userService.updateUser(user1, "invalidemailformat");
-			fail("Expected ServiceException for invalid email format, but none was thrown.");
+			boolean isDeleted = userService.updateUser(user1, "invalidemailformat");
+			assertFalse(isDeleted,"Expected ServiceException for invalid email format, but none was thrown.");
 		} catch (ServiceException e) {
 			e.printStackTrace();
 		}

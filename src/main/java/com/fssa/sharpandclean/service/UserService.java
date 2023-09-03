@@ -57,7 +57,7 @@ public class UserService {
 
 	public boolean updateUser(User user, String email) throws ServiceException {
 		UserDAO userDAO = new UserDAO();
-
+		
 		try {
 			if (user == null) {
 				throw new InvalidUserException("User is null");
@@ -70,21 +70,22 @@ public class UserService {
 		}
 	}
 
-	 public boolean deleteUser(User user) throws ServiceException {
+	 public boolean deleteUser(String email) throws ServiceException {
 	        UserDAO userDAO = new UserDAO();
 	        try {
-	            if (user == null) {
+	            if (email == null) {
 	                throw new InvalidUserException("User is null");
 	            }
 
-	            if (!userDAO.isEmailExists(user.getEmail())) {
-	                throw new ServiceException("User with this email does not exist");
+	            if (userDAO.isEmailExists(email)) {
+	            	UserValidator.validateEmail(email);
+		            return userDAO.deleteUser(email); 
 	            }
 
-	            UserValidator.validateDeleteUser(user);
-	            return userDAO.deleteUser(user);
+	            
 	        } catch (InvalidUserException | SQLException e) {
 	            throw new ServiceException(e);
 	        }
+			return false;
 	    }
 }
