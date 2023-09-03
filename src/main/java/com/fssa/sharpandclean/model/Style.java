@@ -8,7 +8,7 @@ public class Style {
 	private String haircutAbout;
 	private String haircutUrl;
 	private int haircutId;
-	private boolean isDeleted;
+	private int isDeleted;
 	
 	public Style(String haircutName, String haircutEmail, String haircutType, String haircutAbout,
 			String haircutUrl) {
@@ -70,11 +70,11 @@ public class Style {
 		this.haircutId = haircutId;
 	}
 
-	public boolean isDeleted() {
+	public int getisDeleted() {
 		return isDeleted;
 	}
 
-	public void setDeleted(boolean isDeleted) {
+	public void setDeleted(int isDeleted) {
 		this.isDeleted = isDeleted;
 	}
 

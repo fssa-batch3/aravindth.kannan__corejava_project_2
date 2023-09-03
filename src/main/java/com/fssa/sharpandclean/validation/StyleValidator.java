@@ -2,6 +2,7 @@ package com.fssa.sharpandclean.validation;
 
 import java.util.regex.Matcher;
 
+
 import java.util.regex.Pattern;
 
 import com.fssa.sharpandclean.model.Style;
@@ -26,7 +27,7 @@ public class StyleValidator {
 	        boolean match = false;
 	        if (haircutName == null)
 	            return false;
-	        String regex = "^[A-Za-z]\\w{2,29}$";
+	        String regex = "^[a-zA-Z]+( [a-zA-Z]+){0,3}$";
 	        Pattern p = Pattern.compile(regex);
 	        Matcher m = p.matcher(haircutName);
 	        match = m.matches();
