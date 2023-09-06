@@ -8,12 +8,8 @@ import java.util.regex.Pattern;
 import com.fssa.sharpandclean.model.Style;
 import com.fssa.sharpandclean.validation.exception.InvalidStyleException;
 public class StyleValidator {
-/**
- * 
- * @param style
- * @return
- * @throws InvalidStyleException
- */
+
+	// validate full attributes of single style.
 	public static boolean validateStyle(Style style) throws InvalidStyleException {
 		if(style != null && validateStyleName(style.getHaircutName()) && validateStyleEmail(style.getHaircutEmail()) 
 				  && validateStyleImageURL(style.getHaircutUrl()) && validateStyleDetail(style.getHaircutAbout()) && validateStyleType(style.getHaircutType())) {

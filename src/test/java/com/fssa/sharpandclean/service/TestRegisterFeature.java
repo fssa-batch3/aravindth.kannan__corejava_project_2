@@ -4,12 +4,12 @@ package com.fssa.sharpandclean.service;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+
 import static org.junit.jupiter.api.Assertions.fail;
 
 import org.junit.jupiter.api.Test;
 
 import com.fssa.sharpandclean.model.User;
-import com.fssa.sharpandclean.service.UserService;
 import com.fssa.sharpandclean.service.exception.ServiceException;
 
 public class TestRegisterFeature {

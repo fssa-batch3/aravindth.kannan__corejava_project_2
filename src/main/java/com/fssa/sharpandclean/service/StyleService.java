@@ -1,7 +1,9 @@
-package com.fssa.sharpandclean.service;
+  package com.fssa.sharpandclean.service;
 
 
 import java.util.List;
+
+
 
 import com.fssa.sharpandclean.dao.StyleDAO;
 import com.fssa.sharpandclean.dao.exception.StyleDAOException;
@@ -17,7 +19,6 @@ public class StyleService {
 		
 		try {
 			StyleValidator.validateStyle(style);
-			
 			return hairStyle.addStyle(style);
 		}catch (InvalidStyleException | StyleDAOException e) {
 			throw new StyleException(e);
@@ -38,15 +39,16 @@ public class StyleService {
 //
 //	}
 
+	
+//	 get all  styles for user view.
 	public List<Style> getAllStyles() throws ServiceException {
-		// TODO Auto-generated method stub
 		StyleDAO styleDAO = new StyleDAO();
 		try {
 			if(styleDAO.getAllStyle() != null) {
 				return styleDAO.getAllStyle();
 			}
 		} catch (StyleDAOException e) {
-			throw new ServiceException(e);
+			throw new ServiceException("invalid query for get All Styles.");
 		}
 		return null;
 	}
@@ -60,7 +62,7 @@ public class StyleService {
 			StyleValidator.isValidStyleId(designId);
 			return designDAO.deleteStyle(designId);
 		} catch ( StyleDAOException e) {
-			throw new ServiceException(e);
+			throw new ServiceException("Delete Style details is not valid.");
 		}
 	}
 	
@@ -79,7 +81,7 @@ public class StyleService {
 			return styleDAO.updateStyle(style);
 			
 		}catch(InvalidStyleException  | StyleDAOException e) {
-			throw new ServiceException(e);
+			throw new ServiceException("Update style details i not valid.");
 		} 		
 	}
 }

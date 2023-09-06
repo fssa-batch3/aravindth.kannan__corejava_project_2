@@ -3,6 +3,7 @@ package com.fssa.sharpandclean.dao;
 import java.sql.*;
 
 
+
 import java.util.List;
 
 import com.fssa.sharpandclean.dao.exception.StyleDAOException;
@@ -80,7 +81,7 @@ public class StyleDAO {
 			int rows = pmt.executeUpdate();
 			return rows == 1;
 		} catch (SQLException e) {
-			throw new StyleDAOException("Error in Delete Style");
+			throw new StyleDAOException(e);
 		}
 	}
 

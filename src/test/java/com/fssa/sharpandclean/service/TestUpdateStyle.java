@@ -18,7 +18,7 @@ public class TestUpdateStyle {
 		// test successfully update style
 		public void testUpdateSuccess() throws ServiceException {
 			StyleService styleService = new StyleService();
-			Style styles = new Style(1,"ShortHaircut","kavi@gmail.com","Haircut","Its trending now in youngstars","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgw256XHMSlaLXXtTDJxi96fwZP3EZmoE5Fg&usqp=CAU");
+			Style styles = new Style(2,"Shorthaircut","kavi@gmail.com","Haircut","Its trending now in youngstars","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgw256XHMSlaLXXtTDJxi96fwZP3EZmoE5Fg&usqp=CAU");
 			try {
 				assertTrue(styleService.updateStyle(styles, 1));
 			}catch(ServiceException e) {

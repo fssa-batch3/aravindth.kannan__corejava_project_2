@@ -1,8 +1,9 @@
 package com.fssa.sharpandclean.service;
 
-import java.sql.SQLException;
+
 
 import com.fssa.sharpandclean.dao.UserDAO;
+import com.fssa.sharpandclean.dao.exception.DAOException;
 import com.fssa.sharpandclean.model.User;
 import com.fssa.sharpandclean.service.exception.ServiceException;
 import com.fssa.sharpandclean.validation.UserValidator;
@@ -26,7 +27,7 @@ public class UserService {
 
 			UserValidator.validateUser(user);
 			return userDAO.register(user);
-		} catch (InvalidUserException | SQLException e) {
+		} catch (InvalidUserException | DAOException e) {
 			throw new ServiceException(e);
 		}
 	}
@@ -55,7 +56,7 @@ public class UserService {
 		}
 	}
 
-	public boolean updateUser(User user, String email) throws ServiceException {
+	public boolean updateUser(User user, String email) throws ServiceException  {
 		UserDAO userDAO = new UserDAO();
 		
 		try {
@@ -65,7 +66,7 @@ public class UserService {
 
 			UserValidator.validateUser(user);
 			return userDAO.updateUser(user);
-		} catch (InvalidUserException | SQLException e) {
+		} catch (InvalidUserException | DAOException e) {
 			throw new ServiceException(e);
 		}
 	}
@@ -83,7 +84,7 @@ public class UserService {
 	            }
 
 	            
-	        } catch (InvalidUserException | SQLException e) {
+	        } catch (InvalidUserException | DAOException e) {
 	            throw new ServiceException(e);
 	        }
 			return false;

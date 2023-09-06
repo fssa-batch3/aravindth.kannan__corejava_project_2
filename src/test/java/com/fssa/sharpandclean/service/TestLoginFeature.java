@@ -20,6 +20,7 @@ public class TestLoginFeature {
 		User user1 = new User(email, password);
 		try {
 			assertTrue(userService.loginUser(user1, email));
+			System.out.println("Successfully Logged in.");
 		} catch (ServiceException e) {
 			e.printStackTrace();
 		}
@@ -33,24 +34,13 @@ public class TestLoginFeature {
 		User user2 = new User(email, password);
 		try {
 			userService.loginUser(user2, email);
-			fail();
+			fail("Failed to Login.");
 		} catch (ServiceException e) {
 			e.printStackTrace();
 		}
 	}
 
-//	@Test
-//	public void testLoginPasswordCheck() {
-//		UserService userService = new UserService();
-//		String email = "maha12@gmail.com";
-//		String password = "navee@123"; // Incorrect password format
-//		User user1 = new User(email, password);
-//		try {
-//			assertFalse(userService.loginUser(user1, email));
-//		} catch (ServiceException e) {
-//			e.printStackTrace();
-//		}
-//	}
+	
 
 	@Test
 	public void testLoginEmailCheck() {
