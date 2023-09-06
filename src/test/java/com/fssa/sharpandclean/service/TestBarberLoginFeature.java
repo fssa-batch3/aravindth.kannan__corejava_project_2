@@ -19,7 +19,7 @@ public class TestBarberLoginFeature {
 		try {
 			assertTrue(userService.loginBarber(barber1, email));
 		} catch (ServiceException e) {
-			e.printStackTrace();
+			System.out.println( e.getMessage()); 
 		}
 	}
 	
@@ -33,7 +33,7 @@ public class TestBarberLoginFeature {
 			barberService.loginBarber(user2, email);
 			fail("Failed to Login.");
 		} catch (ServiceException e) {
-			e.printStackTrace();
+			System.out.println( e.getMessage()); 
 		}
 	}
 	
@@ -47,7 +47,7 @@ public class TestBarberLoginFeature {
 			barberService.loginBarber(user1, email); // Expecting login failure
 			fail("Login with invalid email format should fail.");
 		} catch (ServiceException e) {
-			e.printStackTrace();
+			System.out.println( e.getMessage()); 
 		}
 	}
 	
@@ -58,7 +58,7 @@ public class TestBarberLoginFeature {
 			barberService.loginBarber(null, "aravindth12@gmail.com"); // Expecting login failure
 			fail();
 		} catch (ServiceException e) {
-			e.printStackTrace();
+			System.out.println( e.getMessage()); 
 		}
 	}
 }

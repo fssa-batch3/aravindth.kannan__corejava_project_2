@@ -21,9 +21,9 @@ public class TestStyleList {
 			for (Style singleStyle : styles) {
 				System.out.println(singleStyle.toString());
 			}
-			assertNotNull(styles);
+			assertNotNull(styles); 
 		} catch (ServiceException e) {
-			e.printStackTrace();
+			System.out.println( e.getMessage()); 
 			fail();
 		}
 

@@ -18,12 +18,12 @@ public class TestDeleteFeature {
 		UserService userService = new UserService();
 		// Assuming a user with the email "kavi@gmail.com" exists in the database
 		String userEmail = "kavi@gmail.com";
-		try {
+		try { 
 			
 			boolean isDeleted = userService.deleteUser(userEmail);
 			assertTrue(isDeleted, "User deletion passed.");
 		} catch (ServiceException e) {
-			e.printStackTrace();
+			System.out.println( e.getMessage()); 
 		
 		}
 	}
@@ -39,7 +39,7 @@ public class TestDeleteFeature {
 			boolean isDeleted = userService.deleteUser(userEmail);
 			assertFalse(isDeleted,"User with non-existing email should not be deleted, but method succeeded.");
 		} catch (ServiceException e) {
-			e.printStackTrace();
+			System.out.println( e.getMessage()); 
 		}
 	}
 
@@ -51,7 +51,7 @@ public class TestDeleteFeature {
 			boolean isDeleted = userService.deleteUser(userEmail);
 			assertFalse(isDeleted, "User should not be deleted.");
 		} catch (ServiceException e) {
-			e.printStackTrace();
+			System.out.println( e.getMessage()); 
 		}
 	}
 

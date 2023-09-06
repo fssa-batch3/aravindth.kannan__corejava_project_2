@@ -13,7 +13,7 @@ import com.fssa.sharpandclean.model.User;
 import com.fssa.sharpandclean.service.exception.ServiceException;
 
 public class TestRegisterFeature {
-
+ 
     @Test
     public void testRegistrationSuccess() {
         UserService userService = new UserService();
@@ -21,7 +21,7 @@ public class TestRegisterFeature {
         try {
             assertTrue(userService.registerUser(user1));
         } catch (ServiceException e) {
-            e.printStackTrace();
+        	System.out.println( e.getMessage()); 
         }
     }
 
@@ -33,7 +33,7 @@ public class TestRegisterFeature {
            assertTrue(userService.registerUser(user1));
             fail();
         } catch (ServiceException e) {
-            e.printStackTrace();
+        	System.out.println( e.getMessage()); 
         }
     }
 
@@ -45,7 +45,7 @@ public class TestRegisterFeature {
             userService.registerUser(user1);
             fail();
         } catch (ServiceException e) {
-            e.printStackTrace();
+        	System.out.println( e.getMessage()); 
         }
     }
 
@@ -57,7 +57,7 @@ public class TestRegisterFeature {
             userService.registerUser(user);
             fail("Expected ServiceException for empty password, but none was thrown.");
         } catch (ServiceException e) {
-            e.printStackTrace();
+        	System.out.println( e.getMessage()); 
         }
     }
 
@@ -69,7 +69,7 @@ public class TestRegisterFeature {
             userService.registerUser(user);
             fail("Expected ServiceException for null password, but none was thrown.");
         } catch (ServiceException e) {
-            e.printStackTrace();
+        	System.out.println( e.getMessage()); 
         }
     }
 
@@ -81,7 +81,7 @@ public class TestRegisterFeature {
             userService.registerUser(user);
             fail("Expected ServiceException for empty username, but none was thrown.");
         } catch (ServiceException e) {
-            e.printStackTrace();
+        	System.out.println( e.getMessage()); 
         }
     }
 
@@ -92,7 +92,7 @@ public class TestRegisterFeature {
             userService.registerUser(null);
             fail("Expected ServiceException for null user, but none was thrown.");
         } catch (ServiceException e) {
-            e.printStackTrace();
+        	System.out.println( e.getMessage()); 
         }
     }
 }

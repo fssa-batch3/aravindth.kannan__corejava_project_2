@@ -22,7 +22,7 @@ public class TestUpdateStyle {
 			try {
 				assertTrue(styleService.updateStyle(styles, 1));
 			}catch(ServiceException e) {
-				e.printStackTrace();
+				System.out.println( e.getMessage()); 
 			}
 		}
 		
@@ -38,7 +38,7 @@ public class TestUpdateStyle {
 		        	assertTrue(styleService.addStyle(styles));
 		            fail();
 		        } catch (StyleException e) {
-		            e.printStackTrace();
+		        	System.out.println( e.getMessage()); 
 		        }
 		    }
 		 
@@ -51,7 +51,7 @@ public class TestUpdateStyle {
 		        	assertTrue(styleService.addStyle(styles));
 		            fail("Expected ServiceException for null Style name, but none was thrown.");
 		        } catch (StyleException e) {
-		            e.printStackTrace();
+		        	System.out.println( e.getMessage()); 
 		        }
 		    }
 		 
@@ -64,7 +64,7 @@ public class TestUpdateStyle {
 		        	assertTrue(styleService.addStyle(styles));
 		            fail();
 		        } catch (StyleException e) {
-		            e.printStackTrace();
+		        	System.out.println( e.getMessage()); 
 		        }
 		    }
 	}

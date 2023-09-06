@@ -30,7 +30,7 @@ public class UserService {
 		} catch (InvalidUserException | DAOException e) {
 			throw new ServiceException(e);
 		}
-	}
+	} 
 
 	public boolean loginUser(User user, String email) throws ServiceException {
 		try {
@@ -56,7 +56,7 @@ public class UserService {
 		}
 	}
 
-	public boolean updateUser(User user, String email) throws ServiceException  {
+	public boolean updateUser(User user) throws ServiceException  {
 		UserDAO userDAO = new UserDAO();
 		
 		try {
@@ -67,7 +67,7 @@ public class UserService {
 			UserValidator.validateUser(user);
 			return userDAO.updateUser(user);
 		} catch (InvalidUserException | DAOException e) {
-			throw new ServiceException(e);
+			throw new ServiceException("User update details is not valid, so update user failed");
 		}
 	}
 

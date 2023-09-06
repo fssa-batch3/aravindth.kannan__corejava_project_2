@@ -24,7 +24,7 @@ public class TestAddStyleFeature {
 		try {
 			assertTrue(styleService.addStyle(styles));
 		}catch(StyleException e) {
-			e.printStackTrace();
+			System.out.println( e.getMessage()); 
 		}
 		
 		}
@@ -38,7 +38,7 @@ public class TestAddStyleFeature {
 		        	assertTrue(styleService.addStyle(styles));
 		            fail();
 		        } catch (StyleException e) {
-		            e.printStackTrace();
+		        	System.out.println( e.getMessage()); 
 		        }
 		    }
 		
@@ -51,7 +51,7 @@ public class TestAddStyleFeature {
 		        	assertTrue(styleService.addStyle(styles));
 		            fail();
 		        } catch (StyleException e) {
-		            e.printStackTrace();
+		        	System.out.println( e.getMessage()); 
 		        }
 		    }
 		 
@@ -64,7 +64,7 @@ public class TestAddStyleFeature {
 		        	assertTrue(styleService.addStyle(styles));
 		            fail("Expected ServiceException for null Style name, but none was thrown.");
 		        } catch (StyleException e) {
-		            e.printStackTrace();
+		        	System.out.println( e.getMessage()); 
 		        }
 		    }
 		 
@@ -77,7 +77,7 @@ public class TestAddStyleFeature {
 		        	assertTrue(styleService.addStyle(styles));
 		            fail();
 		        } catch (StyleException e) {
-		            e.printStackTrace();
+		        	System.out.println( e.getMessage()); 
 		        }
 		    }
 }

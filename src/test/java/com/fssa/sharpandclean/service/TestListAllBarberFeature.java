@@ -21,9 +21,9 @@ public class TestListAllBarberFeature {
 			for(Barber singleBarber : barberList) {
 				System.out.println(singleBarber.toString());
 			}
-			assertNotNull(barberList);
+			assertNotNull(barberList); 
 		}catch(ServiceException e) {
-			e.printStackTrace();
+			System.out.println( e.getMessage()); 
 			fail();
 		}
 		

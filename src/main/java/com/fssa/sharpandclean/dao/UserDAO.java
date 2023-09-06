@@ -12,7 +12,7 @@ import com.fssa.sharpandclean.utils.ConnectionUtil;
 public class UserDAO {
 	
 	
-
+ 
 	// Add new user to DB - Register
 	 public boolean register(User user) throws DAOException {
 	        Connection connection =  ConnectionUtil.getConnection();
@@ -64,7 +64,7 @@ public class UserDAO {
 		}
 		return false;
     }
-
+ 
 
  // Update user information based on email
     public boolean updateUser(User user) throws DAOException {

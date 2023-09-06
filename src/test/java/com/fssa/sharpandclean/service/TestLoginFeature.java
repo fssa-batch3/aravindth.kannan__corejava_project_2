@@ -22,7 +22,7 @@ public class TestLoginFeature {
 			assertTrue(userService.loginUser(user1, email));
 			System.out.println("Successfully Logged in.");
 		} catch (ServiceException e) {
-			e.printStackTrace();
+			System.out.println( e.getMessage()); 
 		}
 	}
 
@@ -36,7 +36,7 @@ public class TestLoginFeature {
 			userService.loginUser(user2, email);
 			fail("Failed to Login.");
 		} catch (ServiceException e) {
-			e.printStackTrace();
+			System.out.println( e.getMessage()); 
 		}
 	}
 
@@ -52,7 +52,7 @@ public class TestLoginFeature {
 			userService.loginUser(user1, email); // Expecting login failure
 			fail("Login with invalid email format should fail.");
 		} catch (ServiceException e) {
-			e.printStackTrace();
+			System.out.println( e.getMessage()); 
 		}
 	}
 
@@ -63,7 +63,7 @@ public class TestLoginFeature {
 			userService.loginUser(null, "aravindth12@gmail.com"); // Expecting login failure
 			fail();
 		} catch (ServiceException e) {
-			e.printStackTrace();
+			System.out.println( e.getMessage()); 
 		}
 	}
 }

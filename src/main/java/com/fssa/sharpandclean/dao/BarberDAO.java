@@ -54,7 +54,7 @@ public class BarberDAO {
     }
     
     // method to login barber.
-    public boolean login(Barber barber, String barberEmail) throws SQLException {
+    public boolean login(Barber barber, String barberEmail) throws BarberDAOException {
 		
     	String query = "SELECT * FROM  barber WHERE barber_email = ? AND barber_password = ?";
     	try(Connection connection   = ConnectionUtil.getConnection();
@@ -64,6 +64,8 @@ public class BarberDAO {
     			try(ResultSet rs = pmt.executeQuery()){
     				return rs.next();
     			}
+    		}catch(SQLException e) {
+    			throw new BarberDAOException(e);
     		}
     	
 	}
@@ -94,5 +96,27 @@ public class BarberDAO {
     	}catch(SQLException e) {
     		throw new BarberDAOException("Error in getAll barbers");
     	}
+    }
+     
+    // Method for update barber's profile.
+    
+    public boolean updateBarber(Barber barber) throws BarberDAOException {
+    	Connection con = ConnectionUtil.getConnection();
+    	String query = "UPDATE barber SET barber_name=?, barber_password=?, barber_profile_URL=?, barber_phonenumber=?, barber_address=?, barber_about=?, barber_experience=?  WHERE barber_email=?";
+   try(PreparedStatement pmt = con.prepareStatement(query)){
+	   pmt.setString(1, barber.getBarberName());
+	   pmt.setString(2, barber.getBarberPassword());
+	   pmt.setString(3, barber.getBarberProfile());
+	   pmt.setString(4, barber.getBarberPhone());
+	   pmt.setString(5, barber.getBarberAddress());
+	   pmt.setString(6, barber.getBarberAbout());
+	   pmt.setString(7, barber.getBarberExperience());
+	   pmt.setString(8, barber.getBarberEmail());
+	   int rows = pmt.executeUpdate();
+	   return rows == 1;
+   }catch(SQLException e) {
+	   throw new BarberDAOException(e);
+   }
+
     }
 }

@@ -2,6 +2,7 @@ package com.fssa.sharpandclean.service;
 
 import java.util.List;
 
+
 import com.fssa.sharpandclean.dao.BarberDAO;
 import com.fssa.sharpandclean.dao.exception.BarberDAOException;
 import com.fssa.sharpandclean.model.Barber;
@@ -20,7 +21,7 @@ public class BarberService {
 			}
 			
 			if(barberDAO.isEmailExists(barber.getBarberEmail())) {
-				throw new ServiceException("Barberwith this email is aleady exists");
+				throw new ServiceException("Barber with this email is aleady exists");
 			}
 			
 			BarberValidator.validateBarber(barber);
@@ -70,5 +71,27 @@ public class BarberService {
 		return null;
 		
 	}
+	
+	// method for update barber.
+		public boolean updateBarber(Barber barber)throws ServiceException {
+			
+			BarberDAO barberDAO = new BarberDAO();
+			
+			try {
+				if(barber == null) {
+					throw new InvalidBarberException("Barber is null");
+				}
+				
+				BarberValidator.validateBarber(barber);
+				return barberDAO.updateBarber(barber);
+			} catch(InvalidBarberException | BarberDAOException e) {
+				throw new ServiceException ("Update Barber details is not valid, so update barber failed.");
+			}
+			
+			
+		}
+	
+	
+	
 	
 }
