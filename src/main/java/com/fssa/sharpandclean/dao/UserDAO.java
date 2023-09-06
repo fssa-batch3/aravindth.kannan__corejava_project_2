@@ -92,7 +92,7 @@ public class UserDAO {
         String query = "UPDATE user SET is_deleted = ? WHERE email = ?";
         
         try (PreparedStatement pmt = connection.prepareStatement(query)) {
-            pmt.setInt(1, 1); // Set isDeleted to true to mark the user as deleted
+            pmt.setInt(1, 1); // Set isDeleted to one to mark the user as deleted
             pmt.setString(2, email);
             int rows = pmt.executeUpdate();
             return rows == 1;

@@ -119,4 +119,20 @@ public class BarberDAO {
    }
 
     }
+    
+    // method for delete barber.
+    
+    public boolean deleteBarber(String barberEmail) throws BarberDAOException {
+		Connection con = ConnectionUtil.getConnection();
+		String query = "UPDATE barber SET barber_is_deleted = ? WHERE barber_email = ?";
+		try(PreparedStatement pmt = con.prepareStatement(query)){
+			pmt.setInt(1, 1);
+			pmt.setString(2, barberEmail);
+			int rows = pmt.executeUpdate();
+			return rows == 1;
+		}catch(SQLException e) {
+			throw new BarberDAOException(e);
+		}
+		
+    }
 }

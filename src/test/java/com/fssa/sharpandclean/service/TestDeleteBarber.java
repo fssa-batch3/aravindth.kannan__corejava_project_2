@@ -1,34 +1,35 @@
 package com.fssa.sharpandclean.service;
+
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
+
 import com.fssa.sharpandclean.service.exception.ServiceException;
 
-public class TestDeleteFeature {
-
+public class TestDeleteBarber {
 	@Test 
 	public void testDeleteUserSuccess() {
-		UserService userService = new UserService();
+		BarberService barberService = new BarberService();
 		// Assuming a user with the email "kavi@gmail.com" exists in the database
-		String userEmail = "chandru@gmail.com";
+		String barberEmail = "kavi@gmail.com";
 		try { 
 			
-			boolean isDeleted = userService.deleteUser(userEmail);
-			assertTrue(isDeleted, "User deletion passed.");
+			boolean isDeleted = barberService.deleteBarber(barberEmail);
+			assertTrue(isDeleted, "Barber deletion passed.");
 		} catch (ServiceException e) {
 			System.out.println( e.getMessage()); 
 		
 		}
 	}
 
-	@Test
-	public void testDeleteNonExistingUser() {
-		UserService userService = new UserService();
+  @Test
+	public void testDeleteNonExistingBarber() {
+		BarberService barberService = new BarberService();
 		// Assuming a user with the email "nonexisting@example.com" does not exist in
 		// the database
-		String userEmail = "magesh@gmail.com";
+		String barberEmail = "magesh@gmail.com";
 		try {
 			
-			boolean isDeleted = userService.deleteUser(userEmail);
+			boolean isDeleted = barberService.deleteBarber(barberEmail);
 			assertFalse(isDeleted,"User with non-existing email should not be deleted, but method succeeded.");
 		} catch (ServiceException e) {
 			System.out.println( e.getMessage()); 
@@ -36,11 +37,11 @@ public class TestDeleteFeature {
 	}
 
 	@Test
-	public void testDeleteUserWithInvalidUserId() {
-		UserService userService = new UserService();
-		String userEmail = "magesh@.com";
+	public void testDeleteBarberWithInvalidBarberEmail() {
+		BarberService barberService = new BarberService();
+		String barberEmail = "magesh@.com";
 		try {
-			boolean isDeleted = userService.deleteUser(userEmail);
+			boolean isDeleted = barberService.deleteBarber(barberEmail);
 			assertFalse(isDeleted, "User should not be deleted.");
 		} catch (ServiceException e) {
 			System.out.println( e.getMessage()); 

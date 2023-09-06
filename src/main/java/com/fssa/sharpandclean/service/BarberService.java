@@ -9,7 +9,7 @@ import com.fssa.sharpandclean.model.Barber;
 import com.fssa.sharpandclean.service.exception.ServiceException;
 import com.fssa.sharpandclean.validation.BarberValidator;
 import com.fssa.sharpandclean.validation.exception.InvalidBarberException;
-
+ 
 public class BarberService {
 
 	// register barber method.
@@ -88,6 +88,26 @@ public class BarberService {
 				throw new ServiceException ("Update Barber details is not valid, so update barber failed.");
 			}
 			
+			
+		}
+		
+		
+		// method to delete a barber.
+		
+		public boolean deleteBarber(String barberEmail) throws ServiceException {
+			BarberDAO  barberDAO = new BarberDAO();
+			try {
+				if(barberEmail == null) {
+					throw new InvalidBarberException("Barber email is null.");
+				}
+				if(barberDAO.isEmailExists(barberEmail)) {
+					BarberValidator.validateBarberEmail(barberEmail);
+					return barberDAO.deleteBarber(barberEmail);
+				}
+			}catch(InvalidBarberException | BarberDAOException e) {
+				throw new ServiceException(e);
+			}
+			return false;
 			
 		}
 	

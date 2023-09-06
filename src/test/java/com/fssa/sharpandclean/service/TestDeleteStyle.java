@@ -10,7 +10,7 @@ import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
 
-public class TestDeleteStyle {
+public class TestDeleteStyle { 
 
 		@Test
 		public void testDeleteDesignSuccess()  {

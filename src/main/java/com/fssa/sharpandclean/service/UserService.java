@@ -11,7 +11,7 @@ import com.fssa.sharpandclean.validation.exception.InvalidUserException;
 
 
 
-public class UserService {
+public class UserService { 
 
 	public boolean registerUser(User user) throws ServiceException {
 		UserDAO userDAO = new UserDAO();
