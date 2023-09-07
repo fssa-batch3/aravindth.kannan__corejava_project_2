@@ -7,7 +7,7 @@ import com.fssa.sharpandclean.service.exception.ServiceException;
 
 public class TestDeleteBarber {
 	@Test 
-	public void testDeleteUserSuccess() {
+	 void testDeleteUserSuccess() {
 		BarberService barberService = new BarberService();
 		// Assuming a user with the email "kavi@gmail.com" exists in the database
 		String barberEmail = "kavi@gmail.com";
@@ -22,7 +22,7 @@ public class TestDeleteBarber {
 	}
 
   @Test
-	public void testDeleteNonExistingBarber() {
+	 void testDeleteNonExistingBarber() {
 		BarberService barberService = new BarberService();
 		// Assuming a user with the email "nonexisting@example.com" does not exist in
 		// the database
@@ -37,7 +37,7 @@ public class TestDeleteBarber {
 	}
 
 	@Test
-	public void testDeleteBarberWithInvalidBarberEmail() {
+	 void testDeleteBarberWithInvalidBarberEmail() {
 		BarberService barberService = new BarberService();
 		String barberEmail = "magesh@.com";
 		try {

@@ -14,7 +14,7 @@ import com.fssa.sharpandclean.service.exception.ServiceException;
 
 public class TestStyleList {
 	@Test
-	public void testListStyles() throws  ServiceException {
+	 void testListStyles() throws  ServiceException {
 		StyleService style = new StyleService();
 		try {
 			List<Style> styles = style.getAllStyles();

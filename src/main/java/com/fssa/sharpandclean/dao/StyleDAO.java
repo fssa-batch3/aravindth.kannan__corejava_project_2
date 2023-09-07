@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class StyleDAO {
 
-	// Add new Hair service in barber or shop profile page
+	// Add new Hair service in barber profile page
 	public boolean addStyle(Style style) throws StyleDAOException {
 		// get the connection with variable passing method.
 
@@ -29,9 +29,6 @@ public class StyleDAO {
 			pmt.setString(5, style.getHaircutUrl());
 
 			int rows = pmt.executeUpdate();
-
-			// Return successful or not
-			pmt.close();
 			con.close();
 
 			return rows == 1;
@@ -107,7 +104,6 @@ public class StyleDAO {
 
 	// Method to check if a user with the given style id exists in the database
 	public boolean isStyleExists(int styleId) throws StyleDAOException {
-		// TODO Auto-generated method stub
 
 		String query = "SELECT * FROM hairstyle WHERE haircut_id = ?";
 		try (Connection connection = ConnectionUtil.getConnection();

@@ -72,20 +72,12 @@ public class UserDAO {
 
 			pstmt.setString(1, email);
 			try (ResultSet rs = pstmt.executeQuery()) {
-
-			
-				
 				if (rs.next()) {
 					String name = rs.getString("username");
-					
 					String password = rs.getString("password");
 					String phonenumber = rs.getString("phonenumber");
-
 					user = new User(name, password, phonenumber);
- 
  				}
-	
-
 			}
 
 		} catch (SQLException e) {

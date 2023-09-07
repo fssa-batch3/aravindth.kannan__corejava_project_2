@@ -20,6 +20,7 @@ public class StyleValidator {
 		}	
 	}
 	
+	// check the style name is valid or not.
 	 public static boolean validateStyleName(String haircutName) throws InvalidStyleException {
 	        boolean match = false;
 	        if (haircutName == null)
@@ -35,7 +36,7 @@ public class StyleValidator {
 	        }
 	        return match;
 	    }
-	 
+	// check the style email is valid or not.
 	 public static boolean validateStyleEmail(String haircutEmail)throws InvalidStyleException {
 		 
 	        boolean isMatch = false;
@@ -54,7 +55,7 @@ public class StyleValidator {
 	        return isMatch;
 	    }
 	 
-
+	// check the style URL is valid or not.
       public static boolean validateStyleImageURL(String haircutimageUrl) throws InvalidStyleException {
 		boolean match = false;
 		if (haircutimageUrl == null)
@@ -72,7 +73,8 @@ public class StyleValidator {
 
 		return match;
 	}
-	 
+      
+   // check the style detail is valid or not.
       public static boolean validateStyleDetail(String styleDetail) throws InvalidStyleException {
   		boolean match = false;
 
@@ -87,7 +89,8 @@ public class StyleValidator {
   		}
   		return match;
   	}
-	 
+      
+   // check the style type is valid or not.
 	 public static boolean validateStyleType(String haircutType) throws InvalidStyleException {
 		 boolean match = false;
 		 if(haircutType == null) {
@@ -102,7 +105,8 @@ public class StyleValidator {
 		 }
 		return match;
 	 }
-
+	 
+	// check the style id is valid or not.
 	public static boolean isValidStyleId(int styleId) {
 		boolean match = false;
 		String styleID = Integer.toString(styleId);

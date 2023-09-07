@@ -22,7 +22,6 @@ public class Style {
 	
 	public Style(int haircutId, String haircutName, String haircutEmail, String haircutType,
 			String haircutAbout, String haircutUrl) {
-		// TODO Auto-generated constructor stub
 		this.haircutName = haircutName;
 		this.haircutEmail = haircutEmail;
 		this.haircutType = haircutType;

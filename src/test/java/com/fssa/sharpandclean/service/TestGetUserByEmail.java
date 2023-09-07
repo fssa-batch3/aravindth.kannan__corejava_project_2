@@ -1,10 +1,8 @@
 package com.fssa.sharpandclean.service;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.fail;
 
 import org.junit.jupiter.api.Test;
 
@@ -14,7 +12,7 @@ import com.fssa.sharpandclean.service.exception.ServiceException;
 public class TestGetUserByEmail {
 
 	@Test
-	public void getUserSuccess() {
+	 void getUserSuccess() {
 		UserService userSerive = new UserService();
 		String useremail = "aravindth@gmail.com";
 		try {
@@ -28,7 +26,7 @@ public class TestGetUserByEmail {
 	}
 
 	@Test
-	public void getUserFailed() {
+	 void getUserFailed() {
 		UserService userSerive = new UserService();
 		String useremail = "aravin@gmail.com";
 		try {

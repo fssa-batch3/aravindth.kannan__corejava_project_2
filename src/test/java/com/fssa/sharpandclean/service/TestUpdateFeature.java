@@ -6,7 +6,7 @@ import com.fssa.sharpandclean.service.exception.ServiceException;
 public class TestUpdateFeature {
 
 	@Test
-	public void testUpdateSuccess() {
+	 void testUpdateSuccess() {
 		UserService userService = new UserService();
 		User user1 = new User( "kavi@gmail.com", "Arun", "Aravindth@123", "9888844056", "user");
 		try {
@@ -17,7 +17,7 @@ public class TestUpdateFeature {
 	}
 
 	@Test
-	public void testUpdateEmailNotFound() {
+	 void testUpdateEmailNotFound() {
 		UserService userService = new UserService();
 		User user1 = new User( "aravindth12@gmail.com", "AravindthKavi", "Aravindth@123", "8072444056", "user");
 		try {
@@ -30,7 +30,7 @@ public class TestUpdateFeature {
 	}
 
 	@Test
-	public void testUpdateInvalidEmailFormat() {
+	 void testUpdateInvalidEmailFormat() {
 		UserService userService = new UserService();
 		User user1 = new User( "aravindth12@.com", "AravindthKavi", "Aravindth@123", "8072444056", "user");
 		try {
@@ -43,7 +43,7 @@ public class TestUpdateFeature {
 	}
 
 	@Test
-	public void testUpdateMissingRequiredField() {
+	 void testUpdateMissingRequiredField() {
 		UserService userService = new UserService();
 		// Leaving the name field empty
 		User user1 = new User( "aravindth12@gmail.com", "", "Aravindth@123", "8072444056", "user");

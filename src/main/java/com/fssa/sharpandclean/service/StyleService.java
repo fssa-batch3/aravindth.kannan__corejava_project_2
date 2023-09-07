@@ -27,19 +27,6 @@ public class StyleService {
 		
 	}
 	
-//	public List<Style> getAllStyle() throws ServiceException {
-//		StyleDAO styleDAO = new StyleDAO();
-//		try {
-//			Style style = null;
-//			StyleValidator.validateStyle(style);
-//			return styleDAO.getAllStyle();
-//		} catch (StyleDAOException | InvalidStyleException e) {
-//			throw new ServiceException(e.getMessage());
-//		}
-//
-//	}
-
-	
 //	 get all  styles for user view.
 	public List<Style> getAllStyles() throws ServiceException {
 		StyleDAO styleDAO = new StyleDAO();

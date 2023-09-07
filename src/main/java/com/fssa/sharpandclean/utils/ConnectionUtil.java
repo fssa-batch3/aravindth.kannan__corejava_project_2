@@ -7,12 +7,6 @@ import java.sql.SQLException;
 
 public class ConnectionUtil {
 
-
-    // Private constructor to prevent instantiation
-    private ConnectionUtil() {
-        // Do nothing (empty constructor)
-    }
-
     // Call the database connection
     public static Connection getConnection() {
 

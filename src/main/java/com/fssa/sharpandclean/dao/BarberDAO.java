@@ -29,7 +29,7 @@ public class BarberDAO {
 			pmt.setString(7, barber.getBarberAbout());
 			pmt.setString(8, barber.getBarberExperience());
 			int rows = pmt.executeUpdate();
-			pmt.close();
+			
 			con.close();
 			return rows ==1;
 		}catch(SQLException e) {
@@ -114,6 +114,7 @@ public class BarberDAO {
 	   pmt.setString(8, barber.getBarberEmail());
 	   int rows = pmt.executeUpdate();
 	   return rows == 1;
+	   
    }catch(SQLException e) {
 	   throw new BarberDAOException(e);
    }

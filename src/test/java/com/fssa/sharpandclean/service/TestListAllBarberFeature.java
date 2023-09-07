@@ -14,7 +14,7 @@ import com.fssa.sharpandclean.service.exception.ServiceException;
 public class TestListAllBarberFeature {
 
 	@Test
-	public void testListAllBarber() throws ServiceException {
+	 void testListAllBarber() throws ServiceException {
 		BarberService barberService = new BarberService();
 		try {
 			List<Barber> barberList = barberService.getAllBarber();

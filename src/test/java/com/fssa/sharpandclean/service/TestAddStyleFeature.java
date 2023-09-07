@@ -18,7 +18,7 @@ public class TestAddStyleFeature {
 	
 		@Test
 		// test successfully add style
-		public void  testAddStyleSuccess() {
+		 void  testAddStyleSuccess() {
 			StyleService styleService = new StyleService();
 			Style styles = new Style("Shorthaircut","aravindth@gmail.com","Haircut","Its trending now in youngstars","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgw256XHMSlaLXXtTDJxi96fwZP3EZmoE5Fg&usqp=CAU");
 		try {
@@ -31,7 +31,7 @@ public class TestAddStyleFeature {
 		
 		 @Test
 		 // test style email id is empty
-		    public void testStyleEmailEmpty() {
+		     void testStyleEmailEmpty() {
 			 StyleService styleService = new StyleService();
 			 Style styles = new Style("Firehaircut", "", "Haircut", "Its trending now in youngstars", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgw256XHMSlaLXXtTDJxi96fwZP3EZmoE5Fg&usqp=CAU");
 		        try {
@@ -44,7 +44,7 @@ public class TestAddStyleFeature {
 		
 		 @Test
 		 // test invalid style type
-		    public void testStyleTypeInvalid() {
+		     void testStyleTypeInvalid() {
 			 StyleService styleService = new StyleService();
 			 Style styles = new Style("Firehaircut", "aravindth@gmail.com", "saloontype", "Its trending now in youngstars", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgw256XHMSlaLXXtTDJxi96fwZP3EZmoE5Fg&usqp=CAU");
 		        try {
@@ -57,7 +57,7 @@ public class TestAddStyleFeature {
 		 
 		 @Test
 		 // test empty style name
-		    public void testNullStyleName() {
+		     void testNullStyleName() {
 			 StyleService styleService = new StyleService();
 			 Style styles = new Style("", "aravindth@gmail.com", "Haircut", "Its trending now in youngstars", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgw256XHMSlaLXXtTDJxi96fwZP3EZmoE5Fg&usqp=CAU");
 		        try {
@@ -70,7 +70,7 @@ public class TestAddStyleFeature {
 		 
 		 @Test
 		 // test invalid style URL
-		    public void testInvalidStyleURL() {
+		     void testInvalidStyleURL() {
 			 StyleService styleService = new StyleService();
 				 Style styles = new Style("longhaircut", "aravindth@gmail.com", "Hair coloring", "Its trending now in youngstars", "encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgw256XHMSlaLXXtTDJxi96fwZP3EZmoE5Fg&usqp=CAU");
 		        try {

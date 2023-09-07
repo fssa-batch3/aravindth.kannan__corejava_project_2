@@ -92,9 +92,9 @@ public class UserService {
 		
 		User loggedUser = null;
 		try {
-			UserValidator.validEmail(email);
+			UserValidator.validateEmail(email);
 			loggedUser = userDAO.getUserByEmail(email);
-		} catch (DAOException | InvalidUserException e) {
+		} catch (DAOException e) {
 			throw new ServiceException(e.getMessage());
 		}
 		return loggedUser;

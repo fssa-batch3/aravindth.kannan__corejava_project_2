@@ -13,7 +13,7 @@ import com.fssa.sharpandclean.service.exception.ServiceException;
 public class TestLoginFeature {
 
 	@Test
-	public void loginSuccess() {
+	 void loginSuccess() {
 		UserService userService = new UserService();
 		String email = "aravindth12@gmail.com";
 		String password = "Aravindth@123";
@@ -27,7 +27,7 @@ public class TestLoginFeature {
 	}
 
 	@Test
-	public void loginFailed() {
+	 void loginFailed() {
 		UserService userService = new UserService();
 		String email = "ahkj@gmail.com";
 		String password = "Password@796";
@@ -43,7 +43,7 @@ public class TestLoginFeature {
 	
 
 	@Test
-	public void testLoginEmailCheck() {
+	 void testLoginEmailCheck() {
 		UserService userService = new UserService();
 		String email = "invalidemail"; // Invalid email format
 		String password = "Aravindth@123";
@@ -57,7 +57,7 @@ public class TestLoginFeature {
 	}
 
 	@Test
-	public void testLoginNullUser() {
+	 void testLoginNullUser() {
 		UserService userService = new UserService();
 		try {
 			userService.loginUser(null); // Expecting login failure

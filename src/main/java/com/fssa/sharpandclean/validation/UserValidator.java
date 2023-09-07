@@ -20,15 +20,8 @@ public class UserValidator {
 		}
 	}
 	
-//	public static boolean validateUpdateUser(User user) throws InvalidUserException {
-//		if (user != null && validateName(user.getUsername()) && validatePassword(user.getPassword())
-//				 && validatePhoneNumber(user.getPhonenumber())) {
-//			return true;
-//		} else {
-//			throw new InvalidUserException("User details not valid");
-//		}
-//	}
 
+	// check the username valid or not.
 	public static boolean validateName(String name) {
 		if (name == null)
 			return false;
@@ -46,6 +39,8 @@ public class UserValidator {
 		return isMatch;
 	}
 
+	// check the password valid or not.
+
 	public static boolean validatePassword(String password) {
 		if (password == null)
 			return false;
@@ -62,6 +57,8 @@ public class UserValidator {
 		return isMatch;
 	}
 
+	// check the email valid or not.
+
 	public static boolean validateEmail(String email) {
 		if (email == null)
 			return false;
@@ -75,6 +72,8 @@ public class UserValidator {
 		}
 		return isMatch;
 	}
+
+	// check the phone number valid or not.
 
 	public static boolean validatePhoneNumber(String phoneNumber) {
 		if (phoneNumber == null)
@@ -94,18 +93,8 @@ public class UserValidator {
 		return isMatch;
 	}
 	
-	public static boolean validEmail(String email) throws InvalidUserException {
+	// check the delete user valid or not.
 
-		String regex = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
-		Pattern pattern = Pattern.compile(regex);
-		Matcher matcher = pattern.matcher(email);
-
-		if (matcher.matches() && email != null)
-			return true;
-
-		throw new InvalidUserException("Invalid email");
-
-	}
 
 	public static boolean validateDeleteUser(User user) throws InvalidUserException {
 		if (user != null  && validateEmail(user.getEmail())) {

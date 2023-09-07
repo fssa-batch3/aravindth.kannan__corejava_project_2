@@ -16,7 +16,7 @@ public class TestUpdateStyle {
 	}
 		@Test
 		// test successfully update style
-		public void testUpdateSuccess() throws ServiceException {
+		 void testUpdateSuccess() throws ServiceException {
 			StyleService styleService = new StyleService();
 			Style styles = new Style(2,"Shorthaircut","kavi@gmail.com","Haircut","Its trending now in youngstars","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgw256XHMSlaLXXtTDJxi96fwZP3EZmoE5Fg&usqp=CAU");
 			try {
@@ -31,7 +31,7 @@ public class TestUpdateStyle {
 		
 		 @Test
 		 // test invalid style type
-		    public void testStyleTypeInvalid() throws ServiceException {
+		     void testStyleTypeInvalid() throws ServiceException {
 			 StyleService styleService = new StyleService();
 			 Style styles = new Style(3,"Firehaircut", "aravindth@gmail.com", "saloontype", "Its trending now in youngstars", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgw256XHMSlaLXXtTDJxi96fwZP3EZmoE5Fg&usqp=CAU");
 		        try {
@@ -44,7 +44,7 @@ public class TestUpdateStyle {
 		 
 		 @Test
 		 // test empty style name
-		    public void testNullStyleName() throws ServiceException {
+		     void testNullStyleName() throws ServiceException {
 			 StyleService styleService = new StyleService();
 			 Style styles = new Style(2,"", "aravindth@gmail.com", "Haircut", "Its trending now in youngstars", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgw256XHMSlaLXXtTDJxi96fwZP3EZmoE5Fg&usqp=CAU");
 		        try {
@@ -57,7 +57,7 @@ public class TestUpdateStyle {
 		 
 		 @Test
 		 // test invalid style URL
-		    public void testInvalidStyleURL() throws ServiceException {
+		     void testInvalidStyleURL() throws ServiceException {
 			 StyleService styleService = new StyleService();
 				 Style styles = new Style(1,"longhaircut", "aravindth@gmail.com", "Hair coloring", "Its trending now in youngstars", "encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgw256XHMSlaLXXtTDJxi96fwZP3EZmoE5Fg&usqp=CAU");
 		        try {

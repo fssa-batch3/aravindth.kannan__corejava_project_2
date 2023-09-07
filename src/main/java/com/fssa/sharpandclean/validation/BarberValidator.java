@@ -171,7 +171,8 @@ public class BarberValidator {
 			throw new InvalidBarberException("Invalid Barber details for deletion");
 		}
 	}
-
+	
+	// check barber is is not valid.
 	public static boolean isValidBarberId(int barberId) {
 		boolean match = false;
 		String styleID = Integer.toString(barberId);

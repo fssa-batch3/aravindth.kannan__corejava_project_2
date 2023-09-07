@@ -15,7 +15,7 @@ import com.fssa.sharpandclean.service.exception.ServiceException;
 public class TestRegisterFeature {
  
     @Test
-    public void testRegistrationSuccess() {
+     void testRegistrationSuccess() {
         UserService userService = new UserService();
         User user1 = new User( "kanna594@gmail.com", "Kannan", "Kannan@1467", "9878543123", "user");
         try {
@@ -26,7 +26,7 @@ public class TestRegisterFeature {
     }
 
     @Test
-    public void testRegistrationEmailEmpty() {
+     void testRegistrationEmailEmpty() {
         UserService userService = new UserService();
         User user1 = new User( "", "Aravindth", "Aravindth@123", "9876543123", "user");
         try {
@@ -38,7 +38,7 @@ public class TestRegisterFeature {
     }
 
     @Test
-    public void testRegistrationPhoneNumberInvalid() {
+     void testRegistrationPhoneNumberInvalid() {
         UserService userService = new UserService();
         User user1 = new User( "kavi@gmail.com", "Kavi", "Kavi@123", "987654h123", "user");
         try {
@@ -50,7 +50,7 @@ public class TestRegisterFeature {
     }
 
     @Test
-    public void testRegistrationEmptyPassword() {
+     void testRegistrationEmptyPassword() {
         UserService userService = new UserService();
         User user = new User( "muneesh@example.com", "muneesh", "", "8565473543", "user");
         try {
@@ -74,7 +74,7 @@ public class TestRegisterFeature {
     }
 
     @Test
-    public void testRegistrationEmptyUsername() {
+     void testRegistrationEmptyUsername() {
         UserService userService = new UserService();
         User user = new User( "", "P@ssw0rd", "john@example.com", "8565473543", "user");
         try {
@@ -86,7 +86,7 @@ public class TestRegisterFeature {
     }
 
     @Test
-    public void testRegistrationNullUser() {
+     void testRegistrationNullUser() {
         UserService userService = new UserService();
         try {
             userService.registerUser(null);
