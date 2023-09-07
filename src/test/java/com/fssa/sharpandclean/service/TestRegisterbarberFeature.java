@@ -12,7 +12,7 @@ import com.fssa.sharpandclean.model.Barber;
 
 import com.fssa.sharpandclean.service.exception.ServiceException;
  
-public class TestRegisterbarberFeature {
+ class TestRegisterbarberFeature {
 	@Test 
 	 void testBarberRegisterSuccess() {
 		BarberService barberService = new BarberService();

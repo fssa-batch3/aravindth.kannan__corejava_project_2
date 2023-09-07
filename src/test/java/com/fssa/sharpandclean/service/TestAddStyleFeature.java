@@ -11,7 +11,7 @@ import org.junit.Test;
 import com.fssa.sharpandclean.model.*;
 import com.fssa.sharpandclean.service.exception.StyleException;
 
-public class TestAddStyleFeature {
+ class TestAddStyleFeature {
 
 	public static void main(String [] args) {
 	}

@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 import com.fssa.sharpandclean.model.Barber;
 import com.fssa.sharpandclean.service.exception.ServiceException;
 
-public class TestListAllBarberFeature {
+ class TestListAllBarberFeature {
 
 	@Test
 	 void testListAllBarber() throws ServiceException {

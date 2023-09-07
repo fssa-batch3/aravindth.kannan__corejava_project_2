@@ -10,7 +10,7 @@ import com.fssa.sharpandclean.model.Style;
 import com.fssa.sharpandclean.service.exception.ServiceException;
 import com.fssa.sharpandclean.service.exception.StyleException;
 
-public class TestUpdateStyle {
+ class TestUpdateStyle {
 
 	public static void main(String [] args) {
 	}

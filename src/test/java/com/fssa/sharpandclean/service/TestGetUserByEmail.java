@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import com.fssa.sharpandclean.model.User;
 import com.fssa.sharpandclean.service.exception.ServiceException;
 
-public class TestGetUserByEmail {
+ class TestGetUserByEmail {
 
 	@Test
 	 void getUserSuccess() {

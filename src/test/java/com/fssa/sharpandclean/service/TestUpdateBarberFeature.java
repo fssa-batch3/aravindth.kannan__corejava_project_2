@@ -8,7 +8,7 @@ import com.fssa.sharpandclean.model.Barber;
 import com.fssa.sharpandclean.service.exception.ServiceException;
 
 
-public class TestUpdateBarberFeature {
+ class TestUpdateBarberFeature {
 
 	 @Test
 	  void testUpdateBarberSuccess()  {

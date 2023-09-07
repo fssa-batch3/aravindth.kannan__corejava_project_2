@@ -96,7 +96,7 @@ public class StyleValidator {
 		 if(haircutType == null) {
 			 match = false;
 			 System.out.println("The hair Style type is emty");
-		 }else if(haircutType.equals("Hair straightening") | haircutType.equals("Haircut") | haircutType.equals("Hair coloring") | haircutType.equals("Facials") | haircutType.equals("Shaves") | haircutType.equals("Beard trim")) {
+		 }else if(haircutType.equals("Hair straightening") || haircutType.equals("Haircut") || haircutType.equals("Hair coloring") || haircutType.equals("Facials") || haircutType.equals("Shaves") || haircutType.equals("Beard trim")) {
 			 System.out.println("The hair Style type is valid");
 			 match = true; 
 		 } else {

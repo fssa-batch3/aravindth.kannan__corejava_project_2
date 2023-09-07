@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 import com.fssa.sharpandclean.model.Style;
 import com.fssa.sharpandclean.service.exception.ServiceException;
 
-public class TestStyleList {
+ class TestStyleList {
 	@Test
 	 void testListStyles() throws  ServiceException {
 		StyleService style = new StyleService();

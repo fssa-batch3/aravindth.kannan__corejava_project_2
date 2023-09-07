@@ -10,7 +10,7 @@ import com.fssa.sharpandclean.model.User;
 import com.fssa.sharpandclean.service.UserService;
 import com.fssa.sharpandclean.service.exception.ServiceException;
 
-public class TestLoginFeature {
+ class TestLoginFeature {
 
 	@Test
 	 void loginSuccess() {

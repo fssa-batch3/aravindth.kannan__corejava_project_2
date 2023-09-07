@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import com.fssa.sharpandclean.service.exception.ServiceException;
 
-public class TestDeleteBarber {
+ class TestDeleteBarber {
 	@Test 
 	 void testDeleteUserSuccess() {
 		BarberService barberService = new BarberService();

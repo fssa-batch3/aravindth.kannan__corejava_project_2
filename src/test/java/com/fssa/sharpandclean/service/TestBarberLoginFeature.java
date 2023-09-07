@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import com.fssa.sharpandclean.model.Barber;
 import com.fssa.sharpandclean.service.exception.ServiceException;
 
-public class TestBarberLoginFeature {
+ class TestBarberLoginFeature {
 
 	@Test
 	 void barberLoginSuccess() {

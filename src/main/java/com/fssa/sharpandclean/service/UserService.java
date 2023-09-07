@@ -57,7 +57,7 @@ public class UserService {
 
 		try {
 			if (user == null) {
-				throw new InvalidUserException("User is null");
+				throw new InvalidUserException("User is empty");
 			}
 
 			UserValidator.validateUser(user);
@@ -71,7 +71,7 @@ public class UserService {
 		UserDAO userDAO = new UserDAO();
 		try {
 			if (email == null) {
-				throw new InvalidUserException("User is null");
+				throw new InvalidUserException("User is not invalid");
 			}
 
 			if (userDAO.isEmailExists(email)) {
