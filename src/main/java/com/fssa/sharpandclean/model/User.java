@@ -49,12 +49,14 @@ public class User {
 
 
 
-	public User(String newUserName, String newPassword, String newMobileNumber, String string) {
+	public User(String newUserName, String newPassword, String newMobileNumber) {
 		this.username = newUserName;
 		this.password = newPassword;
 		this.phonenumber = newMobileNumber;
-		this.type = string;
+		
 	}
+
+	
 
 	public String getEmail() {
 		return email;

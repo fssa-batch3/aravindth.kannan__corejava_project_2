@@ -1,5 +1,6 @@
 package com.fssa.sharpandclean.service;
 import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.Test;
 import com.fssa.sharpandclean.service.exception.ServiceException;
 

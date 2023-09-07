@@ -93,6 +93,19 @@ public class UserValidator {
 
 		return isMatch;
 	}
+	
+	public static boolean validEmail(String email) throws InvalidUserException {
+
+		String regex = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
+		Pattern pattern = Pattern.compile(regex);
+		Matcher matcher = pattern.matcher(email);
+
+		if (matcher.matches() && email != null)
+			return true;
+
+		throw new InvalidUserException("Invalid email");
+
+	}
 
 	public static boolean validateDeleteUser(User user) throws InvalidUserException {
 		if (user != null  && validateEmail(user.getEmail())) {

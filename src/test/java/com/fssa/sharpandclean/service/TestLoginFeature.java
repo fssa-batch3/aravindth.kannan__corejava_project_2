@@ -19,7 +19,7 @@ public class TestLoginFeature {
 		String password = "Aravindth@123";
 		User user1 = new User(email, password);
 		try {
-			assertTrue(userService.loginUser(user1, email));
+			assertTrue(userService.loginUser(user1));
 			System.out.println("Successfully Logged in.");
 		} catch (ServiceException e) {
 			System.out.println( e.getMessage()); 
@@ -33,7 +33,7 @@ public class TestLoginFeature {
 		String password = "Password@796";
 		User user2 = new User(email, password);
 		try {
-			userService.loginUser(user2, email);
+			userService.loginUser(user2);
 			fail("Failed to Login.");
 		} catch (ServiceException e) {
 			System.out.println( e.getMessage()); 
@@ -49,7 +49,7 @@ public class TestLoginFeature {
 		String password = "Aravindth@123";
 		User user1 = new User(email, password);
 		try {
-			userService.loginUser(user1, email); // Expecting login failure
+			userService.loginUser(user1); // Expecting login failure
 			fail("Login with invalid email format should fail.");
 		} catch (ServiceException e) {
 			System.out.println( e.getMessage()); 
@@ -60,7 +60,7 @@ public class TestLoginFeature {
 	public void testLoginNullUser() {
 		UserService userService = new UserService();
 		try {
-			userService.loginUser(null, "aravindth12@gmail.com"); // Expecting login failure
+			userService.loginUser(null); // Expecting login failure
 			fail();
 		} catch (ServiceException e) {
 			System.out.println( e.getMessage()); 
