@@ -11,9 +11,10 @@ public class StyleValidator {
 
 	// validate full attributes of single style.
 	public static boolean validateStyle(Style style) throws InvalidStyleException {
-		if(style != null && validateStyleName(style.getHaircutName()) && validateStyleEmail(style.getHaircutEmail()) 
+		if(style != null && validateStyleName(style.getHaircutName()) && validateStyleEmail(style.getHaircutEmail())
 				  && validateStyleImageURL(style.getHaircutUrl()) && validateStyleDetail(style.getHaircutAbout()) && validateStyleType(style.getHaircutType())) {
 			return true;
+			
 		}else {
 			throw new InvalidStyleException("Hair Style details not valid");
 		}	
@@ -36,11 +37,14 @@ public class StyleValidator {
 	    }
 	 
 	 public static boolean validateStyleEmail(String haircutEmail)throws InvalidStyleException {
+		 
 	        boolean isMatch = false;
 	        if (haircutEmail == null)
 	            return false;
 	        String regex = "^.*@.*\\..*$";
-	        isMatch = Pattern.matches(regex, haircutEmail);
+	        Pattern p = Pattern.compile(regex);
+	        Matcher m = p.matcher(haircutEmail);
+	        isMatch = m.matches();
 	        if (isMatch) {
 	            System.out.println("The hair Style email address is: Valid");
 	        } else {
