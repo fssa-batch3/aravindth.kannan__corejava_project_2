@@ -10,7 +10,7 @@ import com.fssa.sharpandclean.service.exception.ServiceException;
 	 void testDeleteUserSuccess() {
 		BarberService barberService = new BarberService();
 		// Assuming a user with the email "kavi@gmail.com" exists in the database
-		String barberEmail = "kavi@gmail.com";
+		String barberEmail = "saran@gmail.com";
 		try { 
 			
 			boolean isDeleted = barberService.deleteBarber(barberEmail);

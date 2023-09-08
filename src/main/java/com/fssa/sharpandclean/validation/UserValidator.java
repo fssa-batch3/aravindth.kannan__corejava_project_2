@@ -63,8 +63,9 @@ public class UserValidator {
 		if (email == null)
 			return false;
 
-		String regex = "^.*@.*\\..*$";
-		boolean isMatch = Pattern.matches(regex, email);
+		String emailRegEx = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
+		boolean isMatch = Pattern.compile(emailRegEx).matcher(email).matches();
+		
 		if (isMatch) {
 			System.out.println("The email address is: Valid");
 		} else {

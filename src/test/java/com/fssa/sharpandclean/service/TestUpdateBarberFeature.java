@@ -13,7 +13,7 @@ import com.fssa.sharpandclean.service.exception.ServiceException;
 	 @Test
 	  void testUpdateBarberSuccess()  {
 		 BarberService barberService = new BarberService();
-		 Barber barber = new Barber("Aravindth","kavi@gmail.com","Kavi@123","9887766576", "I have 10 years work experience in this barber career.","https://losbarberosclassicbarbershop.com/wp-content/uploads/2019/06/Profile-_0000_Yamil.jpg","4/12, East Street, Perungudi, Chennai - 09","Everyday is great hair day with me around. I am a barber. I shape people's hair for a living. I spend time with my clients and I can make them laugh.");
+		 Barber barber = new Barber("Murugan","saran@gmail.com","Kavi@123","9887766576", "I have 10 years work experience in this barber career.","https://losbarberosclassicbarbershop.com/wp-content/uploads/2019/06/Profile-_0000_Yamil.jpg","4/12, East Street, Perungudi, Chennai - 09","Everyday is great hair day with me around. I am a barber. I shape people's hair for a living. I spend time with my clients and I can make them laugh.");
 	 try {
 		 assertTrue(barberService.updateBarber(barber));
 	 } catch(ServiceException e) {

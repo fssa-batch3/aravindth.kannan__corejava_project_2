@@ -9,8 +9,8 @@ import com.fssa.sharpandclean.service.exception.ServiceException;
 	@Test 
 	 void testDeleteUserSuccess() {
 		UserService userService = new UserService();
-		// Assuming a user with the email "kavi@gmail.com" exists in the database
-		String userEmail = "chandru@gmail.com";
+		// Assuming a user with the email "vinit@gmail.com" exists in the database
+		String userEmail = "vinit@gmail.com";
 		try { 
 			
 			boolean isDeleted = userService.deleteUser(userEmail);

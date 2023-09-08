@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 		 void testDeleteDesignSuccess()  {
 			StyleService styleService = new StyleService();
 			// Assume you have a valid styleId for an existing design
-			int styleId = 1;
+			int styleId = 3;
 			try {
 				assertTrue(styleService.deleteStyle(styleId));
 		         System.out.println("Style deleted successfully");

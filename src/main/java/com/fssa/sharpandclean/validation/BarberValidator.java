@@ -66,8 +66,8 @@ public class BarberValidator {
 		if (barberEmail == null)
 			return false;
 
-		String regex = "^.*@.*\\..*$";
-		boolean isMatch = Pattern.matches(regex, barberEmail);
+		String emailRegEx = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
+		boolean isMatch = Pattern.compile(emailRegEx).matcher(barberEmail).matches();
 		if (isMatch) {
 			System.out.println("The email address is: Valid");
 		} else {

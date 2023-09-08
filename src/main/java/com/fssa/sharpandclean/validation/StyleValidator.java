@@ -42,10 +42,9 @@ public class StyleValidator {
 	        boolean isMatch = false;
 	        if (haircutEmail == null)
 	            return false;
-	        String regex = "^.*@.*\\..*$";
-	        Pattern p = Pattern.compile(regex);
-	        Matcher m = p.matcher(haircutEmail);
-	        isMatch = m.matches();
+	        
+	        String emailRegEx = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
+			 isMatch = Pattern.compile(emailRegEx).matcher(haircutEmail).matches();
 	        if (isMatch) {
 	            System.out.println("The hair Style email address is: Valid");
 	        } else {
