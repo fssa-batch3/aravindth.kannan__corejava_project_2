@@ -56,7 +56,7 @@ public class UserValidator {
 
 		return isMatch;
 	}
-
+ 
 	// check the email valid or not.
 
 	public static boolean validateEmail(String email) {

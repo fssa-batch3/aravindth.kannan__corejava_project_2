@@ -162,7 +162,7 @@ public class BarberValidator {
 	}
 
 	// check barber delete data is valid or not.
-
+ 
 	public static boolean validateDeleteBarber(Barber barber) throws InvalidBarberException {
 		if (barber != null && validateBarberEmail(barber.getBarberEmail())) {
 			System.out.println("Barber deletion details are valid.");

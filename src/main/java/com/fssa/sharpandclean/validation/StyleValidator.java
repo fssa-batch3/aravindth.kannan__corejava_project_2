@@ -39,7 +39,7 @@ public class StyleValidator {
 	// check the style email is valid or not.
 	 public static boolean validateStyleEmail(String haircutEmail)throws InvalidStyleException {
 		 
-	        boolean isMatch = false;
+	        boolean isMatch = false; 
 	        if (haircutEmail == null)
 	            return false;
 	        

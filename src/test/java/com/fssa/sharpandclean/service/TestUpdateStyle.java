@@ -14,7 +14,7 @@ import com.fssa.sharpandclean.service.exception.StyleException;
 
 	public static void main(String [] args) {
 	}
-		@Test
+		@Test 
 		// test successfully update style
 		 void testUpdateSuccess() throws ServiceException {
 			StyleService styleService = new StyleService();
