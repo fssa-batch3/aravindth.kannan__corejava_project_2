@@ -17,11 +17,11 @@ public class StyleDAO {
 	// Add new Hair service in barber profile page
 	public boolean addStyle(Style style) throws StyleDAOException {
 		// get the connection with variable passing method.
+		String query = "INSERT INTO hairstyle (haircut_email,haircut_name,haircut_type,haircut_about,haircut_url) VALUES (?,?,?,?,?)";
 
-		try {
-			Connection con = ConnectionUtil.getConnection();
-			String query = "INSERT INTO hairstyle (haircut_email,haircut_name,haircut_type,haircut_about,haircut_url) VALUES (?,?,?,?,?)";
-			PreparedStatement pmt = con.prepareStatement(query);
+		try (Connection con = ConnectionUtil.getConnection();
+			PreparedStatement pmt = con.prepareStatement(query)){
+			
 			pmt.setString(1, style.getHaircutEmail());
 			pmt.setString(2, style.getHaircutName());
 			pmt.setString(3, style.getHaircutType());
@@ -35,6 +35,7 @@ public class StyleDAO {
 		} catch (SQLException e) {
 			throw new StyleDAOException(e);
 		}
+		
 
 	}
 
