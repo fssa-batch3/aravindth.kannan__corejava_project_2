@@ -15,7 +15,7 @@ public class BarberService {
 	// register barber method.
 	public boolean registerBarber(Barber barber) throws  ServiceException {
 		BarberDAO barberDAO = new BarberDAO();
-		try {
+		try { 
 			if(barber == null) {
 				throw  new InvalidBarberException("Barber is null");
 			}

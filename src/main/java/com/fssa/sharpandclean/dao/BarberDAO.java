@@ -25,7 +25,7 @@ public class BarberDAO {
 			pmt.setString(3, barber.getBarberPassword());
 			pmt.setString(4, barber.getBarberProfile());
 			pmt.setString(5, barber.getBarberPhone());
-			pmt.setString(6, barber.getBarberAddress());
+			pmt.setString(6, barber.getBarberAddress()); 
 			pmt.setString(7, barber.getBarberAbout());
 			pmt.setString(8, barber.getBarberExperience());
 			int rows = pmt.executeUpdate();

@@ -9,7 +9,7 @@ import com.fssa.sharpandclean.validation.exception.InvalidBarberException;
 import java.util.regex.Matcher;
 
 public class BarberValidator {
-
+ 
 	// full barber details is valid or not method.
 	public static boolean validateBarber(Barber barber) throws InvalidBarberException {
 		if (barber != null && validateBarberName(barber.getBarberName()) && validateBarberEmail(barber.getBarberEmail())

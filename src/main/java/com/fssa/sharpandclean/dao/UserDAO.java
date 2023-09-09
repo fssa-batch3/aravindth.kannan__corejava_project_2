@@ -47,20 +47,18 @@ public class UserDAO {
 	public boolean login(User user) throws DAOException {
 		String query = "SELECT * FROM user WHERE email = ? AND password = ?";
 		try (Connection connection = ConnectionUtil.getConnection();
-				PreparedStatement pmt = connection.prepareStatement(query)) {
+				PreparedStatement pmt = connection.prepareStatement(query);
+				ResultSet rs = pmt.executeQuery();) {
 			pmt.setString(1, user.getEmail()); // Use provided email for the query
 			pmt.setString(2, user.getPassword());
-			try (ResultSet rs = pmt.executeQuery()) {
+			
 				return rs.next(); // If a row is found, authentication is successful
 			} catch (SQLException e) {
 				throw new DAOException(e);
 			}
-		} catch (SQLException e) {
-			e.printStackTrace();
 		}
-		return false;
 
-	}
+	
 
 	// method to view user details in profile page
 	public User getUserByEmail(String email) throws DAOException {
