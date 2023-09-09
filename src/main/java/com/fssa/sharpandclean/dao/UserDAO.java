@@ -48,7 +48,7 @@ public class UserDAO {
 		String query = "SELECT * FROM user WHERE email = ? AND password = ?";
 		try (Connection connection = ConnectionUtil.getConnection();
 				PreparedStatement pmt = connection.prepareStatement(query);
-				ResultSet rs = pmt.executeQuery();) {
+				ResultSet rs = pmt.executeQuery()) {
 			pmt.setString(1, user.getEmail()); // Use provided email for the query
 			pmt.setString(2, user.getPassword());
 			
