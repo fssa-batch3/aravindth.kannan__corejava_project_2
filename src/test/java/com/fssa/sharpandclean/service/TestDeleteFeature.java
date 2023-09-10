@@ -16,7 +16,7 @@ import com.fssa.sharpandclean.service.exception.ServiceException;
 			boolean isDeleted = userService.deleteUser(userEmail);
 			assertTrue(isDeleted, "User deletion passed.");
 		} catch (ServiceException e) {
-			System.out.println( e.getMessage()); 
+			e.getMessage(); 
 		
 		}
 	}
@@ -32,7 +32,7 @@ import com.fssa.sharpandclean.service.exception.ServiceException;
 			boolean isDeleted = userService.deleteUser(userEmail);
 			assertFalse(isDeleted,"User with non-existing email should not be deleted, but method succeeded.");
 		} catch (ServiceException e) {
-			System.out.println( e.getMessage()); 
+			e.getMessage(); 
 		}
 	}
 
@@ -44,7 +44,7 @@ import com.fssa.sharpandclean.service.exception.ServiceException;
 			boolean isDeleted = userService.deleteUser(userEmail);
 			assertFalse(isDeleted, "User should not be deleted.");
 		} catch (ServiceException e) {
-			System.out.println( e.getMessage()); 
+			e.getMessage(); 
 		}
 	}
 

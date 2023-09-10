@@ -30,11 +30,11 @@ public class StyleValidator {
 	        Matcher m = p.matcher(haircutName);
 	        match = m.matches();
 	        if (match) {
-	            System.out.println("The hair Style name is valid.");
+	        	return match;
 	        } else {
 	            throw new InvalidStyleException("The hair Style name is not valid");
 	        }
-	        return match;
+	        
 	    }
 	// check the style email is valid or not.
 	 public static boolean validateStyleEmail(String haircutEmail)throws InvalidStyleException {
@@ -46,12 +46,12 @@ public class StyleValidator {
 	        String emailRegEx = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
 			 isMatch = Pattern.compile(emailRegEx).matcher(haircutEmail).matches();
 	        if (isMatch) {
-	            System.out.println("The hair Style email address is: Valid");
+	        	return isMatch;
 	        } else {
 	        	
 	        	throw new InvalidStyleException("The hair Style email address is: Invalid");
 	        }
-	        return isMatch;
+	        
 	    }
 	 
 	// check the style URL is valid or not.
@@ -65,12 +65,12 @@ public class StyleValidator {
 		Matcher m = p.matcher(haircutimageUrl);
 		match = m.matches();
 		if (match) {
-			System.out.println("The Style image URL is valid.");
+			return match;
 		} else {
 			throw new InvalidStyleException("The Style image URL is not valid.");
 		}
 
-		return match;
+		
 	}
       
    // check the style detail is valid or not.
@@ -82,11 +82,11 @@ public class StyleValidator {
   		if (styleDetail != null && styleDetail.trim().length() >= lengthOfWords
   				&& styleDetail.trim().length() <= 400) {
   			match = true;
-  			System.out.println("The hair Style detail is valid.");
+  			return match;
   		} else {
   			throw new InvalidStyleException("The hair Style detail is not valid.");
   		}
-  		return match;
+  		
   	}
       
    // check the style type is valid or not.
@@ -94,15 +94,15 @@ public class StyleValidator {
 		 boolean match = false;
 		 if(haircutType == null) {
 			 match = false;
-			 System.out.println("The hair Style type is emty");
+			 throw new InvalidStyleException("The hairservice type is null");
 		 }else if(haircutType.equals("Hair straightening") || haircutType.equals("Haircut") || haircutType.equals("Hair coloring") || haircutType.equals("Facials") || haircutType.equals("Shaves") || haircutType.equals("Beard trim")) {
-			 System.out.println("The hair Style type is valid");
 			 match = true; 
+			 return match;
 		 } else {
 			 
 			 throw new InvalidStyleException("The hair Style type is not valid.");
 		 }
-		return match;
+		
 	 }
 	 
 	// check the style id is valid or not.

@@ -1,52 +1,37 @@
 package com.fssa.sharpandclean.dao;
-
 import java.sql.*;
-
-
-
 import java.util.List;
-
 import com.fssa.sharpandclean.dao.exception.StyleDAOException;
 import com.fssa.sharpandclean.model.Style;
 import com.fssa.sharpandclean.utils.ConnectionUtil;
-
 import java.util.ArrayList;
 
 public class StyleDAO {
-
+	
 	// Add new Hair service in barber profile page
 	public boolean addStyle(Style style) throws StyleDAOException {
 		// get the connection with variable passing method.
 		String query = "INSERT INTO hairstyle (haircut_email,haircut_name,haircut_type,haircut_about,haircut_url) VALUES (?,?,?,?,?)";
-
 		try (Connection con = ConnectionUtil.getConnection();
-			PreparedStatement pmt = con.prepareStatement(query)){
-			
+			PreparedStatement pmt = con.prepareStatement(query)){	
 			pmt.setString(1, style.getHaircutEmail());
 			pmt.setString(2, style.getHaircutName());
 			pmt.setString(3, style.getHaircutType());
 			pmt.setString(4, style.getHaircutAbout());
 			pmt.setString(5, style.getHaircutUrl());
-
 			int rows = pmt.executeUpdate();
-			con.close();
-
 			return rows == 1;
 		} catch (SQLException e) {
 			throw new StyleDAOException(e);
 		}
-		
-
 	}
 
 	// List All hair style for user from all barber and barberShop uploaded by them.
 
 	public List<Style> getAllStyle() throws StyleDAOException {
 		List<Style> style1 = new ArrayList<>();
-
 		try (PreparedStatement stmt = ConnectionUtil.getConnection().prepareStatement("SELECT * FROM hairstyle");
 				ResultSet rs = stmt.executeQuery()) {
-
 			while (rs.next()) {
 				if (rs.getInt("is_deleted") == 0) {
 					int haircutId = rs.getInt("haircut_id");
@@ -58,20 +43,15 @@ public class StyleDAO {
 					style1.add(new Style(haircutId, haircutName, haircutEmail, haircutType, haircutAbout, haircutUrl));
 				}
 			}
-
 			return style1;
-
 		} catch (SQLException e) {
 			throw new StyleDAOException("Error in getAllStyle");
 		}
-
 	}
 
 	// Delete style based on style ID
 	public boolean deleteStyle(int haircutId) throws StyleDAOException {
-
 		String query = "UPDATE hairstyle SET is_deleted = ? WHERE haircut_id = ?";
-
 		try (Connection connection = ConnectionUtil.getConnection();
 				PreparedStatement pmt = connection.prepareStatement(query)) {
 			pmt.setInt(1, 1); // Set is_deleted to 1 to mark the style as deleted
@@ -96,7 +76,6 @@ public class StyleDAO {
 			pmt.setString(5, style.getHaircutEmail());
 			pmt.setInt(6, style.getHaircutId());
 			int rows = pmt.executeUpdate();
-			pmt.close();
 			return rows == 1;
 		} catch (SQLException e) {
 			throw new StyleDAOException("Error in Update Style");

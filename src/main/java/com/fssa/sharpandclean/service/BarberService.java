@@ -45,7 +45,7 @@ public class BarberService {
 			}
 
 			if (barberDAO.login(barber, barberEmail)) {
-				System.out.println(barberEmail + " Successfully logged in");
+				
 				return true;
 			} else {
 				return false;

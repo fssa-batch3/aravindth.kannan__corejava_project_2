@@ -19,9 +19,8 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 			int styleId = 3;
 			try {
 				assertTrue(styleService.deleteStyle(styleId));
-		         System.out.println("Style deleted successfully");
 			}catch( ServiceException e) {
-				System.out.println( e.getMessage()); 
+				e.getMessage(); 
 				fail();
 			}
          
@@ -31,11 +30,17 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 		@Test
 		 void testDeleteNonExistingStyle() throws ServiceException {
 			StyleService styleService = new StyleService();
+			
 			// Assume you have a styleId that does not exist in the database
 			int nonExistingStyleId = 1000;
-
-			assertFalse(styleService.deleteStyle(nonExistingStyleId));
-			System.out.println("Style not found, delete failed");
+			try {
+				assertFalse(styleService.deleteStyle(nonExistingStyleId));
+			}catch(ServiceException e) {
+				e.getMessage(); 
+				fail();
+			}
+			
+			
 		}
 
 		@Test
@@ -43,18 +48,27 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 			StyleService styleService = new StyleService();
 			// Assume you have an invalid designId, e.g. negative value
 			int invalidStyleId = -1;
+			try {
+				assertFalse(styleService.deleteStyle(invalidStyleId));
 
-			assertFalse(styleService.deleteStyle(invalidStyleId));
-			System.out.println("Invalid Style ID, delete failed");
+			}catch(ServiceException e) {
+				e.getMessage();
+				fail();
+			}
+			
 		}
 
 		@Test
 		 void testDeleteStyleWithNullId() throws ServiceException {
 			StyleService styleService = new StyleService();
 			int nullStyleId = 0; // Assuming 0 is considered a null design ID
-
-			assertFalse(styleService.deleteStyle(nullStyleId));
-			System.out.println("Null Style ID, delete failed");
+			try {
+				
+				assertFalse(styleService.deleteStyle(nullStyleId));
+			}catch(ServiceException e) {
+				e.getMessage();
+				fail();
+			}
 		}
 
 	}

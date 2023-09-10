@@ -22,7 +22,7 @@ public class UserValidator {
 	
 
 	// check the username valid or not.
-	public static boolean validateName(String name) {
+	public static boolean validateName(String name) throws InvalidUserException {
 		if (name == null)
 			return false;
 
@@ -31,17 +31,17 @@ public class UserValidator {
 		Matcher matcher = pattern.matcher(name);
 		boolean isMatch = matcher.matches();
 		if (isMatch) {
-			System.out.println("The user name is valid.");
+			return isMatch;
 		} else {
-			System.out.println("The user name is not valid");
+			throw new InvalidUserException("The user name not valid");
 		}
 
-		return isMatch;
+		
 	}
 
 	// check the password valid or not.
 
-	public static boolean validatePassword(String password) {
+	public static boolean validatePassword(String password) throws InvalidUserException {
 		if (password == null)
 			return false;
 
@@ -49,17 +49,17 @@ public class UserValidator {
 		boolean isMatch = Pattern.matches(patternString, password);
 
 		if (isMatch) {
-			System.out.println("Valid password.");
+			return isMatch;
 		} else {
-			System.out.println("Invalid password.");
+			throw new InvalidUserException("The user password is not valid");
 		}
 
-		return isMatch;
+		
 	}
  
 	// check the email valid or not.
 
-	public static boolean validateEmail(String email) {
+	public static boolean validateEmail(String email) throws InvalidUserException {
 		if (email == null)
 			return false;
 
@@ -67,16 +67,16 @@ public class UserValidator {
 		boolean isMatch = Pattern.compile(emailRegEx).matcher(email).matches();
 		
 		if (isMatch) {
-			System.out.println("The email address is: Valid");
+			return isMatch;
 		} else {
-			System.out.println("The email address is: Invalid");
+			throw new InvalidUserException("The email address is: Invalid");
 		}
-		return isMatch;
+		
 	}
 
 	// check the phone number valid or not.
 
-	public static boolean validatePhoneNumber(String phoneNumber) {
+	public static boolean validatePhoneNumber(String phoneNumber) throws InvalidUserException {
 		if (phoneNumber == null)
 			return false;
 
@@ -86,12 +86,12 @@ public class UserValidator {
 		boolean isMatch = matcher.matches();
 
 		if (isMatch) {
-			System.out.println("The phone number is: Valid");
+			return isMatch;
 		} else {
-			System.out.println("The phone number is: Invalid");
+			throw new InvalidUserException("The phone number is: Invalid");
 		}
 
-		return isMatch;
+		
 	}
 	
 	// check the delete user valid or not.
@@ -99,7 +99,7 @@ public class UserValidator {
 
 	public static boolean validateDeleteUser(User user) throws InvalidUserException {
 		if (user != null  && validateEmail(user.getEmail())) {
-			System.out.println("User deletion details are valid.");
+			
 			return true;
 		} else {
 			throw new InvalidUserException("Invalid user details for deletion");

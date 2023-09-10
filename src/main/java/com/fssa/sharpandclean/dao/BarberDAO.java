@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
 import com.fssa.sharpandclean.dao.exception.BarberDAOException;
 import com.fssa.sharpandclean.model.Barber;
 import com.fssa.sharpandclean.utils.ConnectionUtil;
@@ -15,7 +14,6 @@ public class BarberDAO {
 
 	public boolean createBarber(Barber barber) throws BarberDAOException {
 		//get connection with variable passing method.
-		
 		Connection con = ConnectionUtil.getConnection();
 		String query = "INSERT INTO barber (barber_name, barber_email, barber_password, barber_profile_URL, barber_phonenumber, barber_address, barber_about, barber_experience) VALUES (?,?,?,?,?,?,?,?)";
 		try(PreparedStatement pmt = con.prepareStatement(query)){

@@ -5,6 +5,7 @@ import java.util.regex.Pattern;
 import com.fssa.sharpandclean.model.Barber;
 
 import com.fssa.sharpandclean.validation.exception.InvalidBarberException;
+import com.fssa.sharpandclean.validation.exception.InvalidUserException;
 
 import java.util.regex.Matcher;
 
@@ -26,7 +27,7 @@ public class BarberValidator {
 	}
 
 	// check barber name is valid or not.
-	public static boolean validateBarberName(String barberName) {
+	public static boolean validateBarberName(String barberName) throws InvalidBarberException {
 		// check barber name is null
 		if (barberName == null)
 			return false;
@@ -36,44 +37,39 @@ public class BarberValidator {
 		Matcher matcher = pattern.matcher(barberName);
 		boolean isMatch = matcher.matches();
 		if (isMatch) {
-			System.out.println("The Barber name is valid");
+			return isMatch;
 		} else {
-			System.out.println("The Barber name is not valid");
+		 throw new	InvalidBarberException("Invalid user name");
 		}
-		return isMatch;
+		
 	}
 	
 	// check barber password is valid or not.
 	
-	public static boolean validateBarberPassword(String barberPassword) {
+	public static boolean validateBarberPassword(String barberPassword) throws InvalidBarberException {
 		if (barberPassword == null)
 			return false;
-
 		String patternString = "(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@#$%^&+=])(?=.*[^\\s]).{8,}$";
 		boolean isMatch = Pattern.matches(patternString, barberPassword);
-
 		if (isMatch) {
-			System.out.println("Valid password.");
+		     return isMatch;
 		} else {
-			System.out.println("Invalid password.");
-		}
-
-		return isMatch;
+			 throw new InvalidBarberException("Invalid password.");
+		}	
 	}
 
 	// check barber email is valid or not.
-	public static boolean validateBarberEmail(String barberEmail) {
+	public static boolean validateBarberEmail(String barberEmail) throws InvalidBarberException {
 		if (barberEmail == null)
 			return false;
-
 		String emailRegEx = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
 		boolean isMatch = Pattern.compile(emailRegEx).matcher(barberEmail).matches();
 		if (isMatch) {
-			System.out.println("The email address is: Valid");
+			return isMatch;
 		} else {
-			System.out.println("The email address is: Invalid");
+			throw new InvalidBarberException("Invalid email");
 		}
-		return isMatch;
+		
 	}
 
 	// check barber image URL is valid or not.
@@ -87,12 +83,12 @@ public class BarberValidator {
 		Matcher m = p.matcher(BarberImageUrl);
 		match = m.matches();
 		if (match) {
-			System.out.println("The barber image URL is valid.");
+			return match;
 		} else {
 			throw new InvalidBarberException("The barber image URL is not valid.");
 		}
 
-		return match;
+		
 	}
 
 	// check barber Address is valid or not.
@@ -104,11 +100,11 @@ public class BarberValidator {
 		if (barberAddress != null && barberAddress.trim().length() >= lengthOfWords
 				&& barberAddress.trim().length() <= 300) {
 			match = true;
-			System.out.println("The Barber address  is valid.");
+			return match;
 		} else {
 			throw new InvalidBarberException("The Barber address  is not valid.");
 		}
-		return match;
+		
 	}
 
 	// check barber about is valid or not.
@@ -119,11 +115,11 @@ public class BarberValidator {
 
 		if (barberAbout != null && barberAbout.trim().length() >= lengthOfWords && barberAbout.trim().length() <= 500) {
 			match = true;
-			System.out.println("The Barber about  is valid.");
+			return match;
 		} else {
 			throw new InvalidBarberException("The Barber about  is not valid.");
 		}
-		return match;
+		
 	}
 
 	// check barber experience is valid or not.
@@ -135,15 +131,15 @@ public class BarberValidator {
 		if (barberExperience != null && barberExperience.trim().length() >= lengthOfWords
 				&& barberExperience.trim().length() <= 200) {
 			match = true;
-			System.out.println("The Barber experience  is valid.");
+			return match;
 		} else {
 			throw new InvalidBarberException("The Barber experience  is not valid.");
 		}
-		return match;
+		
 	}
 	// check barber phone number is valid or not.
 
-	public static boolean validateBarberPhoneNumber(String barberPhone) {
+	public static boolean validateBarberPhoneNumber(String barberPhone) throws InvalidBarberException {
 		if (barberPhone == null)
 			return false;
 
@@ -153,19 +149,19 @@ public class BarberValidator {
 		boolean isMatch = matcher.matches();
 
 		if (isMatch) {
-			System.out.println("The phone number is: Valid");
+			return isMatch;
 		} else {
-			System.out.println("The phone number is: Invalid");
+		 throw new	InvalidBarberException("Invalid phone number");
 		}
 
-		return isMatch;
+		
 	}
 
 	// check barber delete data is valid or not.
  
 	public static boolean validateDeleteBarber(Barber barber) throws InvalidBarberException {
 		if (barber != null && validateBarberEmail(barber.getBarberEmail())) {
-			System.out.println("Barber deletion details are valid.");
+			
 			return true;
 		} else {
 			throw new InvalidBarberException("Invalid Barber details for deletion");

@@ -20,7 +20,7 @@ import com.fssa.sharpandclean.service.exception.ServiceException;
 			assertTrue(getUser != null);
 			System.out.println(getUser.toString());
 		} catch (ServiceException e) {
-			System.out.println(e.getMessage());
+		e.getMessage();
 
 		}
 	}

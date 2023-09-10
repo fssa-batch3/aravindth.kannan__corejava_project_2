@@ -94,7 +94,8 @@ public class UserService {
 		try {
 			UserValidator.validateEmail(email);
 			loggedUser = userDAO.getUserByEmail(email);
-		} catch (DAOException e) {
+			
+		} catch (DAOException | InvalidUserException e) {
 			throw new ServiceException(e.getMessage());
 		}
 		return loggedUser;
