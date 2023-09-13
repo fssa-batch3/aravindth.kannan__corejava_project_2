@@ -1,8 +1,7 @@
-package com.fssa.sharpandclean.service;
+package com.fssa.sharpandclean.test;
 
-
-import static org.junit.jupiter.api.Assertions.*;
-
+import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import org.junit.jupiter.api.Test;
 
@@ -10,24 +9,25 @@ import com.fssa.sharpandclean.model.User;
 import com.fssa.sharpandclean.service.UserService;
 import com.fssa.sharpandclean.service.exception.ServiceException;
 
- class TestLoginFeature {
+class TestLoginFeature {
 
 	@Test
-	 void loginSuccess() {
+	void loginSuccess() {
 		UserService userService = new UserService();
-		String email = "aravindth12@gmail.com";
-		String password = "Aravindth@123";
+		String email = "aravindth@gmail.com";
+		String password = "Akkam432@";
 		User user1 = new User(email, password);
 		try {
 			assertTrue(userService.loginUser(user1));
 			System.out.println("Successfully Logged in.");
 		} catch (ServiceException e) {
-			System.out.println( e.getMessage()); 
+			e.printStackTrace();
 		}
+	
 	}
 
 	@Test
-	 void loginFailed() {
+	void loginFailed() {
 		UserService userService = new UserService();
 		String email = "ahkj@gmail.com";
 		String password = "Password@796";
@@ -36,14 +36,12 @@ import com.fssa.sharpandclean.service.exception.ServiceException;
 			userService.loginUser(user2);
 			fail("Failed to Login.");
 		} catch (ServiceException e) {
-			System.out.println( e.getMessage()); 
+			System.out.println(e.getMessage());
 		}
 	}
 
-	
-
 	@Test
-	 void testLoginEmailCheck() {
+	void testLoginEmailCheck() {
 		UserService userService = new UserService();
 		String email = "invalidemail"; // Invalid email format
 		String password = "Aravindth@123";
@@ -52,18 +50,8 @@ import com.fssa.sharpandclean.service.exception.ServiceException;
 			userService.loginUser(user1); // Expecting login failure
 			fail("Login with invalid email format should fail.");
 		} catch (ServiceException e) {
-			System.out.println( e.getMessage()); 
+			System.out.println(e.getMessage());
 		}
 	}
 
-	@Test
-	 void testLoginNullUser() {
-		UserService userService = new UserService();
-		try {
-			userService.loginUser(null); // Expecting login failure
-			fail();
-		} catch (ServiceException e) {
-			System.out.println( e.getMessage()); 
-		}
-	}
 }

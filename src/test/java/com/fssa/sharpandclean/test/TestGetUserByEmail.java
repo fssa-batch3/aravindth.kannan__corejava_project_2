@@ -1,12 +1,9 @@
-package com.fssa.sharpandclean.service;
-
-
+package com.fssa.sharpandclean.test;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import org.junit.jupiter.api.Test;
-
 import com.fssa.sharpandclean.model.User;
+import com.fssa.sharpandclean.service.UserService;
 import com.fssa.sharpandclean.service.exception.ServiceException;
 
  class TestGetUserByEmail {

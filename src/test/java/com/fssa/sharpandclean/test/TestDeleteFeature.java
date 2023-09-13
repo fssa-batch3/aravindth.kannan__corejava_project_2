@@ -1,7 +1,9 @@
-package com.fssa.sharpandclean.service;
+package com.fssa.sharpandclean.test;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
+
+import com.fssa.sharpandclean.service.UserService;
 import com.fssa.sharpandclean.service.exception.ServiceException;
 
  class TestDeleteFeature {

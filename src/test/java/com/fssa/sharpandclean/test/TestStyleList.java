@@ -1,4 +1,4 @@
-package com.fssa.sharpandclean.service;
+package com.fssa.sharpandclean.test;
 
 import static org.junit.Assert.fail;
 
@@ -10,6 +10,7 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 import com.fssa.sharpandclean.model.Style;
+import com.fssa.sharpandclean.service.StyleService;
 import com.fssa.sharpandclean.service.exception.ServiceException;
 
  class TestStyleList {

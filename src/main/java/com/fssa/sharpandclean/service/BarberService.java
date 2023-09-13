@@ -46,7 +46,7 @@ public class BarberService {
 
 			if (barberDAO.login(barber, barberEmail)) {
 				
-				return true;
+				return true; 
 			} else {
 				return false;
 			}

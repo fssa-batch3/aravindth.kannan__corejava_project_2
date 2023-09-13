@@ -1,7 +1,8 @@
-package com.fssa.sharpandclean.service;
+package com.fssa.sharpandclean.test;
 
 import org.junit.Test;
 
+import com.fssa.sharpandclean.service.StyleService;
 import com.fssa.sharpandclean.service.exception.ServiceException;
 import com.fssa.sharpandclean.service.exception.StyleException;
 

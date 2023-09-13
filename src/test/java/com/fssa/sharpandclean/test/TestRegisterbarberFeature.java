@@ -1,4 +1,4 @@
-package com.fssa.sharpandclean.service;
+package com.fssa.sharpandclean.test;
 
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 import org.junit.jupiter.api.Test;
 
 import com.fssa.sharpandclean.model.Barber;
-
+import com.fssa.sharpandclean.service.BarberService;
 import com.fssa.sharpandclean.service.exception.ServiceException;
  
  class TestRegisterbarberFeature {
@@ -20,7 +20,7 @@ import com.fssa.sharpandclean.service.exception.ServiceException;
 		try {
 			assertTrue(barberService.registerBarber(barber));
 		}catch(ServiceException e) {
-			System.out.println( e.getMessage()); 
+			System.out.println(e.getMessage()); 
 		}
 	} 
 	
@@ -33,7 +33,7 @@ import com.fssa.sharpandclean.service.exception.ServiceException;
 	           barberService.registerBarber(barber);
 	            fail();
 	        } catch (ServiceException e) {
-	            e.printStackTrace();
+	        	System.out.println(e.getMessage()); 
 	        }
 	    }
 
@@ -82,7 +82,7 @@ import com.fssa.sharpandclean.service.exception.ServiceException;
 	        	barberService.registerBarber(null);
 	            fail();
 	        } catch (ServiceException e) {
-	        	System.out.println( e.getMessage()); 
+	        	System.out.println(e.getMessage()); 
 	        }
 	    }
 }
