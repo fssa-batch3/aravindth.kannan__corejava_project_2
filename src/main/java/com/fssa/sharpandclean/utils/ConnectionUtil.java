@@ -18,7 +18,7 @@ public class ConnectionUtil {
       dbUrl = System.getenv("DB_URL");
       dbUser = System.getenv("DB_USER");
       dbPassword = System.getenv("DB_PASSWORD");
-      
+
       
 //      dbUrl = System.getenv("jdbc:mysql://localhost:3306/sharp_and_clean");
 //      dbUser = System.getenv("root");

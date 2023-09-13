@@ -16,6 +16,7 @@ public class BarberDAO {
 		//get connection with variable passing method.
 		Connection con = ConnectionUtil.getConnection();
 		String query = "INSERT INTO barber (barber_name, barber_email, barber_password, barber_profile_URL, barber_phonenumber, barber_address, barber_about, barber_experience) VALUES (?,?,?,?,?,?,?,?)";
+		
 		try(PreparedStatement pmt = con.prepareStatement(query)){
 			// set the barberId during registration
 			pmt.setString(1, barber.getBarberName());
@@ -27,8 +28,6 @@ public class BarberDAO {
 			pmt.setString(7, barber.getBarberAbout());
 			pmt.setString(8, barber.getBarberExperience());
 			int rows = pmt.executeUpdate();
-			
-			con.close();
 			return rows ==1;
 		}catch(SQLException e) {
 			throw new BarberDAOException(e);
@@ -52,12 +51,12 @@ public class BarberDAO {
     }
     
     // method to login barber.
-    public boolean login(Barber barber, String barberEmail) throws BarberDAOException {
+    public boolean login(Barber barber) throws BarberDAOException {
 		
     	String query = "SELECT * FROM  barber WHERE barber_email = ? AND barber_password = ?";
     	try(Connection connection   = ConnectionUtil.getConnection();
     		PreparedStatement pmt = connection.prepareStatement(query)){
-    			pmt.setString(1, barberEmail);
+    			pmt.setString(1, barber.getBarberEmail());
     			pmt.setString(2, barber.getBarberPassword());
     			try(ResultSet rs = pmt.executeQuery()){
     				return rs.next();

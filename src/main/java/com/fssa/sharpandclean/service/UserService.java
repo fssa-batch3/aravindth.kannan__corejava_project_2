@@ -36,18 +36,15 @@ public class UserService {
 			UserDAO userDAO = new UserDAO();
 
 			if (userDAO.isEmailExists(user.getEmail())) {
-				System.out.println("1");
+				
 				if (userDAO.login(user)) {
-					System.out.println("2");
 					System.out.println(user.getEmail() + " Successfully logged in");
 					return true;
 				} else {
 					return false;
 				}
-				
 			}
 			else {
-				System.out.println("3");
 				throw new ServiceException("Before logging in, you have to register");
 			}
 

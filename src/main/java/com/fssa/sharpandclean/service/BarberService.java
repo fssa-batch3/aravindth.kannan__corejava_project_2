@@ -33,26 +33,29 @@ public class BarberService {
 	}
 	
 	// Method to Login a barber.
-	public boolean loginBarber(Barber barber, String barberEmail) throws ServiceException {
+	public boolean loginBarber(Barber barber) throws ServiceException {
 		try {
-			BarberValidator.validateBarberEmail(barberEmail);
+			BarberValidator.validateBarberEmail(barber.getBarberEmail());
 			BarberValidator.validateBarberPassword(barber.getBarberPassword());
 
 			BarberDAO barberDAO = new BarberDAO();
 
-			if (!barberDAO.isEmailExists(barberEmail)) {
-				throw new ServiceException("Before logging in, you have to register");
-			}
-
-			if (barberDAO.login(barber, barberEmail)) {
+			if (barberDAO.isEmailExists(barber.getBarberEmail())) {
 				
+			if (barberDAO.login(barber)) {
+				System.out.println(barber.getBarberEmail()+"Successfully logged in");
 				return true; 
 			} else {
 				return false;
 			}
-		} catch (ServiceException e) {
-			throw e;
-		} catch (Exception e) {
+			
+			}
+			else {
+				throw new ServiceException("Before logging in, you have to register");
+			}
+		}
+			
+		catch (ServiceException | InvalidBarberException | BarberDAOException e) {
 			throw new ServiceException(e.getLocalizedMessage());
 		}
 	}

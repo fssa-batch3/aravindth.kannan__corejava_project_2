@@ -1,13 +1,10 @@
 package com.fssa.sharpandclean.validation;
 
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import com.fssa.sharpandclean.model.Barber;
-
 import com.fssa.sharpandclean.validation.exception.InvalidBarberException;
-import com.fssa.sharpandclean.validation.exception.InvalidUserException;
-
-import java.util.regex.Matcher;
 
 public class BarberValidator {
  
@@ -74,7 +71,7 @@ public class BarberValidator {
 
 	// check barber image URL is valid or not.
 	public static boolean validateBarberImageURL(String BarberImageUrl) throws InvalidBarberException {
-		boolean match = false;
+		boolean match = true;
 		if (BarberImageUrl == null)
 			return false;
 

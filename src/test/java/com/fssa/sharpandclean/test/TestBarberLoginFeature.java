@@ -18,7 +18,7 @@ import com.fssa.sharpandclean.service.exception.ServiceException;
 		String password = "Kavi@123";
 		Barber barber1 = new Barber(email, password);
 		try {
-			assertTrue(userService.loginBarber(barber1, email));
+			assertTrue(userService.loginBarber(barber1));
 		} catch (ServiceException e) {
 			e.getMessage(); 		}
 	}
@@ -30,7 +30,7 @@ import com.fssa.sharpandclean.service.exception.ServiceException;
 		String password = "Password@796";
 		Barber user2 = new Barber(email, password);
 		try {
-			barberService.loginBarber(user2, email);
+			barberService.loginBarber(user2);
 			fail("Failed to Login.");
 		} catch (ServiceException e) {
 			e.getMessage(); 		}
@@ -43,7 +43,7 @@ import com.fssa.sharpandclean.service.exception.ServiceException;
 		String password = "Aravindth@123";
 		Barber user1 = new Barber(email, password);
 		try {
-			barberService.loginBarber(user1, email); // Expecting login failure
+			barberService.loginBarber(user1); // Expecting login failure
 			fail("Login with invalid email format should fail.");
 		} catch (ServiceException e) {
 			e.getMessage(); 		}
@@ -53,7 +53,7 @@ import com.fssa.sharpandclean.service.exception.ServiceException;
 	 void testLoginNullUser() {
 		BarberService barberService = new BarberService();
 		try {
-			barberService.loginBarber(null, "aravindth12@gmail.com"); // Expecting login failure
+			barberService.loginBarber(null); // Expecting login failure
 			fail();
 		} catch (ServiceException e) {
 			e.getMessage(); 		}
