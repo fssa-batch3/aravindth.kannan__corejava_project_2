@@ -14,10 +14,11 @@ public class BarberDAO {
 
 	public boolean createBarber(Barber barber) throws BarberDAOException {
 		//get connection with variable passing method.
-		Connection con = ConnectionUtil.getConnection();
+		
 		String query = "INSERT INTO barber (barber_name, barber_email, barber_password, barber_profile_URL, barber_phonenumber, barber_address, barber_about, barber_experience) VALUES (?,?,?,?,?,?,?,?)";
 		
-		try(PreparedStatement pmt = con.prepareStatement(query)){
+		try(Connection con = ConnectionUtil.getConnection();
+			PreparedStatement pmt = con.prepareStatement(query)){
 			// set the barberId during registration
 			pmt.setString(1, barber.getBarberName());
 			pmt.setString(2, barber.getBarberEmail());

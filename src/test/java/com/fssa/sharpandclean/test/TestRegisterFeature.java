@@ -63,7 +63,7 @@ import com.fssa.sharpandclean.service.exception.ServiceException;
     }
 
     @Test
-    public void testRegistrationNullPassword() {
+     void testRegistrationNullPassword() {
         UserService userService = new UserService();
         User user = new User( "JohnDoe", null, "john@example.com", "8565473543", "user");
         try {

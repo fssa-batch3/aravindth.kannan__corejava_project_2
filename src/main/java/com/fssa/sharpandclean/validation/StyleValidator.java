@@ -13,8 +13,7 @@ public class StyleValidator {
 	public static boolean validateStyle(Style style) throws InvalidStyleException {
 		if(style != null && validateStyleName(style.getHaircutName()) && validateStyleEmail(style.getHaircutEmail())
 				  && validateStyleImageURL(style.getHaircutUrl()) && validateStyleDetail(style.getHaircutAbout()) && validateStyleType(style.getHaircutType())) {
-			return true;
-			
+			return true;	
 		}else {
 			throw new InvalidStyleException("Hair Style details not valid");
 		}	

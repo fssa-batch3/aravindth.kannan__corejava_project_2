@@ -2,9 +2,10 @@ package com.fssa.sharpandclean.test;
 
 import static org.junit.Assert.assertTrue;
 
+
 import static org.junit.jupiter.api.Assertions.fail;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import com.fssa.sharpandclean.model.*;
 import com.fssa.sharpandclean.service.StyleService;
@@ -12,8 +13,7 @@ import com.fssa.sharpandclean.service.exception.StyleException;
 
 class TestAddStyleFeature {
 
-	public static void main(String[] args) {
-	}
+	
 
 	@Test
 	// test successfully add style
@@ -24,7 +24,7 @@ class TestAddStyleFeature {
 		try {
 			assertTrue(styleService.addStyle(styles));
 		} catch (StyleException e) {
-			e.getMessage(); 
+			System.out.println(e.getMessage()); 
 		}
 
 	}
