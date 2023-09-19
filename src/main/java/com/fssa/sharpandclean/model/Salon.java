@@ -51,6 +51,10 @@ public class Salon {
 		this.salonSample2 = haircut2;
 		this.salonSample3 = haircut3;
 	}
+	
+	public Salon() {
+		super();
+	}
 	public String getSalonName() {
 		return salonName;
 	}

@@ -4,6 +4,7 @@ import java.util.List;
 import com.fssa.sharpandclean.dao.BarberDAO;
 import com.fssa.sharpandclean.dao.SalonDAO;
 import com.fssa.sharpandclean.dao.exception.BarberDAOException;
+import com.fssa.sharpandclean.dao.exception.DAOException;
 import com.fssa.sharpandclean.dao.exception.SalonDAOException;
 import com.fssa.sharpandclean.model.Barber;
 import com.fssa.sharpandclean.model.Salon;
@@ -46,5 +47,17 @@ public class SalonService {
 		return null;
 		
 	}
+	
+	// method to get salon by salon Id
+	
+	public Salon getSalonBySalonId(int salonId ) throws ServiceException {
+     try {
+		    SalonDAO salonDAO = new SalonDAO();
+		 // Retrieve the salon by salonId from the SalonDAO
+		    return salonDAO.getSalonById(salonId);
+		}catch(SalonDAOException e) {
+			throw new ServiceException(e);
+		}	
+    }
 
 }
