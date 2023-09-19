@@ -58,12 +58,12 @@ public class UserDAO {
 			return rs.next(); // If a row is found, authentication is successful
 		} catch (SQLException e) {
 			throw new DAOException(e);
-		}finally {
-			try {
-				rs.close();
-			} catch (SQLException e) {
-				throw new DAOException(e);
-			}
+		}finally {	
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 		}
 
 	}
@@ -95,11 +95,12 @@ public class UserDAO {
 	// Update user information based on email
 	public boolean updateUser(User user) throws DAOException {
 		Connection connection = ConnectionUtil.getConnection();
-		String query = "UPDATE user SET username=?, phonenumber=? WHERE email=?";
+		String query = "UPDATE user SET username=?,password=?, phonenumber=? WHERE email=?";
 		try (PreparedStatement pmt = connection.prepareStatement(query)) {
 			pmt.setString(1, user.getUsername());
-			pmt.setString(2, user.getPhonenumber());
-			pmt.setString(3, user.getEmail());
+			pmt.setString(2, user.getPassword());
+			pmt.setString(3, user.getPhonenumber());
+			pmt.setString(4, user.getEmail());
 			int rows = pmt.executeUpdate();
 			return rows == 1;
 		} catch (SQLException e) {

@@ -12,13 +12,15 @@ import com.fssa.sharpandclean.validation.exception.InvalidUserException;
 public class UserValidator {
 
 	public static boolean validateUser(User user) throws InvalidUserException {
-		if (user != null && validateName(user.getUsername()) && validatePassword(user.getPassword())
-				&& validateEmail(user.getEmail()) && validatePhoneNumber(user.getPhonenumber())) {
+		
+		
+		validateName(user.getUsername());
+		validatePassword(user.getPassword());
+	    validateEmail(user.getEmail());
+	    validatePhoneNumber(user.getPhonenumber());
 			return true;
-		} else {
-			throw new InvalidUserException("User details not valid");
-		}
-	}
+		} 
+	
 	
 
 	// check the username valid or not.
