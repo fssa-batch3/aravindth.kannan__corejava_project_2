@@ -9,7 +9,7 @@ import com.fssa.sharpandclean.service.exception.ServiceException;
 	@Test
 	 void testUpdateSuccess() {
 		UserService userService = new UserService();
-		User user1 = new User( "kavi@gmail.com", "Kannan", "Aravindth@123", "9888844056", "user");
+		User user1 = new User( "kavi@gmail.com", "Kannan", "Aravindth@123", "9888844056");
 		try {
 			assertTrue(userService.updateUser(user1));
 		} catch (ServiceException e) { 
@@ -20,7 +20,7 @@ import com.fssa.sharpandclean.service.exception.ServiceException;
 	@Test
 	 void testUpdateEmailNotFound() {
 		UserService userService = new UserService();
-		User user1 = new User( "aravindth12@gmail.com", "AravindthKavi", "Aravindth@123", "8072444056", "user");
+		User user1 = new User( "aravindth12@gmail.com", "AravindthKavi", "Aravindth@123", "8072444056");
 		try {
 			// Assuming the user with email "aravindth12@gmail.com" does not exist in the system
 			boolean isDeleted = userService.updateUser(user1);
@@ -33,7 +33,7 @@ import com.fssa.sharpandclean.service.exception.ServiceException;
 	@Test
 	 void testUpdateInvalidEmailFormat() {
 		UserService userService = new UserService();
-		User user1 = new User( "aravindth12@.com", "AravindthKavi", "Aravindth@123", "8072444056", "user");
+		User user1 = new User( "aravindth12@.com", "AravindthKavi", "Aravindth@123", "8072444056");
 		try {
 			// Assuming "invalid_email_format" is not a valid email format
 			boolean isDeleted = userService.updateUser(user1);
@@ -47,7 +47,7 @@ import com.fssa.sharpandclean.service.exception.ServiceException;
 	 void testUpdateMissingRequiredField() {
 		UserService userService = new UserService();
 		// Leaving the name field empty
-		User user1 = new User( "aravindth12@gmail.com", "", "Aravindth@123", "8072444056", "user");
+		User user1 = new User( "aravindth12@gmail.com", "", "Aravindth@123", "8072444056");
 		try {
 			userService.updateUser(user1);
 			fail("Expected ServiceException for missing required field, but none was thrown.");

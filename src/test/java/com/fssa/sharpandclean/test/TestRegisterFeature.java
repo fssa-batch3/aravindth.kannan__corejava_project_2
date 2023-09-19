@@ -18,7 +18,7 @@ import com.fssa.sharpandclean.service.exception.ServiceException;
     @Test
      void testRegistrationSuccess() {
         UserService userService = new UserService();
-        User user1 = new User( "kanna594@gmail.com", "Kannan", "Kannan@1467", "9878543123", "user");
+        User user1 = new User( "kanna594@gmail.com", "Kannan", "Kannan@1467", "9878543123");
         try {
             assertTrue(userService.registerUser(user1));
         } catch (ServiceException e) {
@@ -29,7 +29,7 @@ import com.fssa.sharpandclean.service.exception.ServiceException;
     @Test
      void testRegistrationEmailEmpty() {
         UserService userService = new UserService();
-        User user1 = new User( "", "Aravindth", "Aravindth@123", "9876543123", "user");
+        User user1 = new User( "", "Aravindth", "Aravindth@123", "9876543123");
         try {
            assertTrue(userService.registerUser(user1));
             fail();
@@ -41,7 +41,7 @@ import com.fssa.sharpandclean.service.exception.ServiceException;
     @Test
      void testRegistrationPhoneNumberInvalid() {
         UserService userService = new UserService();
-        User user1 = new User( "kavi@gmail.com", "Kavi", "Kavi@123", "987654h123", "user");
+        User user1 = new User( "kavi@gmail.com", "Kavi", "Kavi@123", "987654h123");
         try {
             userService.registerUser(user1);
             fail();
@@ -53,7 +53,7 @@ import com.fssa.sharpandclean.service.exception.ServiceException;
     @Test
      void testRegistrationEmptyPassword() {
         UserService userService = new UserService();
-        User user = new User( "muneesh@example.com", "muneesh", "", "8565473543", "user");
+        User user = new User( "muneesh@example.com", "muneesh", "", "8565473543");
         try {
             userService.registerUser(user);
             fail("Expected ServiceException for empty password, but none was thrown.");
@@ -65,7 +65,7 @@ import com.fssa.sharpandclean.service.exception.ServiceException;
     @Test
      void testRegistrationNullPassword() {
         UserService userService = new UserService();
-        User user = new User( "JohnDoe", null, "john@example.com", "8565473543", "user");
+        User user = new User( "JohnDoe", null, "john@example.com", "8565473543");
         try {
             userService.registerUser(user);
             fail("Expected ServiceException for null password, but none was thrown.");
@@ -77,7 +77,7 @@ import com.fssa.sharpandclean.service.exception.ServiceException;
     @Test
      void testRegistrationEmptyUsername() {
         UserService userService = new UserService();
-        User user = new User( "", "P@ssw0rd", "john@example.com", "8565473543", "user");
+        User user = new User( "", "P@ssw0rd", "john@example.com", "8565473543");
         try {
             userService.registerUser(user);
             fail("Expected ServiceException for empty username, but none was thrown.");

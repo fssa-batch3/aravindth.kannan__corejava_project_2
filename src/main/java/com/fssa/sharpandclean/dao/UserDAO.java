@@ -14,7 +14,7 @@ public class UserDAO {
 	// Add new user to DB - Register
 	public boolean register(User user) throws DAOException {
 		Connection connection = ConnectionUtil.getConnection();
-		String query = "INSERT INTO user (email, userName, password, phoneNumber, type) VALUES ( ?, ?, ?, ?, ?)";
+		String query = "INSERT INTO user (email, userName, password, phoneNumber) VALUES ( ?, ?, ?, ?";
 
 		try (PreparedStatement pmt = connection.prepareStatement(query)) {
 			// Set the userId during registration
@@ -22,7 +22,7 @@ public class UserDAO {
 			pmt.setString(2, user.getUsername());
 			pmt.setString(3, user.getPassword());
 			pmt.setString(4, user.getPhonenumber());
-			pmt.setString(5, user.getType());
+			
 			int rows = pmt.executeUpdate();
 			return rows == 1;
 		} catch (SQLException e) {
