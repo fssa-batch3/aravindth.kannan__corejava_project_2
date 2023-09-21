@@ -11,6 +11,7 @@ import com.fssa.sharpandclean.dao.exception.BarberDAOException;
 import com.fssa.sharpandclean.dao.exception.SalonDAOException;
 import com.fssa.sharpandclean.model.Barber;
 import com.fssa.sharpandclean.model.Salon;
+import com.fssa.sharpandclean.model.SalonBook;
 import com.fssa.sharpandclean.utils.ConnectionUtil;
 
 public class SalonDAO {
@@ -123,6 +124,42 @@ public class SalonDAO {
     	return salon;
     	
     }
+    
+    
+    // method to book a salon with SalonBook model.
+    
+    public boolean bookSalon(SalonBook salonBook) throws SalonDAOException {
+		//get connection with variable passing method.
+				
+				String query = "INSERT INTO booksalon (book_user_name, book_user_phone, "
+						+ "service, date, time, user_email, salon_name, salon_email, "
+						+ "salon_phone, salon_profile, salon_experience,"
+						+ "salon_address,salon_about,salon_area) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+				
+				try(Connection con = ConnectionUtil.getConnection();
+					PreparedStatement pmt = con.prepareStatement(query)	){
+					// set the barberId during registration
+					pmt.setString(1, salonBook.getBookUserName());
+					pmt.setString(2, salonBook.getBookUserPhone());
+					pmt.setString(3, salonBook.getBookService());
+					pmt.setString(4, salonBook.getBookDate());
+					pmt.setString(5, salonBook.getBookTime());
+					pmt.setString(6, salonBook.getBooUserEmail());
+					pmt.setString(7, salonBook.getSalonName());
+					pmt.setString(8, salonBook.getSalonEmail());
+					pmt.setString(9, salonBook.getSalonPhone());
+					pmt.setString(10, salonBook.getSalonProfile());
+					pmt.setString(11, salonBook.getSalonEx());
+					pmt.setString(12, salonBook.getSalonAddress());
+					pmt.setString(13, salonBook.getSalonAbout());
+					pmt.setString(14, salonBook.getSalonArea());
+					int rows = pmt.executeUpdate();
+					return rows == 1;
+				}
+				catch(SQLException e) {
+					throw new SalonDAOException(e);
+				}
+	}
     
     
 }

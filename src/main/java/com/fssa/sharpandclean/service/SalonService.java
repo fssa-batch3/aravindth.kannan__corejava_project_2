@@ -8,11 +8,16 @@ import com.fssa.sharpandclean.dao.exception.DAOException;
 import com.fssa.sharpandclean.dao.exception.SalonDAOException;
 import com.fssa.sharpandclean.model.Barber;
 import com.fssa.sharpandclean.model.Salon;
+import com.fssa.sharpandclean.model.SalonBook;
 import com.fssa.sharpandclean.service.exception.ServiceException;
+import com.fssa.sharpandclean.validation.BookSalonValidator;
 import com.fssa.sharpandclean.validation.SalonValidator;
+import com.fssa.sharpandclean.validation.exception.InvalidSalonBookException;
 import com.fssa.sharpandclean.validation.exception.InvalidSalonException;
 
 public class SalonService {
+	
+	
 	
 	// Register salon method.
 	public boolean registerSalon(Salon salon) throws ServiceException {
@@ -59,5 +64,23 @@ public class SalonService {
 			throw new ServiceException(e);
 		}	
     }
+	
+	
+	// method for booking salon.
+	
+	public boolean bookingSalon(SalonBook salonBook) throws ServiceException {
+		try {
+			SalonDAO salonDAO = new SalonDAO();
+			if(salonBook == null) {
+	    		throw new InvalidSalonBookException("salonbook object is null");
+	    	}
+			BookSalonValidator.validateSalonBook(salonBook); // Implement SalonValidator as needed to validate salon details.
+	        return salonDAO.bookSalon(salonBook);
+		}catch(SalonDAOException | InvalidSalonBookException e) {
+			throw new ServiceException(e);
+		}
+		
+		
+	}
 
 }
