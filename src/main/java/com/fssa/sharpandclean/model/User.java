@@ -98,14 +98,7 @@ public class User {
 	}
 
 
-	public String getType() {
-		return type;
-	}
-
-
-	public void setType(String type) {
-		this.type = type;
-	}
+	
 
 
 	public int isDeleted() {
@@ -120,9 +113,9 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [email=" + email + ", username=" + username + ", password=" + password + ", phonenumber="
-				+ phonenumber + ", type=" + type + ", isDeleted=" + isDeleted + ", getEmail()=" + getEmail()
+				+ phonenumber +", isDeleted=" + isDeleted + ", getEmail()=" + getEmail()
 				+ ", getUsername()=" + getUsername() + ", getPassword()=" + getPassword() + ", getPhonenumber()="
-				+ getPhonenumber() + ", getType()=" + getType() + ", isDeleted()=" + isDeleted() + ", getClass()="
+				+ getPhonenumber()  + ", isDeleted()=" + isDeleted() + ", getClass()="
 				+ getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
 	}
 

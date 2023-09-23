@@ -1,12 +1,15 @@
 package com.fssa.sharpandclean.model;
 
+import java.sql.Date;
+import java.time.LocalDate;
+
 public class SalonBook {
 
 	private int bookId;
 	private String bookUserName;
 	private String bookUserPhone;
 	private String bookService;
-	private String bookDate;
+	private LocalDate bookDate;
 	private String bookTime;
 	private String booUserEmail;
 	private String salonName;
@@ -16,13 +19,14 @@ public class SalonBook {
 	private String salonEx;
 	private String salonAddress;
 	private String salonAbout;
+	private String SalonOTP;
 	private String salonArea;
 	private int bookSalonIsDeleted;
 	private int bookUserIsDeleted;
 	
 	
 
-	public SalonBook(String bookUserName, String bookUserPhone, String bookService, String bookDate, String bookTime,
+	public SalonBook(String bookUserName, String bookUserPhone, String bookService, LocalDate bookDate, String bookTime,
 			String booUserEmail, String salonName, String salonEmail, String salonPhone, String salonProfile,
 			String salonEx, String salonAddress, String salonAbout, String salonArea) {
 		super();
@@ -44,6 +48,14 @@ public class SalonBook {
 	
 	public SalonBook() {
 		super();
+	}
+	
+	public String getSalonOTP() {
+		return SalonOTP;
+	}
+
+	public void setSalonOTP(String salonOTP) {
+		SalonOTP = salonOTP;
 	}
 
 	public String getBookUserPhone() {
@@ -70,11 +82,11 @@ public class SalonBook {
 	public void setBookService(String bookService) {
 		this.bookService = bookService;
 	}
-	public String getBookDate() {
+	public LocalDate getBookDate() {
 		return bookDate;
 	}
-	public void setBookDate(String bookDate) {
-		this.bookDate = bookDate;
+	public void setBookDate(LocalDate date) {
+		this.bookDate = date;
 	}
 	public String getBookTime() {
 		return bookTime;

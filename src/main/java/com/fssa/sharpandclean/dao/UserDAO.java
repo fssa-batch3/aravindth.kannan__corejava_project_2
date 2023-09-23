@@ -13,10 +13,10 @@ public class UserDAO {
 
 	// Add new user to DB - Register
 	public boolean register(User user) throws DAOException {
-		Connection connection = ConnectionUtil.getConnection();
-		String query = "INSERT INTO user (email, userName, password, phoneNumber) VALUES ( ?, ?, ?, ?";
+			String query = "INSERT INTO user (email, username, password, phonenumber) VALUES ( ?, ?, ?, ?)";
 
-		try (PreparedStatement pmt = connection.prepareStatement(query)) {
+		try (Connection connection = ConnectionUtil.getConnection();
+				PreparedStatement pmt = connection.prepareStatement(query)) {
 			// Set the userId during registration
 			pmt.setString(1, user.getEmail());
 			pmt.setString(2, user.getUsername());
@@ -26,9 +26,12 @@ public class UserDAO {
 			int rows = pmt.executeUpdate();
 			return rows == 1;
 		} catch (SQLException e) {
-			throw new DAOException(e);
+			throw new DAOException("registeration is not sucess"+e.getMessage());
 		}
 	}
+	
+
+
 
 	// Method to check if a user with the given email exists in the database
 	public boolean isEmailExists(String email) throws DAOException {
@@ -124,6 +127,6 @@ public class UserDAO {
 		}
 	}
 	
-	// Met
+	
 
 }

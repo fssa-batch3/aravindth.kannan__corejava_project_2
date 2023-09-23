@@ -1,5 +1,4 @@
 package com.fssa.sharpandclean.service;
-
 import com.fssa.sharpandclean.dao.UserDAO;
 import com.fssa.sharpandclean.dao.exception.DAOException;
 import com.fssa.sharpandclean.model.User;
@@ -22,10 +21,12 @@ public class UserService {
 			}
 
 			UserValidator.validateUser(user);
-			return userDAO.register(user);
+			 return userDAO.register(user);
+			 
 		} catch (InvalidUserException | DAOException e) {
 			throw new ServiceException(e);
 		}
+		
 	}
 
 	public boolean loginUser(User user) throws ServiceException {

@@ -1,5 +1,6 @@
 package com.fssa.sharpandclean.validation;
 
+import java.time.LocalDate;
 import java.util.regex.Pattern;
 
 import com.fssa.sharpandclean.model.SalonBook;
@@ -34,6 +35,8 @@ public class BookSalonValidator {
       
 		return true;
   }
+	
+	
 	public static boolean isValidTime(String time)throws InvalidSalonBookException {
 		 if(time == null) {
 			 throw new InvalidSalonBookException("The Time is null");
@@ -41,13 +44,17 @@ public class BookSalonValidator {
        
 		return true;
    }
-	public static boolean isValidDate(String date)throws InvalidSalonBookException {
-		 if(date == null) {
-			 throw new InvalidSalonBookException("The date is null");
-		 }
-        
-		return true;
-    }
+	
+	public static boolean isValidDate(LocalDate manufactureDate) throws InvalidSalonBookException {
+		LocalDate today = LocalDate.now();
+		if (manufactureDate == null) {
+			throw new InvalidSalonBookException("The booking date is not valid");
+		} else if (manufactureDate.isBefore(today)) {
+			throw new InvalidSalonBookException("The booking date is not valid");
+		} else {
+			return true;
+		}
+	}
 	
 	 public static boolean validateSalonExperience(String salonExperience) throws InvalidSalonBookException {
 			

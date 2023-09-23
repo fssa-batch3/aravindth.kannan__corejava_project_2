@@ -1,12 +1,10 @@
 package com.fssa.sharpandclean.service;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.Random;
 
-import com.fssa.sharpandclean.dao.BarberDAO;
 import com.fssa.sharpandclean.dao.SalonDAO;
-import com.fssa.sharpandclean.dao.exception.BarberDAOException;
-import com.fssa.sharpandclean.dao.exception.DAOException;
 import com.fssa.sharpandclean.dao.exception.SalonDAOException;
-import com.fssa.sharpandclean.model.Barber;
 import com.fssa.sharpandclean.model.Salon;
 import com.fssa.sharpandclean.model.SalonBook;
 import com.fssa.sharpandclean.service.exception.ServiceException;
@@ -78,9 +76,44 @@ public class SalonService {
 	        return salonDAO.bookSalon(salonBook);
 		}catch(SalonDAOException | InvalidSalonBookException e) {
 			throw new ServiceException(e);
-		}
+		}	
+	
+	}
+	
+//	get all salons for user view.
+	public List<SalonBook> getAllSalonBookingForUser(String userEmail) throws ServiceException{
 		
+		SalonDAO salonDAO = new SalonDAO();
+		try {
+			
+			if(salonDAO.bookSalonListForUser(userEmail) != null) {
+				return salonDAO.bookSalonListForUser(userEmail);
+			}
+		}catch(SalonDAOException e) {
+			e.printStackTrace();
+			throw new ServiceException("Invalid query for get All booking salons.");
+		}
+		return null;
 		
 	}
-
+	
+	
+      //	get all salons for salon view.
+	public List<SalonBook> getAllSalonBookingForSalon(String salonEmail) throws ServiceException{
+		SalonDAO salonDAO = new SalonDAO();
+		try {
+			
+			if(salonDAO.bookSalonListForSalon(salonEmail) != null) {
+				return salonDAO.bookSalonListForSalon(salonEmail);
+			}
+		}catch(SalonDAOException e) {
+			e.printStackTrace();
+			throw new ServiceException("Invalid query for get All booking salons.");
+		}
+		return null;
+		
+	}
+	
 }
+
+
