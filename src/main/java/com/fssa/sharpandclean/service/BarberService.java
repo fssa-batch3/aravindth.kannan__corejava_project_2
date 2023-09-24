@@ -27,6 +27,7 @@ public class BarberService {
 			BarberValidator.validateBarber(barber);
 			return barberDAO.createBarber(barber);
 		}catch(InvalidBarberException | BarberDAOException e) {
+			e.printStackTrace();
 			throw new ServiceException("Register details is not valid so registration failed.");
 		}
 		

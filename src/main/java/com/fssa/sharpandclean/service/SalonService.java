@@ -30,7 +30,7 @@ public class SalonService {
 	        SalonValidator.validateSalon(salon); // Implement SalonValidator as needed to validate salon details.
 	        return salonDAO.createSalon(salon);
 	    } catch (InvalidSalonException | SalonDAOException e) {
-	    	System.out.println(e.getMessage());
+	    	e.printStackTrace();
 	        throw new ServiceException("Registration details are not valid, so registration failed.");
 	    }
 	}
