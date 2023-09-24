@@ -1,7 +1,6 @@
 package com.fssa.sharpandclean.service;
-import java.sql.SQLException;
+
 import java.util.List;
-import java.util.Random;
 
 import com.fssa.sharpandclean.dao.SalonDAO;
 import com.fssa.sharpandclean.dao.exception.SalonDAOException;
@@ -72,10 +71,14 @@ public class SalonService {
 			if(salonBook == null) {
 	    		throw new InvalidSalonBookException("salonbook object is null");
 	    	}
+			if(salonDAO.isSalonAlreadyBooked(salonBook)) {
+				throw new InvalidSalonBookException("This appointment is already booked");
+			}
 			BookSalonValidator.validateSalonBook(salonBook); // Implement SalonValidator as needed to validate salon details.
 	        return salonDAO.bookSalon(salonBook);
 		}catch(SalonDAOException | InvalidSalonBookException e) {
-			throw new ServiceException(e);
+			e.printStackTrace();
+			throw new ServiceException("Error in booking salon method");
 		}	
 	
 	}

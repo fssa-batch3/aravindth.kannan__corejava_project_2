@@ -218,5 +218,22 @@ public class SalonDAO {
 		}
 
 	}
+	
+	
+	// Method to check if a salon is already booked or not by email and date and time schedule in the database
+		public  boolean isSalonAlreadyBooked(SalonBook salonBook) throws SalonDAOException {
+			String query = "SELECT * FROM booksalon WHERE salon_email = ? AND date=? AND time=?";
+			try (Connection connection = ConnectionUtil.getConnection();
+					PreparedStatement pmt = connection.prepareStatement(query)) {
+				pmt.setString(1, salonBook.getSalonEmail());
+				pmt.setDate(2, java.sql.Date.valueOf(salonBook.getBookDate()));
+				pmt.setString(3, salonBook.getBookTime());
+				ResultSet rs = pmt.executeQuery();
+				return rs.next(); // If a row is found, the email exists
+			} catch (SQLException e) {
+				e.printStackTrace();
+				throw new SalonDAOException("Error in salon is already booked DAO method");
+			}
+		}
 
 }
