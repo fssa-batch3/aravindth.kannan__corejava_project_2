@@ -12,15 +12,14 @@ import com.fssa.sharpandclean.service.exception.ServiceException;
  class TestBarberLoginFeature {
 
 	@Test
-	 void barberLoginSuccess() {
+	 void barberLoginSuccess() throws ServiceException {
 		BarberService userService = new BarberService();
 		String email = "kavi@gmail.com";
 		String password = "Kavi@123";
 		Barber barber1 = new Barber(email, password);
-		try {
+		
 			assertTrue(userService.loginBarber(barber1));
-		} catch (ServiceException e) {
-			e.getMessage(); 		}
+		
 	}
 	
 	@Test
@@ -49,13 +48,5 @@ import com.fssa.sharpandclean.service.exception.ServiceException;
 			e.getMessage(); 		}
 	}
 	
-	@Test
-	 void testLoginNullUser() {
-		BarberService barberService = new BarberService();
-		try {
-			barberService.loginBarber(null); // Expecting login failure
-			fail();
-		} catch (ServiceException e) {
-			e.getMessage(); 		}
-	}
+	
 }

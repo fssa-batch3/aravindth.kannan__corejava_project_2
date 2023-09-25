@@ -93,9 +93,7 @@ class TestCreateSalonFeature {
 				"https://i.pinimg.com/originals/05/90/aa/0590aa50b82ee7e5d90ea3702f18e3f9.jpg",
 				"https://haircutinspiration.com/wp-content/uploads/2023/03/dyed-hair-colorful-mens-hairstyles-1.jpg",
 				"https://content.latest-hairstyles.com/wp-content/uploads/platinum-fire-mens-hair-color-800x1000.jpg");
-		 assertThrows(ServiceException.class, () -> {
-			salonService.registerSalon(salon);
-		});
+		 assertThrows(ServiceException.class, () -> salonService.registerSalon(salon));
 	
 		
 	}

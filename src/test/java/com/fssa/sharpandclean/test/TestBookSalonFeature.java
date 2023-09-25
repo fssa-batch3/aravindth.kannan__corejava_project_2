@@ -12,7 +12,7 @@ import com.fssa.sharpandclean.service.SalonService;
 
 public class TestBookSalonFeature {
 	
-	@Test
+	@Test 
 	 void salonBookSuccess() {
 		SalonService salonService = new SalonService();
 		SalonBook salonBook = new SalonBook("Aravindth",
