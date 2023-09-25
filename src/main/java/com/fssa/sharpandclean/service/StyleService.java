@@ -24,7 +24,7 @@ public class StyleService {
 			throw new StyleException(e);
 		}
 		
-		
+		 
 	}
 	
 //	 get all  styles for user view.
@@ -36,6 +36,19 @@ public class StyleService {
 			}
 		} catch (StyleDAOException e) {
 			throw new ServiceException("invalid query for get All Styles.");
+		}
+		return null;
+	}
+	
+//	 get all  styles for salon view.
+	public List<Style> getStylesByEmail(String styleEmail) throws ServiceException {
+		StyleDAO styleDAO = new StyleDAO();
+		try {
+			if(styleDAO.getStyleEmail(styleEmail) != null) {
+				return styleDAO.getStyleEmail(styleEmail);
+			}
+		} catch (StyleDAOException e) {
+			throw new ServiceException("invalid query for get  Styles by email");
 		}
 		return null;
 	}

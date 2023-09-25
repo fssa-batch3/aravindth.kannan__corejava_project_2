@@ -18,7 +18,7 @@ public class StyleDAO {
 			pmt.setString(2, style.getHaircutName());
 			pmt.setString(3, style.getHaircutType());
 			pmt.setString(4, style.getHaircutAbout());
-			pmt.setString(5, style.getHaircutUrl());
+		 	pmt.setString(5, style.getHaircutUrl());
 			int rows = pmt.executeUpdate();
 			return rows == 1;
 		} catch (SQLException e) {
@@ -95,5 +95,30 @@ public class StyleDAO {
 			throw new StyleDAOException("Error in Style exists");
 		}
 	}
+	
+	// List All hair style for user from all barber and barberShop uploaded by them.
+
+		public List<Style> getStyleEmail(String styleEmail) throws StyleDAOException {
+			List<Style> style = new ArrayList<>();
+			try (PreparedStatement stmt = ConnectionUtil.getConnection().prepareStatement("SELECT * FROM hairstyle WHERE haircut_email = ?")) {
+					stmt.setString(1, styleEmail);
+					ResultSet rs = stmt.executeQuery();
+					
+				while (rs.next()) {
+					if (rs.getInt("is_deleted") == 0) {
+						int haircutId = rs.getInt("haircut_id");
+						String haircutName = rs.getString("haircut_name");
+						String haircutEmail = rs.getString("haircut_email");
+						String haircutType = rs.getString("haircut_type");
+						String haircutAbout = rs.getString("haircut_about");
+						String haircutUrl = rs.getString("haircut_url");
+						style.add(new Style(haircutId, haircutName, haircutEmail, haircutType, haircutAbout, haircutUrl));
+					}
+				}
+				return style;
+			} catch (SQLException e) {
+				throw new StyleDAOException("Error in getStyleByEmail");
+			}
+		}
 
 }
