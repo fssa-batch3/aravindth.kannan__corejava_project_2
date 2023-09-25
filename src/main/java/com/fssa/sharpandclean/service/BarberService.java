@@ -4,8 +4,11 @@ import java.util.List;
 
 
 import com.fssa.sharpandclean.dao.BarberDAO;
+import com.fssa.sharpandclean.dao.SalonDAO;
 import com.fssa.sharpandclean.dao.exception.BarberDAOException;
+import com.fssa.sharpandclean.dao.exception.SalonDAOException;
 import com.fssa.sharpandclean.model.Barber;
+import com.fssa.sharpandclean.model.Salon;
 import com.fssa.sharpandclean.service.exception.ServiceException;
 import com.fssa.sharpandclean.validation.BarberValidator;
 import com.fssa.sharpandclean.validation.exception.InvalidBarberException;
@@ -32,6 +35,19 @@ public class BarberService {
 		}
 		
 	}
+	
+	
+	// method to get salon by barber email
+	
+			public Barber getBarberByEmail(String barberEmail ) throws ServiceException {
+		     try {
+				    BarberDAO barberDAO = new BarberDAO();
+				 // Retrieve the salon by salonId from the SalonDAO
+				    return barberDAO.getBarberByEmail(barberEmail);
+				}catch(BarberDAOException e) {
+					throw new ServiceException(e);
+				}	
+		    }
 	
 	// Method to Login a barber.
 	public boolean loginBarber(Barber barber) throws ServiceException {

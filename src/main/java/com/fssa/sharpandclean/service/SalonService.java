@@ -63,6 +63,19 @@ public class SalonService {
     }
 	
 	
+	// method to get salon by salon email
+	
+		public Salon getSalonBySalonEmail(String salonEmail ) throws ServiceException {
+	     try {
+			    SalonDAO salonDAO = new SalonDAO();
+			 // Retrieve the salon by salonId from the SalonDAO
+			    return salonDAO.getSalonByEmail(salonEmail);
+			}catch(SalonDAOException e) {
+				throw new ServiceException(e);
+			}	
+	    }
+	
+	
 	// method for booking salon.
 	
 	public boolean bookingSalon(SalonBook salonBook) throws ServiceException {

@@ -1,6 +1,6 @@
 package com.fssa.sharpandclean.model;
 
-import java.sql.Date;
+
 import java.time.LocalDate;
 
 public class SalonBook {
@@ -11,7 +11,7 @@ public class SalonBook {
 	private String bookService;
 	private LocalDate bookDate;
 	private String bookTime;
-	private String booUserEmail;
+	private String bookUserEmail;
 	private String salonName;
 	private String salonEmail;
 	private String salonPhone;
@@ -35,7 +35,7 @@ public class SalonBook {
 		this.bookService = bookService;
 		this.bookDate = bookDate;
 		this.bookTime = bookTime;
-		this.booUserEmail = booUserEmail;
+		this.bookUserEmail = booUserEmail;
 		this.salonName = salonName;
 		this.salonEmail = salonEmail;
 		this.salonPhone = salonPhone;
@@ -95,10 +95,10 @@ public class SalonBook {
 		this.bookTime = bookTime;
 	}
 	public String getBooUserEmail() {
-		return booUserEmail;
+		return bookUserEmail;
 	}
 	public void setBooUserEmail(String booUserEmail) {
-		this.booUserEmail = booUserEmail;
+		this.bookUserEmail = booUserEmail;
 	}
 	public String getSalonName() {
 		return salonName;
@@ -166,7 +166,7 @@ public class SalonBook {
 	public String toString() {
 		return "SalonBook [bookId=" + bookId + ", bookUserName=" + bookUserName + ", bookUserPhone=" + bookUserPhone
 				+ ", bookService=" + bookService + ", bookDate=" + bookDate + ", bookTime=" + bookTime
-				+ ", booUserEmail=" + booUserEmail + ", salonName=" + salonName + ", salonEmail=" + salonEmail
+				+ ", booUserEmail=" + bookUserEmail + ", salonName=" + salonName + ", salonEmail=" + salonEmail
 				+ ", salonPhone=" + salonPhone + ", salonProfile=" + salonProfile + ", salonEx=" + salonEx
 				+ ", salonAddress=" + salonAddress + ", salonAbout=" + salonAbout + ", salonArea=" + salonArea
 				+ ", bookSalonIsDeleted=" + bookSalonIsDeleted + ", bookUserIsDeleted=" + bookUserIsDeleted

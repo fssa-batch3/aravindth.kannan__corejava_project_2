@@ -7,7 +7,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import com.fssa.sharpandclean.dao.exception.BarberDAOException;
+import com.fssa.sharpandclean.dao.exception.SalonDAOException;
 import com.fssa.sharpandclean.model.Barber;
+import com.fssa.sharpandclean.model.Salon;
 import com.fssa.sharpandclean.utils.ConnectionUtil;
 
 public class BarberDAO {
@@ -40,6 +42,37 @@ public class BarberDAO {
 			
 		}
 	
+	// method to get salon by salon email.
+		public Barber getBarberByEmail(String barberEmail) throws BarberDAOException {
+			String query = "SELECT * FROM barber WHERE barber_email=?";
+			Barber barber = new Barber();
+
+			try (Connection connection = ConnectionUtil.getConnection();
+					PreparedStatement pmt = connection.prepareStatement(query)) {
+				pmt.setString(1, barberEmail);
+				ResultSet rs = pmt.executeQuery();
+
+				if (rs.next()) {
+
+					// created a sslon object with get data.
+					barber.setBarberId(rs.getInt("barber_id"));
+					barber.setBarberName(rs.getString("barber_name"));
+					barber.setBarberEmail(rs.getString("barber_email"));
+					barber.setBarberProfile(rs.getString("barber_profile_URL"));
+					barber.setBarberPhone(rs.getString("barber_phonenumber"));
+					barber.setBarberAddress(rs.getString("barber_address"));
+					barber.setBarberAbout(rs.getString("barber_about"));
+					barber.setBarberExperience(rs.getString("barber_experience"));
+					barber.setSample_1(rs.getString("sample_1"));
+					barber.setSample_2(rs.getString("sample_2"));
+					barber.setSample_3(rs.getString("sample_3"));
+				}
+
+			} catch (SQLException e) {
+				throw new BarberDAOException("Error fetching barber by barber email" + e.getMessage());
+			}
+			return barber;
+		}
 	
 	
 	 // Method to check if a user with the given email exists in the database

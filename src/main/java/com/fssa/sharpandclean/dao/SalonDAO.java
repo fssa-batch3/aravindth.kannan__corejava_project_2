@@ -84,6 +84,42 @@ public class SalonDAO {
 			throw new SalonDAOException("Error in getAll barbers");
 		}
 	}
+	
+	
+	// method to get salon by salon email.
+	public Salon getSalonByEmail(String salonEmail) throws SalonDAOException {
+		String query = "SELECT * FROM salon WHERE email=?";
+		Salon salon = new Salon();
+
+		try (Connection connection = ConnectionUtil.getConnection();
+				PreparedStatement pmt = connection.prepareStatement(query)) {
+			pmt.setString(1, salonEmail);
+			ResultSet rs = pmt.executeQuery();
+
+			if (rs.next()) {
+
+				// created a sslon object with get data.
+				salon.setSalonId(rs.getInt("salon_id"));
+				salon.setSalonName(rs.getString("name"));
+				salon.setSalonEmail(rs.getString("email"));
+				salon.setSalonURL(rs.getString("profile_url"));
+				salon.setSalonPhone(rs.getString("phone"));
+				salon.setSalonAddress(rs.getString("address"));
+				salon.setSalonAbout(rs.getString("about"));
+				salon.setSalonExperience(rs.getString("experience"));
+				salon.setSalonArea(rs.getString("area"));
+				salon.setSalonSample1(rs.getString("style_image_1"));
+				salon.setSalonSample2(rs.getString("style_image_2"));
+				salon.setSalonSample3(rs.getString("style_image_3"));
+			}
+
+		} catch (SQLException e) {
+			throw new SalonDAOException("Error fetching salon by salonid" + e.getMessage());
+		}
+
+		return salon;
+
+	}
 
 	// method to get salon by salon Id.
 

@@ -58,6 +58,10 @@ public Barber(String barberEmail, String barberPassword) {
 	this.barberPassword = barberPassword;
 }
 
+public Barber() {
+	super();
+}
+
 public String getSample_1() {
 	return sample_1;
 }
