@@ -97,6 +97,7 @@ public class SalonDAO {
 			ResultSet rs = pmt.executeQuery();
 
 			if (rs.next()) {
+				if (rs.getInt("salon_is_deleted") == 0) {
 
 				// created a sslon object with get data.
 				salon.setSalonId(rs.getInt("salon_id"));
@@ -111,6 +112,7 @@ public class SalonDAO {
 				salon.setSalonSample1(rs.getString("style_image_1"));
 				salon.setSalonSample2(rs.getString("style_image_2"));
 				salon.setSalonSample3(rs.getString("style_image_3"));
+				}
 			}
 
 		} catch (SQLException e) {
@@ -133,7 +135,7 @@ public class SalonDAO {
 			ResultSet rs = pmt.executeQuery();
 
 			if (rs.next()) {
-
+				
 				// created a sslon object with get data.
 				salon.setSalonId(rs.getInt("salon_id"));
 				salon.setSalonName(rs.getString("name"));
@@ -270,6 +272,48 @@ public class SalonDAO {
 				e.printStackTrace();
 				throw new SalonDAOException("Error in salon is already booked DAO method");
 			}
+		}
+		
+		// Method to update salon profile
+		public boolean updateSalon(Salon salon) throws SalonDAOException{
+			String	query = "UPDATE salon SET name=?, phone=?, profile_url=?, experience=?,style_image_1 = ?,style_image_2 = ?,style_image_3 = ?"
+					+ ", address=?, about=?  WHERE email=?";
+			
+			try(Connection con = ConnectionUtil.getConnection();
+		   PreparedStatement pmt = con.prepareStatement(query)){
+			pmt.setString(1, salon.getSalonName());
+			pmt.setString(2, salon.getSalonPhone());
+			pmt.setString(3, salon.getSalonURL());
+			pmt.setString(4, salon.getSalonExperience());
+			pmt.setString(5, salon.getSalonSample1());
+			pmt.setString(6, salon.getSalonSample2());
+			pmt.setString(7, salon.getSalonSample3());
+			pmt.setString(8, salon.getSalonAddress());
+			pmt.setString(9, salon.getSalonAbout());
+			pmt.setString(10, salon.getSalonEmail());
+			int rows = pmt.executeUpdate();
+			return rows == 1;
+			}catch(SQLException e) {
+				throw new SalonDAOException(e);
+			}		
+		}
+		
+		// Method to delete salon profile
+		
+		public boolean deleteSalon(String salonEmail) throws SalonDAOException {
+			
+			String query = "UPDATE salon SET salon_is_deleted = 1 WHERE email =  ?";
+			
+			try(Connection con = ConnectionUtil.getConnection();
+				PreparedStatement pmt = con.prepareStatement(query)){
+				pmt.setString(1, salonEmail);
+				int rows = pmt.executeUpdate();
+				return rows == 1;
+			}catch(SQLException e) {
+				throw new SalonDAOException(e);
+			}
+			
+			
 		}
 
 }

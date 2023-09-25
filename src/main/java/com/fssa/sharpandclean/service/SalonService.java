@@ -2,13 +2,18 @@ package com.fssa.sharpandclean.service;
 
 import java.util.List;
 
+import com.fssa.sharpandclean.dao.BarberDAO;
 import com.fssa.sharpandclean.dao.SalonDAO;
+import com.fssa.sharpandclean.dao.exception.BarberDAOException;
 import com.fssa.sharpandclean.dao.exception.SalonDAOException;
+import com.fssa.sharpandclean.model.Barber;
 import com.fssa.sharpandclean.model.Salon;
 import com.fssa.sharpandclean.model.SalonBook;
 import com.fssa.sharpandclean.service.exception.ServiceException;
+import com.fssa.sharpandclean.validation.BarberValidator;
 import com.fssa.sharpandclean.validation.BookSalonValidator;
 import com.fssa.sharpandclean.validation.SalonValidator;
+import com.fssa.sharpandclean.validation.exception.InvalidBarberException;
 import com.fssa.sharpandclean.validation.exception.InvalidSalonBookException;
 import com.fssa.sharpandclean.validation.exception.InvalidSalonException;
 
@@ -129,6 +134,39 @@ public class SalonService {
 		return null;
 		
 	}
+	
+	// method for update barber.
+			public boolean updateSalon(Salon salon)throws ServiceException {
+				
+				SalonDAO salonDAO = new SalonDAO();
+				
+				try {
+					if(salon == null) {
+						throw new InvalidSalonException("Salon details is null");
+					}
+					
+					SalonValidator.validateSalon(salon);
+					return salonDAO.updateSalon(salon);
+				} catch(InvalidSalonException | SalonDAOException e) {
+					e.printStackTrace();
+					throw new ServiceException ("Update Salon details is not valid, so update barber failed.");
+				}
+				
+				
+			}
+			
+				
+		public boolean deleteSalon(String salonEmail) throws ServiceException {
+			SalonDAO salonDAO = new SalonDAO();
+			try {
+				if (salonEmail == null) {
+					throw new InvalidSalonException("Salon is not invalid");
+				}
+				return salonDAO.deleteSalon(salonEmail);
+			} catch (InvalidSalonException | SalonDAOException e) {
+				throw new ServiceException("This email id salon is already deleted.");
+			}
+		}
 	
 }
 

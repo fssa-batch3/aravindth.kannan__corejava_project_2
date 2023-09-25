@@ -70,23 +70,7 @@ public class UserService {
 		}
 	}
 
-	public boolean deleteUser(String email) throws ServiceException {
-		UserDAO userDAO = new UserDAO();
-		try {
-			if (email == null) {
-				throw new InvalidUserException("User is not invalid");
-			}
 
-			if (userDAO.isEmailExists(email)) {
-				UserValidator.validateEmail(email);
-				return userDAO.deleteUser(email);
-			}
-
-		} catch (InvalidUserException | DAOException e) {
-			throw new ServiceException("This email id user is already deleted.");
-		}
-		return false;
-	}
 
 	// Method to view profile details for user
 

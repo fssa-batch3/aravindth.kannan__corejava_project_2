@@ -53,6 +53,7 @@ public class BarberDAO {
 				ResultSet rs = pmt.executeQuery();
 
 				if (rs.next()) {
+					if (rs.getInt("barber_is_deleted") == 0) {
 
 					// created a sslon object with get data.
 					barber.setBarberId(rs.getInt("barber_id"));
@@ -66,6 +67,7 @@ public class BarberDAO {
 					barber.setSample_1(rs.getString("sample_1"));
 					barber.setSample_2(rs.getString("sample_2"));
 					barber.setSample_3(rs.getString("sample_3"));
+					}
 				}
 
 			} catch (SQLException e) {
@@ -139,9 +141,10 @@ public class BarberDAO {
     // Method for update barber's profile.
     
     public boolean updateBarber(Barber barber) throws BarberDAOException {
-    	Connection con = ConnectionUtil.getConnection();
-    	String query = "UPDATE barber SET barber_name=?, barber_password=?, barber_profile_URL=?, barber_phonenumber=?, barber_address=?, barber_about=?, barber_experience=?  WHERE barber_email=?,sample_1 = ?,sample_2 = ?,sample_3 = ?";
-   try(PreparedStatement pmt = con.prepareStatement(query)){
+    	
+    	String query = "UPDATE barber SET barber_name=?, barber_password=?, barber_profile_URL=?, barber_phonenumber=?, barber_address=?, barber_about=?, barber_experience=?,sample_1 = ?,sample_2 = ?,sample_3 = ?  WHERE barber_email=?";
+   try(Connection con = ConnectionUtil.getConnection();
+		   PreparedStatement pmt = con.prepareStatement(query)){
 	   pmt.setString(1, barber.getBarberName());
 	   pmt.setString(2, barber.getBarberPassword());
 	   pmt.setString(3, barber.getBarberProfile());
@@ -149,10 +152,10 @@ public class BarberDAO {
 	   pmt.setString(5, barber.getBarberAddress());
 	   pmt.setString(6, barber.getBarberAbout());
 	   pmt.setString(7, barber.getBarberExperience());
-	   pmt.setString(8, barber.getBarberEmail());
-	   pmt.setString(9, barber.getSample_1());
-	   pmt.setString(10, barber.getSample_2());
-	   pmt.setString(11, barber.getSample_3());
+	   pmt.setString(8, barber.getSample_1());
+	   pmt.setString(9, barber.getSample_2());
+	   pmt.setString(10, barber.getSample_3());
+	   pmt.setString(11, barber.getBarberEmail());
 	   int rows = pmt.executeUpdate();
 	   return rows == 1;
 	   

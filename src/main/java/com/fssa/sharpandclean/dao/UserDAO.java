@@ -111,21 +111,7 @@ public class UserDAO {
 		}
 	}
 
-	// Delete user based on email
-	public boolean deleteUser(String email) throws DAOException {
-		Connection connection = ConnectionUtil.getConnection();
 
-		String query = "UPDATE user SET is_deleted = ? WHERE email = ?";
-
-		try (PreparedStatement pmt = connection.prepareStatement(query)) {
-			pmt.setInt(1, 1); // Set isDeleted to one to mark the user as deleted
-			pmt.setString(2, email);
-			int rows = pmt.executeUpdate();
-			return rows == 1;
-		} catch (SQLException e) {
-			throw new DAOException(e);
-		}
-	}
 	
 	
 
