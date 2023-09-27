@@ -17,7 +17,7 @@ public class StyleValidator {
 		}else {
 			throw new InvalidStyleException("Hair Style details not valid");
 		}	
-	}
+	} 
 	
 	// check the style name is valid or not.
 	 public static boolean validateStyleName(String haircutName) throws InvalidStyleException {

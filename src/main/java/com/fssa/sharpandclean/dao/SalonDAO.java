@@ -15,7 +15,7 @@ import com.fssa.sharpandclean.model.SalonBook;
 import com.fssa.sharpandclean.utils.ConnectionUtil;
 
 public class SalonDAO {
-
+ 
 	public boolean createSalon(Salon salon) throws SalonDAOException {
 		// get connection with variable passing method.
 
@@ -96,7 +96,7 @@ public class SalonDAO {
 			pmt.setString(1, salonEmail);
 			ResultSet rs = pmt.executeQuery();
 
-			if (rs.next()) {
+			while (rs.next()) {
 				if (rs.getInt("salon_is_deleted") == 0) {
 
 				// created a sslon object with get data.
@@ -134,7 +134,8 @@ public class SalonDAO {
 			pmt.setInt(1, salonId);
 			ResultSet rs = pmt.executeQuery();
 
-			if (rs.next()) {
+		 while (rs.next()) {
+				if(rs.getInt("salon_is_deleted") == 0){
 				
 				// created a sslon object with get data.
 				salon.setSalonId(rs.getInt("salon_id"));
@@ -150,7 +151,7 @@ public class SalonDAO {
 				salon.setSalonSample2(rs.getString("style_image_2"));
 				salon.setSalonSample3(rs.getString("style_image_3"));
 			}
-
+		 }
 		} catch (SQLException e) {
 			throw new SalonDAOException("Error fetching salon by salonid" + e.getMessage());
 		}

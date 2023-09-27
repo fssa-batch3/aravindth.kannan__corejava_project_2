@@ -21,13 +21,13 @@ import com.fssa.sharpandclean.service.exception.StyleException;
 			StyleService styleService = new StyleService();
 			Style styles = new Style(4,"Fire haircut","aravindth@gmail.com","Haircut","Its trending now in youngstars","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgw256XHMSlaLXXtTDJxi96fwZP3EZmoE5Fg&usqp=CAU");
 			try {
-				assertTrue(styleService.updateStyle(styles, 1));
+				assertTrue(styleService.updateStyle(styles));
 			}catch(ServiceException e) {
 				System.out.println( e.getMessage()); 
 			}
 		}
 		
-		
+		 
 		 
 		
 		 @Test

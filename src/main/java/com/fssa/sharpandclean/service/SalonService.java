@@ -19,7 +19,7 @@ import com.fssa.sharpandclean.validation.exception.InvalidSalonException;
 
 public class SalonService {
 	
-	
+	 
 	
 	// Register salon method.
 	public boolean registerSalon(Salon salon) throws ServiceException {

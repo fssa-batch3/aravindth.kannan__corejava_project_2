@@ -14,7 +14,7 @@ public class SalonValidator {
 	        validateSalonExperience(salon.getSalonExperience());
 	        validatePhoneNumber(salon.getSalonPhone());
 	        validateAddress(salon.getSalonAddress());
-	        validateEmail(salon.getSalonEmail());
+	         validateEmail(salon.getSalonEmail());
 	        validateAbout(salon.getSalonAbout());
 	        validateArea(salon.getSalonArea());
 	        validateImageURL(salon.getSalonURL(),"Profile photo URL is null or not valid");

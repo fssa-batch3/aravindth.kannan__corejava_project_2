@@ -78,6 +78,7 @@ public class StyleDAO {
 			int rows = pmt.executeUpdate();
 			return rows == 1;
 		} catch (SQLException e) {
+			
 			throw new StyleDAOException("Error in Update Style");
 		}
 	}
@@ -118,6 +119,32 @@ public class StyleDAO {
 				return style;
 			} catch (SQLException e) {
 				throw new StyleDAOException("Error in getStyleByEmail");
+			}
+		}
+		
+		
+		// Method for get style by style Id.
+		
+		public Style getStyleById(int styleId) throws StyleDAOException {
+			Style style = new Style();
+			try (PreparedStatement stmt = ConnectionUtil.getConnection().prepareStatement("SELECT * FROM hairstyle WHERE haircut_id = ?")) {
+					stmt.setInt(1, styleId);
+					ResultSet rs = stmt.executeQuery();
+					
+				while (rs.next()) {
+					if (rs.getInt("is_deleted") == 0) {
+						style.setHaircutId(rs.getInt("haircut_id"));
+						style.setHaircutName(rs.getString("haircut_name"));
+						style.setHaircutEmail(rs.getString("haircut_email"));
+						style.setHaircutType(rs.getString("haircut_type"));
+						style.setHaircutAbout(rs.getString("haircut_about"));
+						style.setHaircutUrl(rs.getString("haircut_url"));
+						
+					}
+				}
+				return style;
+			} catch (SQLException e) {
+				throw new StyleDAOException("Error in getStyleById");
 			}
 		}
 

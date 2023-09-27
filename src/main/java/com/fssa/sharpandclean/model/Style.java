@@ -30,6 +30,10 @@ public class Style {
 		this.haircutId= haircutId;
 	}
 
+	public Style() {
+		super();
+	}
+
 	public String getHaircutName() {
 		return haircutName;
 	}
