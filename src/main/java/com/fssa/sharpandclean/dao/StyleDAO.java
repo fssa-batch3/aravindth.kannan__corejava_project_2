@@ -17,7 +17,7 @@ public class StyleDAO {
 			pmt.setString(1, style.getHaircutEmail());
 			pmt.setString(2, style.getHaircutName());
 			pmt.setString(3, style.getHaircutType());
-			pmt.setString(4, style.getHaircutAbout());
+		 	pmt.setString(4, style.getHaircutAbout());
 		 	pmt.setString(5, style.getHaircutUrl());
 			int rows = pmt.executeUpdate();
 			return rows == 1;
