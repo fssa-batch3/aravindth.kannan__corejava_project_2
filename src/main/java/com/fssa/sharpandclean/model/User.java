@@ -7,10 +7,13 @@ public class User {
 	private String username;
 	private String password;
 	private String phonenumber;
-	private String type;
+//	private String type;
 	private int isDeleted;
+	private String salt;
 	
 	
+	
+
 	public User( String email, String username, String password, String phonenumber,
 			int isDeleted) {
 		super();
@@ -55,9 +58,7 @@ public class User {
 		this.phonenumber = newMobileNumber;
 		
 	}
-
 	
-
 	public String getEmail() {
 		return email;
 	}
@@ -98,7 +99,13 @@ public class User {
 	}
 
 
-	
+	public String getSalt() {
+		return salt;
+	}
+
+	public void setSalt(String salt) {
+		this.salt = salt;
+	}
 
 
 	public int isDeleted() {

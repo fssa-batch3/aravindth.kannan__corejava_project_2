@@ -1,8 +1,11 @@
 package com.fssa.sharpandclean.service;
+import java.util.Base64;
+
 import com.fssa.sharpandclean.dao.UserDAO;
 import com.fssa.sharpandclean.dao.exception.DAOException;
 import com.fssa.sharpandclean.model.User;
 import com.fssa.sharpandclean.service.exception.ServiceException;
+import com.fssa.sharpandclean.utils.PasswordUtil;
 import com.fssa.sharpandclean.validation.UserValidator;
 import com.fssa.sharpandclean.validation.exception.InvalidUserException;
 
@@ -21,9 +24,15 @@ public class UserService {
 			}
 
 			UserValidator.validateUser(user);
+			
+		      byte[] salt = PasswordUtil.generateSalt();
+	          byte[] derivedKey = PasswordUtil.deriveKey(user.getPassword(), salt);
+	          user.setSalt(Base64.getEncoder().encodeToString(salt));
+	          user.setPassword(Base64.getEncoder().encodeToString(derivedKey));
+	            
 			 return userDAO.register(user);
 			 
-		} catch (InvalidUserException | DAOException e) {
+		} catch (Exception e) {
 			throw new ServiceException(e);
 		}
 		
@@ -36,21 +45,20 @@ public class UserService {
 
 			UserDAO userDAO = new UserDAO();
 
-			if (userDAO.isEmailExists(user.getEmail())) {
-				
-				if (userDAO.login(user)) {
-					System.out.println(user.getEmail() + " Successfully logged in");
-					return true;
-				} else {
-					return false;
-				}
-			}
-			else {
+			if (!userDAO.isEmailExists(user.getEmail())) 
 				throw new ServiceException("Before logging in, you have to register");
-			}
+		
 
+//			if (userDAO.login(user)) {
+//				System.out.println(user.getEmail() + " Successfully logged in");
+//				return true;
+//			} else {
+//				return false;
+//			}
 			
+			return userDAO.login(user);
 		} catch (ServiceException | InvalidUserException | DAOException e) {
+			e.printStackTrace();
 			throw new ServiceException(e.getMessage());
 		} 
 	}

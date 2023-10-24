@@ -8,12 +8,13 @@ import java.sql.SQLException;
 import com.fssa.sharpandclean.dao.exception.DAOException;
 import com.fssa.sharpandclean.model.User;
 import com.fssa.sharpandclean.utils.ConnectionUtil;
+import com.fssa.sharpandclean.utils.PasswordUtil;
 
 public class UserDAO {
 
 	// Add new user to DB - Register
 	public boolean register(User user) throws DAOException {
-			String query = "INSERT INTO user (email, username, password, phonenumber) VALUES ( ?, ?, ?, ?)";
+		String query = "INSERT INTO user (email, username, password, phonenumber,salt) VALUES (?, ?, ?, ?, ?)";
 
 		try (Connection connection = ConnectionUtil.getConnection();
 				PreparedStatement pmt = connection.prepareStatement(query)) {
@@ -22,16 +23,16 @@ public class UserDAO {
 			pmt.setString(2, user.getUsername());
 			pmt.setString(3, user.getPassword());
 			pmt.setString(4, user.getPhonenumber());
+			pmt.setString(5, user.getSalt());
 			
 			int rows = pmt.executeUpdate();
 			return rows == 1;
 		} catch (SQLException e) {
-			throw new DAOException("registeration is not sucess"+e.getMessage());
+			throw new DAOException("registeration is not sucess" + e.getMessage());
 		}
 	}
 	
-
-
+	
 
 	// Method to check if a user with the given email exists in the database
 	public boolean isEmailExists(String email) throws DAOException {
@@ -46,30 +47,34 @@ public class UserDAO {
 		}
 	}
 
-	// Method to authenticate the user with the provided email and password
+	
+	//  login method
 	public boolean login(User user) throws DAOException {
-		String query = "SELECT * FROM user WHERE email = ? AND password = ?";
-		ResultSet rs = null;
-		try (Connection connection = ConnectionUtil.getConnection();
-				PreparedStatement pmt = connection.prepareStatement(query);
-				) {
-			
-			pmt.setString(1, user.getEmail()); // Use provided email for the query
-			pmt.setString(2, user.getPassword());
-			rs = pmt.executeQuery();
-			
-			return rs.next(); // If a row is found, authentication is successful
-		} catch (SQLException e) {
-			throw new DAOException(e);
-		}finally {	
-				try {
-					rs.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-		}
+		String query = "SELECT * FROM user WHERE email = ? AND is_deleted = 0";
 
-	}
+		    try (Connection connection = ConnectionUtil.getConnection();
+		         PreparedStatement pstmt = connection.prepareStatement(query)) {
+		    	pstmt.setString(1, user.getEmail()); // Use provided email for the query
+//		    	pstmt.setString(2, user.getPassword());
+		     
+		        try (ResultSet rs = pstmt.executeQuery()) {
+		        	if(rs.next()) {
+		        		String password = rs.getString("password");
+		        		String salt = rs.getString("salt");
+		        		if(PasswordUtil.verifyPassword(user.getPassword(), salt, password)) {
+		        			return true;
+		        		}else {
+		        	        throw new DAOException("Incorrect Email or Password");
+		        		}
+		        	}
+		        	
+		            return false;
+		        }
+		    } catch (Exception e) {
+		    	
+		        throw new DAOException("Error while authenticating the user: " + e.getMessage());
+		    }
+		}
 
 	// method to view user details in profile page
 	public User getUserByEmail(String email) throws DAOException {
@@ -110,9 +115,5 @@ public class UserDAO {
 			throw new DAOException(e);
 		}
 	}
-
-
-	
-	
 
 }

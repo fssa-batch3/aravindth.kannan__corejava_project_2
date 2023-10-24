@@ -14,14 +14,15 @@ class TestLoginFeature {
 	@Test
 	void loginSuccess() {
 		UserService userService = new UserService();
-		String email = "aravindth@gmail.com";
+		String email = "navee@gmail.com";
 		String password = "Akkam432@";
 		User user1 = new User(email, password);
 		try {
 			assertTrue(userService.loginUser(user1));
 			System.out.println("Successfully Logged in.");
 		} catch (ServiceException e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage());
+			fail();
 		}
 	
 	}

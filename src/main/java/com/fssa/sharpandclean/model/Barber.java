@@ -14,6 +14,9 @@ private int isDeleted;
 private String sample_1;
 private String sample_2;
 private String sample_3;
+private String salt;
+
+
 
 
 
@@ -61,7 +64,13 @@ public Barber(String barberEmail, String barberPassword) {
 public Barber() {
 	super();
 }
+public String getSalt() {
+	return salt;
+}
 
+public void setSalt(String salt) {
+	this.salt = salt;
+}
 public String getSample_1() {
 	return sample_1;
 }

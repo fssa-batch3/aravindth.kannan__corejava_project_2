@@ -6,18 +6,18 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
 import com.fssa.sharpandclean.dao.exception.BarberDAOException;
-import com.fssa.sharpandclean.dao.exception.SalonDAOException;
 import com.fssa.sharpandclean.model.Barber;
-import com.fssa.sharpandclean.model.Salon;
 import com.fssa.sharpandclean.utils.ConnectionUtil;
+import com.fssa.sharpandclean.utils.PasswordUtil;
 
 public class BarberDAO {
 
 	public boolean createBarber(Barber barber) throws BarberDAOException {
 		//get connection with variable passing method.
 		
-		String query = "INSERT INTO barber (barber_name, barber_email, barber_password, barber_profile_URL, barber_phonenumber, barber_address, barber_about, barber_experience,sample_1,sample_2,sample_3) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+		String query = "INSERT INTO barber (barber_name, barber_email, barber_password, barber_profile_URL, barber_phonenumber, barber_address, barber_about, barber_experience,sample_1,sample_2,sample_3,salt) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
 		
 		try(Connection con = ConnectionUtil.getConnection();
 			PreparedStatement pmt = con.prepareStatement(query)){
@@ -33,6 +33,7 @@ public class BarberDAO {
 			pmt.setString(9, barber.getSample_1());
 			pmt.setString(10, barber.getSample_2());
 			pmt.setString(11, barber.getSample_3());
+			pmt.setString(12, barber.getSalt());
 			int rows = pmt.executeUpdate();
 			return rows ==1;
 		}catch(SQLException e) {
@@ -93,15 +94,24 @@ public class BarberDAO {
     // method to login barber.
     public boolean login(Barber barber) throws BarberDAOException {
 		
-    	String query = "SELECT * FROM  barber WHERE barber_email = ? AND barber_password = ?";
+    	String query = "SELECT * FROM  barber WHERE barber_email = ? AND barber_is_deleted = 0";
     	try(Connection connection   = ConnectionUtil.getConnection();
     		PreparedStatement pmt = connection.prepareStatement(query)){
     			pmt.setString(1, barber.getBarberEmail());
-    			pmt.setString(2, barber.getBarberPassword());
+//    			pmt.setString(2, barber.getBarberPassword());
     			try(ResultSet rs = pmt.executeQuery()){
-    				return rs.next();
+    				if(rs.next()) {
+		        		String password = rs.getString("barber_password");
+		        		String salt = rs.getString("salt");
+		        		if(PasswordUtil.verifyPassword(barber.getBarberPassword(), salt, password)) {
+		        			return true;
+		        		}else {
+		        	        throw new BarberDAOException("Incorrect Email or Password");
+		        		}
+		        	}
+    				return false;
     			}
-    		}catch(SQLException e) {
+    		}catch(Exception e) {
     			throw new BarberDAOException(e);
     		}
     	

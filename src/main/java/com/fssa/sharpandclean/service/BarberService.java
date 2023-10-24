@@ -1,5 +1,6 @@
 package com.fssa.sharpandclean.service;
 
+import java.util.Base64;
 import java.util.List;
 
 
@@ -10,6 +11,7 @@ import com.fssa.sharpandclean.dao.exception.SalonDAOException;
 import com.fssa.sharpandclean.model.Barber;
 import com.fssa.sharpandclean.model.Salon;
 import com.fssa.sharpandclean.service.exception.ServiceException;
+import com.fssa.sharpandclean.utils.PasswordUtil;
 import com.fssa.sharpandclean.validation.BarberValidator;
 import com.fssa.sharpandclean.validation.exception.InvalidBarberException;
  
@@ -27,10 +29,15 @@ public class BarberService {
 				throw new ServiceException("Barber with this email is aleady exists");
 			}
 			
-			BarberValidator.validateBarber(barber);
+			BarberValidator.validateBarber(barber);	
+			 byte[] salt = PasswordUtil.generateSalt();
+	          byte[] derivedKey = PasswordUtil.deriveKey(barber.getBarberPassword(), salt);
+	          barber.setSalt(Base64.getEncoder().encodeToString(salt));
+	          barber.setBarberPassword(Base64.getEncoder().encodeToString(derivedKey));
+	            
 			return barberDAO.createBarber(barber);
-		}catch(InvalidBarberException | BarberDAOException e) {
-			e.printStackTrace();
+		}catch( Exception e) {
+			
 			throw new ServiceException("Register details is not valid so registration failed.");
 		}
 		

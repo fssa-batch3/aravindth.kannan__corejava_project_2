@@ -3,8 +3,6 @@ package com.fssa.sharpandclean.test;
 
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
-
 import static org.junit.jupiter.api.Assertions.fail;
 
 import org.junit.jupiter.api.Test;
@@ -18,11 +16,13 @@ import com.fssa.sharpandclean.service.exception.ServiceException;
     @Test
      void testRegistrationSuccess() {
         UserService userService = new UserService();
-        User user1 = new User( "kanna594@gmail.com", "Kannan", "Kannan@1467", "9878543123");
+        User user1 = new User( "navee@gmail.com", "Naveena", "Akkam432@", "9878543123");
         try {
             assertTrue(userService.registerUser(user1));
         } catch (ServiceException e) {
         	System.out.println( e.getMessage()); 
+        	fail();
+
         }
     }
 
